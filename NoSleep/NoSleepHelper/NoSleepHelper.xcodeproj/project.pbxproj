@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		921DD80114EADE65000EC9D0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921DD80014EADE65000EC9D0 /* Cocoa.framework */; };
+		921DD80D14EADE65000EC9D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD80C14EADE65000EC9D0 /* main.m */; };
+		921DD81114EADE65000EC9D0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 921DD80F14EADE65000EC9D0 /* Credits.rtf */; };
+		921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82314EADEC4000EC9D0 /* MainMenu.xib */; };
+		921DD82E14EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82514EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m */; };
+		921DD82F14EADEC4000EC9D0 /* image-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82714EADEC4000EC9D0 /* image-blue.png */; };
+		921DD83014EADEC4000EC9D0 /* image-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82814EADEC4000EC9D0 /* image-gray.png */; };
+		921DD83114EADEC4000EC9D0 /* image-zz.icns in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82914EADEC4000EC9D0 /* image-zz.icns */; };
+		921DD83214EADEC4000EC9D0 /* ZzTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */; };
+		921DD83314EADEC4000EC9D0 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82C14EADEC4000EC9D0 /* StatusItemView.m */; };
+		92D9231714EAF594008AB70E /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92D922A014EAEA9D008AB70E /* NoSleep.framework */; };
+		92D9232214EAFCC2008AB70E /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922A014EAEA9D008AB70E /* NoSleep.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92D9229F14EAEA9D008AB70E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 921DD84814EAE2D9000EC9D0;
+			remoteInfo = NoSleep;
+		};
+		92D922A314EAEAB1008AB70E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 921DD84714EAE2D9000EC9D0;
+			remoteInfo = NoSleep;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92D9231514EAF52C008AB70E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92D9231714EAF594008AB70E /* NoSleep.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		921DD7FC14EADE65000EC9D0 /* NoSleepHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoSleepHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		921DD80014EADE65000EC9D0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		921DD80314EADE65000EC9D0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		921DD80414EADE65000EC9D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		921DD80514EADE65000EC9D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		921DD80814EADE65000EC9D0 /* NoSleepHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoSleepHelper-Info.plist"; sourceTree = "<group>"; };
+		921DD80C14EADE65000EC9D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		921DD80E14EADE65000EC9D0 /* NoSleepHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoSleepHelper-Prefix.pch"; sourceTree = "<group>"; };
+		921DD81014EADE65000EC9D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		921DD82314EADEC4000EC9D0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		921DD82414EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSleep_ControlAppDelegate.h; sourceTree = "<group>"; };
+		921DD82514EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSleep_ControlAppDelegate.m; sourceTree = "<group>"; };
+		921DD82714EADEC4000EC9D0 /* image-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-blue.png"; sourceTree = "<group>"; };
+		921DD82814EADEC4000EC9D0 /* image-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-gray.png"; sourceTree = "<group>"; };
+		921DD82914EADEC4000EC9D0 /* image-zz.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "image-zz.icns"; sourceTree = "<group>"; };
+		921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZzTemplate.png; sourceTree = "<group>"; };
+		921DD82B14EADEC4000EC9D0 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
+		921DD82C14EADEC4000EC9D0 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
+		92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoSleepFramework.xcodeproj; path = ../NoSleepFramework/NoSleepFramework.xcodeproj; sourceTree = "<group>"; };
+		92D9231214EAF42A008AB70E /* NoSleep.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NoSleep.framework; path = ../NoSleepFramework/build/Debug/NoSleep.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		921DD7F914EADE65000EC9D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921DD80114EADE65000EC9D0 /* Cocoa.framework in Frameworks */,
+				92D9232214EAFCC2008AB70E /* NoSleep.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		921DD7F114EADE64000EC9D0 = {
+			isa = PBXGroup;
+			children = (
+				92D922B114EAEADD008AB70E /* Dependencies */,
+				921DD80614EADE65000EC9D0 /* NoSleepHelper */,
+				921DD7FF14EADE65000EC9D0 /* Frameworks */,
+				921DD7FD14EADE65000EC9D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		921DD7FD14EADE65000EC9D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				921DD7FC14EADE65000EC9D0 /* NoSleepHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		921DD7FF14EADE65000EC9D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92D9231214EAF42A008AB70E /* NoSleep.framework */,
+				921DD80014EADE65000EC9D0 /* Cocoa.framework */,
+				921DD80214EADE65000EC9D0 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		921DD80214EADE65000EC9D0 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				921DD80314EADE65000EC9D0 /* AppKit.framework */,
+				921DD80414EADE65000EC9D0 /* CoreData.framework */,
+				921DD80514EADE65000EC9D0 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		921DD80614EADE65000EC9D0 /* NoSleepHelper */ = {
+			isa = PBXGroup;
+			children = (
+				921DD82314EADEC4000EC9D0 /* MainMenu.xib */,
+				921DD82414EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.h */,
+				921DD82514EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m */,
+				921DD82614EADEC4000EC9D0 /* Resources */,
+				921DD82B14EADEC4000EC9D0 /* StatusItemView.h */,
+				921DD82C14EADEC4000EC9D0 /* StatusItemView.m */,
+				921DD80714EADE65000EC9D0 /* Supporting Files */,
+			);
+			path = NoSleepHelper;
+			sourceTree = "<group>";
+		};
+		921DD80714EADE65000EC9D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				921DD80814EADE65000EC9D0 /* NoSleepHelper-Info.plist */,
+				921DD80C14EADE65000EC9D0 /* main.m */,
+				921DD80E14EADE65000EC9D0 /* NoSleepHelper-Prefix.pch */,
+				921DD80F14EADE65000EC9D0 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		921DD82614EADEC4000EC9D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				921DD82714EADEC4000EC9D0 /* image-blue.png */,
+				921DD82814EADEC4000EC9D0 /* image-gray.png */,
+				921DD82914EADEC4000EC9D0 /* image-zz.icns */,
+				921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		92D9229914EAEA9D008AB70E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92D922A014EAEA9D008AB70E /* NoSleep.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92D922B114EAEADD008AB70E /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		921DD7FB14EADE65000EC9D0 /* NoSleepHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 921DD81A14EADE65000EC9D0 /* Build configuration list for PBXNativeTarget "NoSleepHelper" */;
+			buildPhases = (
+				921DD7F814EADE65000EC9D0 /* Sources */,
+				921DD7F914EADE65000EC9D0 /* Frameworks */,
+				921DD7FA14EADE65000EC9D0 /* Resources */,
+				92D9231514EAF52C008AB70E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92D922A414EAEAB1008AB70E /* PBXTargetDependency */,
+			);
+			name = NoSleepHelper;
+			productName = NoSleepHelper;
+			productReference = 921DD7FC14EADE65000EC9D0 /* NoSleepHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		921DD7F314EADE64000EC9D0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 921DD7F614EADE64000EC9D0 /* Build configuration list for PBXProject "NoSleepHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 921DD7F114EADE64000EC9D0;
+			productRefGroup = 921DD7FD14EADE65000EC9D0 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 92D9229914EAEA9D008AB70E /* Products */;
+					ProjectRef = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				921DD7FB14EADE65000EC9D0 /* NoSleepHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		92D922A014EAEA9D008AB70E /* NoSleep.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NoSleep.framework;
+			remoteRef = 92D9229F14EAEA9D008AB70E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		921DD7FA14EADE65000EC9D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921DD81114EADE65000EC9D0 /* Credits.rtf in Resources */,
+				921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */,
+				921DD82F14EADEC4000EC9D0 /* image-blue.png in Resources */,
+				921DD83014EADEC4000EC9D0 /* image-gray.png in Resources */,
+				921DD83114EADEC4000EC9D0 /* image-zz.icns in Resources */,
+				921DD83214EADEC4000EC9D0 /* ZzTemplate.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		921DD7F814EADE65000EC9D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921DD80D14EADE65000EC9D0 /* main.m in Sources */,
+				921DD82E14EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m in Sources */,
+				921DD83314EADEC4000EC9D0 /* StatusItemView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92D922A414EAEAB1008AB70E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoSleep;
+			targetProxy = 92D922A314EAEAB1008AB70E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		921DD80F14EADE65000EC9D0 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				921DD81014EADE65000EC9D0 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		921DD81814EADE65000EC9D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		921DD81914EADE65000EC9D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		921DD81B14EADE65000EC9D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
+				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		921DD81C14EADE65000EC9D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
+				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		921DD7F614EADE64000EC9D0 /* Build configuration list for PBXProject "NoSleepHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921DD81814EADE65000EC9D0 /* Debug */,
+				921DD81914EADE65000EC9D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		921DD81A14EADE65000EC9D0 /* Build configuration list for PBXNativeTarget "NoSleepHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921DD81B14EADE65000EC9D0 /* Debug */,
+				921DD81C14EADE65000EC9D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 921DD7F314EADE64000EC9D0 /* Project object */;
+}

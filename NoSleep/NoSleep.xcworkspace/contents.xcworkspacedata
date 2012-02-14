@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:NoSleepPref/NoSleepPref.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NoSleepHelper/NoSleepHelper.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NoSleepKext/NoSleepKext.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NoSleepFramework/NoSleepFramework.xcodeproj">
+   </FileRef>
+</Workspace>
