@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>NoSleepFramework.xcscheme_^#shared#^_</key>
+		<key>NoSleepFramework.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>NoSleepStatic.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>921DD84714EAE2D9000EC9D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92987E7614EC2E1D00DA7075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92987E8914EC2F5700DA7075</key>
 		<dict>
 			<key>primary</key>
 			<true/>

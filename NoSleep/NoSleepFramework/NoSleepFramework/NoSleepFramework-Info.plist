@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pretech.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.protech.${PRODUCT_NAME:rfc1034identifier}Framework</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

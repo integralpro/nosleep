@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "921DD7B214EADC25000EC9D0"
                BuildableName = "NoSleep.kext"
-               BlueprintName = "NoSleep"
+               BlueprintName = "NoSleepKext"
                ReferencedContainer = "container:NoSleepKext.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

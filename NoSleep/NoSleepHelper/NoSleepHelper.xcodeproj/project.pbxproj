@@ -17,11 +17,32 @@
 		921DD83114EADEC4000EC9D0 /* image-zz.icns in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82914EADEC4000EC9D0 /* image-zz.icns */; };
 		921DD83214EADEC4000EC9D0 /* ZzTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */; };
 		921DD83314EADEC4000EC9D0 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82C14EADEC4000EC9D0 /* StatusItemView.m */; };
-		92D9231714EAF594008AB70E /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92D922A014EAEA9D008AB70E /* NoSleep.framework */; };
-		92D9232214EAFCC2008AB70E /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922A014EAEA9D008AB70E /* NoSleep.framework */; };
+		92987EA214EC358D00DA7075 /* libNoSleep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9E14EC358200DA7075 /* libNoSleep.a */; };
+		92987EA414EC35A400DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987EA314EC35A400DA7075 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		92987E9D14EC358200DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92987E8A14EC2F5700DA7075;
+			remoteInfo = NoSleepStatic;
+		};
+		92987EA014EC358500DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 92987E8914EC2F5700DA7075;
+			remoteInfo = NoSleepStatic;
+		};
+		92987EA914EC35E200DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 921DD84714EAE2D9000EC9D0;
+			remoteInfo = NoSleepFramework;
+		};
 		92D9229F14EAEA9D008AB70E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
@@ -29,27 +50,7 @@
 			remoteGlobalIDString = 921DD84814EAE2D9000EC9D0;
 			remoteInfo = NoSleep;
 		};
-		92D922A314EAEAB1008AB70E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 921DD84714EAE2D9000EC9D0;
-			remoteInfo = NoSleep;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		92D9231514EAF52C008AB70E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				92D9231714EAF594008AB70E /* NoSleep.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		921DD7FC14EADE65000EC9D0 /* NoSleepHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoSleepHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +71,7 @@
 		921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZzTemplate.png; sourceTree = "<group>"; };
 		921DD82B14EADEC4000EC9D0 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		921DD82C14EADEC4000EC9D0 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
+		92987EA314EC35A400DA7075 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoSleepFramework.xcodeproj; path = ../NoSleepFramework/NoSleepFramework.xcodeproj; sourceTree = "<group>"; };
 		92D9231214EAF42A008AB70E /* NoSleep.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NoSleep.framework; path = ../NoSleepFramework/build/Debug/NoSleep.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92987EA414EC35A400DA7075 /* IOKit.framework in Frameworks */,
+				92987EA214EC358D00DA7075 /* libNoSleep.a in Frameworks */,
 				921DD80114EADE65000EC9D0 /* Cocoa.framework in Frameworks */,
-				92D9232214EAFCC2008AB70E /* NoSleep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +93,7 @@
 		921DD7F114EADE64000EC9D0 = {
 			isa = PBXGroup;
 			children = (
+				92987EA314EC35A400DA7075 /* IOKit.framework */,
 				92D922B114EAEADD008AB70E /* Dependencies */,
 				921DD80614EADE65000EC9D0 /* NoSleepHelper */,
 				921DD7FF14EADE65000EC9D0 /* Frameworks */,
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				92D922A014EAEA9D008AB70E /* NoSleep.framework */,
+				92987E9E14EC358200DA7075 /* libNoSleep.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,12 +192,12 @@
 				921DD7F814EADE65000EC9D0 /* Sources */,
 				921DD7F914EADE65000EC9D0 /* Frameworks */,
 				921DD7FA14EADE65000EC9D0 /* Resources */,
-				92D9231514EAF52C008AB70E /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				92D922A414EAEAB1008AB70E /* PBXTargetDependency */,
+				92987EAA14EC35E200DA7075 /* PBXTargetDependency */,
+				92987EA114EC358500DA7075 /* PBXTargetDependency */,
 			);
 			name = NoSleepHelper;
 			productName = NoSleepHelper;
@@ -228,6 +233,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		92987E9E14EC358200DA7075 /* libNoSleep.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoSleep.a;
+			remoteRef = 92987E9D14EC358200DA7075 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		92D922A014EAEA9D008AB70E /* NoSleep.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -267,10 +279,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92D922A414EAEAB1008AB70E /* PBXTargetDependency */ = {
+		92987EA114EC358500DA7075 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = NoSleep;
-			targetProxy = 92D922A314EAEAB1008AB70E /* PBXContainerItemProxy */;
+			name = NoSleepStatic;
+			targetProxy = 92987EA014EC358500DA7075 /* PBXContainerItemProxy */;
+		};
+		92987EAA14EC35E200DA7075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoSleepFramework;
+			targetProxy = 92987EA914EC35E200DA7075 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -291,6 +308,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -308,6 +326,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_VERSION = 1.3;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -317,6 +336,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -327,6 +347,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_VERSION = 1.3;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -337,6 +358,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
+				INFOPLIST_PREPROCESS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -349,6 +371,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
+				INFOPLIST_PREPROCESS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

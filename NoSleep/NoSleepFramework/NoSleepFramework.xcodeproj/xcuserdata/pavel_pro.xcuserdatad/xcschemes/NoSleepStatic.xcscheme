@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "921DD84714EAE2D9000EC9D0"
-               BuildableName = "NoSleep.framework"
-               BlueprintName = "NoSleep"
+               BlueprintIdentifier = "92987E8914EC2F5700DA7075"
+               BuildableName = "libNoSleepStatic.a"
+               BlueprintName = "NoSleepStatic"
                ReferencedContainer = "container:NoSleepFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

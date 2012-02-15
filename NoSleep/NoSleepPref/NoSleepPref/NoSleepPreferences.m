@@ -60,7 +60,7 @@ typedef enum {
 {
     // Initialize the location of our preferences
     if ((self = [super initWithBundle:bundle]) != nil) {
-    
+        m_noSleepInterface = nil;
     }
     
     return self;
@@ -95,8 +95,9 @@ typedef enum {
 
 - (void)willSelect
 {
-    m_noSleepInterface = 0;
-    m_noSleepInterface = [[NoSleepInterfaceWrapper alloc] init];
+    if(m_noSleepInterface == nil) {
+         m_noSleepInterface = [[NoSleepInterfaceWrapper alloc] init];   
+    }
     
     NSString *ns = NOSLEEP_HELPER_IDENTIFIER;
     if([[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:ns] == nil) {

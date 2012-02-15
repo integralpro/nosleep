@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "92D922C114EAEB29008AB70E"
                BuildableName = "NoSleep.prefPane"
-               BlueprintName = "NoSleep"
+               BlueprintName = "NoSleepPref"
                ReferencedContainer = "container:NoSleepPref.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

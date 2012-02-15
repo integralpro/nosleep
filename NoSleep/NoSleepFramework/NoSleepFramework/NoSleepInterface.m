@@ -17,7 +17,7 @@
 
 #import <IOKit/OSMessageNotification.h>
 
-#import <GlobalConstants.h>
+#import <NoSleep/GlobalConstants.h>
 
 NoSleepInterestNotification NoSleep_ReceiveStateChanged(NoSleepInterfaceService service,
                                                         IOServiceInterestCallback callback,

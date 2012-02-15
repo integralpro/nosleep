@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92987E9414EC2FAA00DA7075 /* libNoSleepStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9214EC2FA400DA7075 /* libNoSleepStatic.a */; };
+		92987E9614EC2FFD00DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9514EC2FFD00DA7075 /* IOKit.framework */; };
 		92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C514EAEB29008AB70E /* Cocoa.framework */; };
 		92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C714EAEB29008AB70E /* PreferencePanes.framework */; };
 		92D922D214EAEB29008AB70E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D922D014EAEB29008AB70E /* InfoPlist.strings */; };
-		92D9230B14EAF35C008AB70E /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922F114EAEB79008AB70E /* NoSleep.framework */; };
 		92D9232114EAFB53008AB70E /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92D922F114EAEB79008AB70E /* NoSleep.framework */; };
 		92D9232814EB033F008AB70E /* NoSleepPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D9232314EB033F008AB70E /* NoSleepPref.xib */; };
 		92D9232914EB033F008AB70E /* NoSleepPref.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 92D9232514EB033F008AB70E /* NoSleepPref.tiff */; };
@@ -19,18 +20,32 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		92987E9114EC2FA400DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D922EC14EAEB79008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92987E8A14EC2F5700DA7075;
+			remoteInfo = NoSleepStatic;
+		};
+		92987E9714EC30C400DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D922EC14EAEB79008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 92987E8914EC2F5700DA7075;
+			remoteInfo = NoSleepStatic;
+		};
+		92987EA714EC35DD00DA7075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D922EC14EAEB79008AB70E /* NoSleepFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 921DD84714EAE2D9000EC9D0;
+			remoteInfo = NoSleepFramework;
+		};
 		92D922F014EAEB79008AB70E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92D922EC14EAEB79008AB70E /* NoSleepFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 921DD84814EAE2D9000EC9D0;
-			remoteInfo = NoSleep;
-		};
-		92D922F314EAEB88008AB70E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92D922EC14EAEB79008AB70E /* NoSleepFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 921DD84714EAE2D9000EC9D0;
 			remoteInfo = NoSleep;
 		};
 /* End PBXContainerItemProxy section */
@@ -49,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		92987E9514EC2FFD00DA7075 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		92D922C214EAEB29008AB70E /* NoSleep.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoSleep.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D922C514EAEB29008AB70E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		92D922C714EAEB29008AB70E /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
@@ -70,7 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D9230B14EAF35C008AB70E /* NoSleep.framework in Frameworks */,
+				92987E9614EC2FFD00DA7075 /* IOKit.framework in Frameworks */,
+				92987E9414EC2FAA00DA7075 /* libNoSleepStatic.a in Frameworks */,
 				92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */,
 				92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */,
 			);
@@ -100,6 +117,7 @@
 		92D922C414EAEB29008AB70E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92987E9514EC2FFD00DA7075 /* IOKit.framework */,
 				92D922C514EAEB29008AB70E /* Cocoa.framework */,
 				92D922C714EAEB29008AB70E /* PreferencePanes.framework */,
 				92D922C914EAEB29008AB70E /* Other Frameworks */,
@@ -151,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				92D922F114EAEB79008AB70E /* NoSleep.framework */,
+				92987E9214EC2FA400DA7075 /* libNoSleepStatic.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,9 +188,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		92D922C114EAEB29008AB70E /* NoSleep */ = {
+		92D922C114EAEB29008AB70E /* NoSleepPref */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92D922DF14EAEB2A008AB70E /* Build configuration list for PBXNativeTarget "NoSleep" */;
+			buildConfigurationList = 92D922DF14EAEB2A008AB70E /* Build configuration list for PBXNativeTarget "NoSleepPref" */;
 			buildPhases = (
 				92D922BC14EAEB29008AB70E /* Sources */,
 				92D922BD14EAEB29008AB70E /* Frameworks */,
@@ -182,9 +201,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				92D922F414EAEB88008AB70E /* PBXTargetDependency */,
+				92987EA814EC35DD00DA7075 /* PBXTargetDependency */,
+				92987E9814EC30C400DA7075 /* PBXTargetDependency */,
 			);
-			name = NoSleep;
+			name = NoSleepPref;
 			productName = NoSleepPref;
 			productReference = 92D922C214EAEB29008AB70E /* NoSleep.prefPane */;
 			productType = "com.apple.product-type.bundle";
@@ -212,12 +232,19 @@
 			);
 			projectRoot = "";
 			targets = (
-				92D922C114EAEB29008AB70E /* NoSleep */,
+				92D922C114EAEB29008AB70E /* NoSleepPref */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		92987E9214EC2FA400DA7075 /* libNoSleepStatic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNoSleepStatic.a;
+			remoteRef = 92987E9114EC2FA400DA7075 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		92D922F114EAEB79008AB70E /* NoSleep.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -252,10 +279,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92D922F414EAEB88008AB70E /* PBXTargetDependency */ = {
+		92987E9814EC30C400DA7075 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = NoSleep;
-			targetProxy = 92D922F314EAEB88008AB70E /* PBXContainerItemProxy */;
+			name = NoSleepStatic;
+			targetProxy = 92987E9714EC30C400DA7075 /* PBXContainerItemProxy */;
+		};
+		92987EA814EC35DD00DA7075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NoSleepFramework;
+			targetProxy = 92987EA714EC35DD00DA7075 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -284,6 +316,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -302,6 +335,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_VERSION = 1.3;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -311,6 +345,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -322,6 +357,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_VERSION = 1.3;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -329,12 +365,14 @@
 		92D922E014EAEB2A008AB70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepPref/NoSleepPref-Info.plist";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -342,12 +380,14 @@
 		92D922E114EAEB2A008AB70E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepPref/NoSleepPref-Info.plist";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Release;
@@ -364,7 +404,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92D922DF14EAEB2A008AB70E /* Build configuration list for PBXNativeTarget "NoSleep" */ = {
+		92D922DF14EAEB2A008AB70E /* Build configuration list for PBXNativeTarget "NoSleepPref" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92D922E014EAEB2A008AB70E /* Debug */,

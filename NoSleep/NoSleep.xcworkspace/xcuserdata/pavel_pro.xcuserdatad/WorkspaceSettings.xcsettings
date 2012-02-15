@@ -7,7 +7,7 @@
 	<key>IDEWorkspaceUserSettings_BuildSubfolderNameStyle</key>
 	<integer>0</integer>
 	<key>IDEWorkspaceUserSettings_DerivedDataCustomLocation</key>
-	<string>DerivedData</string>
+	<string>../DerivedData</string>
 	<key>IDEWorkspaceUserSettings_DerivedDataLocationStyle</key>
 	<integer>2</integer>
 	<key>IDEWorkspaceUserSettings_IssueFilterStyle</key>

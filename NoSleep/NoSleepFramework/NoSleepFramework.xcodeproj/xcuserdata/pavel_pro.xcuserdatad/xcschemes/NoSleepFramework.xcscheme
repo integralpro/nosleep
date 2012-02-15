@@ -13,38 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "921DD7B214EADC25000EC9D0"
-               BuildableName = "NoSleep.kext"
-               BlueprintName = "NoSleepKext"
-               ReferencedContainer = "container:NoSleepKext/NoSleepKext.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "921DD7FB14EADE65000EC9D0"
-               BuildableName = "NoSleepHelper.app"
-               BlueprintName = "NoSleepHelper"
-               ReferencedContainer = "container:NoSleepHelper/NoSleepHelper.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92D922C114EAEB29008AB70E"
-               BuildableName = "NoSleep.prefPane"
-               BlueprintName = "NoSleepPref"
-               ReferencedContainer = "container:NoSleepPref/NoSleepPref.xcodeproj">
+               BlueprintIdentifier = "921DD84714EAE2D9000EC9D0"
+               BuildableName = "NoSleep.framework"
+               BlueprintName = "NoSleepFramework"
+               ReferencedContainer = "container:NoSleepFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,7 +34,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
