@@ -93,7 +93,6 @@
 		921DD7F114EADE64000EC9D0 = {
 			isa = PBXGroup;
 			children = (
-				92987EA314EC35A400DA7075 /* IOKit.framework */,
 				92D922B114EAEADD008AB70E /* Dependencies */,
 				921DD80614EADE65000EC9D0 /* NoSleepHelper */,
 				921DD7FF14EADE65000EC9D0 /* Frameworks */,
@@ -112,6 +111,7 @@
 		921DD7FF14EADE65000EC9D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92987EA314EC35A400DA7075 /* IOKit.framework */,
 				92D9231214EAF42A008AB70E /* NoSleep.framework */,
 				921DD80014EADE65000EC9D0 /* Cocoa.framework */,
 				921DD80214EADE65000EC9D0 /* Other Frameworks */,
@@ -307,7 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -335,7 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

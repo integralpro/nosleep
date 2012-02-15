@@ -20,6 +20,5 @@
 
 - (IBAction)checkboxEnableClicked:(id)sender;
 - (IBAction)checkboxShowIconClicked:(id)sender;
-- (void)setEnable:(BOOL)isEnable;
 
 @end

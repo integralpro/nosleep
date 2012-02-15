@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92987E9414EC2FAA00DA7075 /* libNoSleepStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9214EC2FA400DA7075 /* libNoSleepStatic.a */; };
+		92987E9414EC2FAA00DA7075 /* libNoSleep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9214EC2FA400DA7075 /* libNoSleep.a */; };
 		92987E9614EC2FFD00DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9514EC2FFD00DA7075 /* IOKit.framework */; };
 		92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C514EAEB29008AB70E /* Cocoa.framework */; };
 		92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C714EAEB29008AB70E /* PreferencePanes.framework */; };
@@ -87,7 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92987E9614EC2FFD00DA7075 /* IOKit.framework in Frameworks */,
-				92987E9414EC2FAA00DA7075 /* libNoSleepStatic.a in Frameworks */,
+				92987E9414EC2FAA00DA7075 /* libNoSleep.a in Frameworks */,
 				92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */,
 				92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */,
 			);
@@ -241,7 +241,7 @@
 		92987E9214EC2FA400DA7075 /* libNoSleepStatic.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libNoSleepStatic.a;
+			path = libNoSleep.a;
 			remoteRef = 92987E9114EC2FA400DA7075 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -315,7 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -344,7 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -365,7 +365,6 @@
 		92D922E014EAEB2A008AB70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
@@ -380,7 +379,6 @@
 		92D922E114EAEB2A008AB70E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";

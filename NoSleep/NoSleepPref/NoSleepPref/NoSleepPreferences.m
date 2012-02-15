@@ -43,7 +43,7 @@ typedef enum {
     if(action == kLIRegister) {
         //CFURLRef url1 = (CFURLRef)[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:NOSLEEP_HELPER_IDENTIFIER];
         //NSURL *url11 = (NSURL*)url1;
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:@"/Library/Application Support/nosleep/NoSleepHelper.app"];
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:@NOSLEEP_HELPER_PATH];
         
         LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItemsRefs, kLSSharedFileListItemLast,
                                                                      NULL, NULL, (CFURLRef)url, NULL, NULL);
@@ -64,12 +64,6 @@ typedef enum {
     }
     
     return self;
-}
-
-- (void)setEnable:(BOOL)isEnable
-{
-    [m_checkBoxEnable setEnabled:isEnable];
-    [m_checkBoxShowIcon setEnabled:isEnable];
 }
 
 - (void)notificationReceived:(uint32_t)messageType :(void *)messageArgument
@@ -99,8 +93,7 @@ typedef enum {
          m_noSleepInterface = [[NoSleepInterfaceWrapper alloc] init];   
     }
     
-    NSString *ns = NOSLEEP_HELPER_IDENTIFIER;
-    if([[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:ns] == nil) {
+    if(![[NSFileManager defaultManager] fileExistsAtPath:@NOSLEEP_HELPER_PATH]) {
         [m_checkBoxShowIcon setEnabled:NO];
         [m_checkBoxShowIcon setState:NO];
     } else {
@@ -109,9 +102,10 @@ typedef enum {
     }
     
     if(!m_noSleepInterface) {
-        [self setEnable:NO];         
+        [m_checkBoxEnable setEnabled:NO];
+        [m_checkBoxEnable setState:NO];
     } else {
-        [self setEnable:YES];
+        [m_checkBoxEnable setEnabled:YES];
         [m_noSleepInterface setNotificationDelegate:self];
         [self updateEnableState];
     }
@@ -126,6 +120,7 @@ typedef enum {
 - (void)didUnselect {
     if(!m_noSleepInterface) {
         [m_noSleepInterface release];
+        m_noSleepInterface = nil;
     }
 }
 
