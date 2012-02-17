@@ -16,6 +16,14 @@
 @synthesize statusItemMenu;
 @synthesize statusItemImageView;
 
+- (IBAction)openPreferences:(id)sender {
+    BOOL ret = [[NSWorkspace sharedWorkspace] openFile:@NOSLEEP_PREFPANE_PATH];
+    if(ret == NO) {
+        [[NSWorkspace sharedWorkspace] openFile:
+         [NSHomeDirectory() stringByAppendingPathComponent: @NOSLEEP_PREFPANE_PATH]];
+    }
+}
+
 - (void)showUnloadedExtensionDialog {
     SHOW_UI_ALERT_KEXT_NOT_LOADED();
 }
@@ -73,7 +81,7 @@
 {
 }
 
-- (void)updateState:(id)sender
+- (IBAction)updateState:(id)sender
 {
     if([noSleep state]) {
         [statusItemImageView setImageState:YES];
@@ -82,7 +90,7 @@
     }
 }
 
-- (void)toggleState:(id)sender
+- (IBAction)toggleState:(id)sender
 {
     //if ([statusItemImageView image] == activeIcon) {
     if ([statusItemImageView imageState] == YES) {

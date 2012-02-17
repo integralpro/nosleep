@@ -25,6 +25,7 @@
 
 //#define LAUNCH_AGENT "com.protech.nosleep.launch.plist"
 #define NOSLEEP_HELPER_PATH "/Library/Application Support/nosleep/NoSleepHelper.app"
+#define NOSLEEP_PREFPANE_PATH "/Library/PreferencePanes/NoSleep.prefPane"
 //#define LAUNCH_AGENTS_PATH "/Library/LaunchAgents/"
 //#define NOSLEEP_HELPER_IDENTIFIER @"com.protech.NoSleepHelper"
 

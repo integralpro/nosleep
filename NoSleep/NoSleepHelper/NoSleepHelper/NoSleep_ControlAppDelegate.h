@@ -29,7 +29,9 @@
 @property (assign) IBOutlet NSMenu *statusItemMenu;
 @property (assign) IBOutlet StatusItemView *statusItemImageView;
 
-- (void)updateState:(id)sender;
+- (IBAction)openPreferences:(id)sender;
+
+- (IBAction)updateState:(id)sender;
 - (IBAction)toggleState:(id)sender;
 
 - (void)activateStatusMenu;

@@ -29,7 +29,7 @@
 	<key>NSPrefPaneIconFile</key>
 	<string>NoSleepPref.tiff</string>
 	<key>NSPrefPaneIconLabel</key>
-	<string>Lid Sleep</string>
+	<string>NoSleep</string>
 	<key>NSPrincipalClass</key>
 	<string>NoSleepPreferences</string>
 </dict>
