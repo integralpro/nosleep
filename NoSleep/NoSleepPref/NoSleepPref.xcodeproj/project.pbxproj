@@ -12,7 +12,6 @@
 		92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C514EAEB29008AB70E /* Cocoa.framework */; };
 		92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D922C714EAEB29008AB70E /* PreferencePanes.framework */; };
 		92D922D214EAEB29008AB70E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D922D014EAEB29008AB70E /* InfoPlist.strings */; };
-		92D9232114EAFB53008AB70E /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92D922F114EAEB79008AB70E /* NoSleep.framework */; };
 		92D9232814EB033F008AB70E /* NoSleepPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D9232314EB033F008AB70E /* NoSleepPref.xib */; };
 		92D9232914EB033F008AB70E /* NoSleepPref.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 92D9232514EB033F008AB70E /* NoSleepPref.tiff */; };
 		92D9232A14EB033F008AB70E /* NoSleepPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D9232614EB033F008AB70E /* NoSleepPreferences.h */; };
@@ -49,19 +48,6 @@
 			remoteInfo = NoSleep;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		92D9232014EAFB48008AB70E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				92D9232114EAFB53008AB70E /* NoSleep.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		92987E9514EC2FFD00DA7075 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -196,7 +182,6 @@
 				92D922BD14EAEB29008AB70E /* Frameworks */,
 				92D922BE14EAEB29008AB70E /* Headers */,
 				92D922BF14EAEB29008AB70E /* Resources */,
-				92D9232014EAFB48008AB70E /* CopyFiles */,
 			);
 			buildRules = (
 			);
