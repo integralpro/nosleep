@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 #include <IOKit/IOService.h>
-#import <NoSleep/GlobalConstants.h>
+#include <NoSleep/GlobalConstants.h>
 
 class IOPMrootDomain;
 
