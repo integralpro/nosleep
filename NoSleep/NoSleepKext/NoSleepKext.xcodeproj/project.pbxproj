@@ -11,6 +11,7 @@
 		921DD7D314EADC89000EC9D0 /* NoSleepClientClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD7CF14EADC89000EC9D0 /* NoSleepClientClass.h */; };
 		921DD7D414EADC89000EC9D0 /* NoSleepExtension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 921DD7D014EADC89000EC9D0 /* NoSleepExtension.cpp */; };
 		921DD7D514EADC89000EC9D0 /* NoSleepExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD7D114EADC89000EC9D0 /* NoSleepExtension.h */; };
+		929E140E14EEBE830090395B /* NoSleepExtensionPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 929E140D14EEBE830090395B /* NoSleepExtensionPower.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		921DD7CF14EADC89000EC9D0 /* NoSleepClientClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSleepClientClass.h; sourceTree = "<group>"; };
 		921DD7D014EADC89000EC9D0 /* NoSleepExtension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoSleepExtension.cpp; sourceTree = "<group>"; };
 		921DD7D114EADC89000EC9D0 /* NoSleepExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSleepExtension.h; sourceTree = "<group>"; };
+		929E140D14EEBE830090395B /* NoSleepExtensionPower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoSleepExtensionPower.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				921DD7CE14EADC89000EC9D0 /* NoSleepClientClass.cpp */,
 				921DD7CF14EADC89000EC9D0 /* NoSleepClientClass.h */,
+				929E140D14EEBE830090395B /* NoSleepExtensionPower.cpp */,
 				921DD7D014EADC89000EC9D0 /* NoSleepExtension.cpp */,
 				921DD7D114EADC89000EC9D0 /* NoSleepExtension.h */,
 				921DD7B914EADC26000EC9D0 /* Supporting Files */,
@@ -210,6 +213,7 @@
 			files = (
 				921DD7D214EADC89000EC9D0 /* NoSleepClientClass.cpp in Sources */,
 				921DD7D414EADC89000EC9D0 /* NoSleepExtension.cpp in Sources */,
+				929E140E14EEBE830090395B /* NoSleepExtensionPower.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -254,7 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;

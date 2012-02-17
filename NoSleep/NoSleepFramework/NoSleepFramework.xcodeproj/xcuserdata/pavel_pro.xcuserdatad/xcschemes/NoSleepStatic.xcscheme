@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "92987E8914EC2F5700DA7075"
-               BuildableName = "libNoSleepStatic.a"
+               BuildableName = "libNoSleep.a"
                BlueprintName = "NoSleepStatic"
                ReferencedContainer = "container:NoSleepFramework.xcodeproj">
             </BuildableReference>

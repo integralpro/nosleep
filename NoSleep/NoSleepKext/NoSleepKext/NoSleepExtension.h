@@ -28,9 +28,14 @@ protected:
     virtual IOReturn clamshellEventInterestHandler(UInt32 messageType,
                                                    IOService * provider, void * messageArgument, vm_size_t argSize);
     
+    OSReturn WriteNVRAM(OSBoolean *value);
+    OSReturn ReadNVRAM(OSBoolean **value);
+    
+    void SaveState();
+    
 private:
     IOPMrootDomain *pRootDomain;
-    IORegistryEntry *pOptions;
+    //IORegistryEntry *pOptions;
     IONotifier *clamshellStateInterestNotifier;
     
     bool isClamshellStateInitialized:1;
@@ -39,10 +44,15 @@ private:
     
     SleepSuppressionMode currentSleepSuppressionMode;
     
+    // Power events
+    void StartPM(IOService *provider);
+    void StopPM();
+    
 public:
     virtual bool start( IOService * provider );
     virtual void stop( IOService * provider );
     virtual bool willTerminate( IOService * provider, IOOptionBits options );
+    virtual void systemWillShutdown( IOOptionBits specifier );
     
     bool setSleepSuppressionMode(SleepSuppressionMode mode);
     inline SleepSuppressionMode sleepSuppressionMode() { return currentSleepSuppressionMode; }
