@@ -1,5 +1,5 @@
 //
-//  PowerEvent.cpp
+//  NoSleepExtensionPower.cpp
 //  NoSleepKext
 //
 //  Created by Pavel Prokofiev on 2/17/12.
