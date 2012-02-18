@@ -83,7 +83,7 @@ typedef enum {
 
 - (void)updateEnableState
 {
-    state = [m_noSleepInterface state];
+    state = [m_noSleepInterface stateForMode:kNoSleepModeCurrent];
     [m_checkBoxEnable setState:state];
 }
 
@@ -127,7 +127,7 @@ typedef enum {
 - (IBAction)checkboxEnableClicked:(id)sender {
     BOOL newState = [m_checkBoxEnable state];
     if(newState != state) {
-        [m_noSleepInterface setState:newState];
+        [m_noSleepInterface setState:newState forMode:kNoSleepModeCurrent];
         state = newState;
     }
 }

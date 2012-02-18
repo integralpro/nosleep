@@ -123,15 +123,16 @@ bool NoSleep_InterfaceDestroy(NoSleepInterfaceConnect connect)
     }
 }
 
-bool NoSleep_GetSleepSuppressionMode(NoSleepInterfaceConnect connect)
+bool NoSleep_GetSleepSuppressionMode(NoSleepInterfaceConnect connect, int mode)
 {
+    uint64_t scalarI_64[] = {(uint64_t)mode};
     uint64_t scalarO_64;
     uint32_t outputCount = 1; 
     
     IOConnectCallScalarMethod(connect,	// an io_connect_t returned from IOServiceOpen().
                               0,                        // selector of the function to be called via the user client.
-                              NULL,                     // array of scalar (64-bit) input values.
-                              0,						// the number of scalar input values.
+                              scalarI_64,               // array of scalar (64-bit) input values.
+                              1,						// the number of scalar input values.
                               &scalarO_64,				// array of scalar (64-bit) output values.
                               &outputCount				// pointer to the number of scalar output values.
                               );
@@ -139,18 +140,16 @@ bool NoSleep_GetSleepSuppressionMode(NoSleepInterfaceConnect connect)
     return (bool)scalarO_64;
 }
 
-bool NoSleep_SetSleepSuppressionMode(NoSleepInterfaceConnect connect, bool mode)
+bool NoSleep_SetSleepSuppressionMode(NoSleepInterfaceConnect connect, bool state, int mode)
 {
-    uint64_t scalarI_64;
+    uint64_t scalarI_64[] = {(uint64_t)state, (uint64_t)mode};
     uint64_t scalarO_64;
-    uint32_t outputCount = 1;
-    
-    scalarI_64 = (uint64_t)mode;
+    uint32_t outputCount = 0;
     
     IOConnectCallScalarMethod(connect,	// an io_connect_t returned from IOServiceOpen().
                               1,                        // selector of the function to be called via the user client.
-                              &scalarI_64,              // array of scalar (64-bit) input values.
-                              1,						// the number of scalar input values.
+                              scalarI_64,               // array of scalar (64-bit) input values.
+                              2,						// the number of scalar input values.
                               &scalarO_64,				// array of scalar (64-bit) output values.
                               &outputCount				// pointer to the number of scalar output values.
                               );

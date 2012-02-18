@@ -21,7 +21,7 @@
 
 @property (retain) id<NoSleepNotificationDelegate> notificationDelegate;
 
--(BOOL) state;
--(void) setState:(BOOL)state;
+-(BOOL) stateForMode:(int)mode;
+-(void) setState:(BOOL)state forMode:(int)mode;
 
 @end

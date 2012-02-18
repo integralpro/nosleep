@@ -41,11 +41,13 @@ bool NoSleepExtension::powerSourcePublished(IOService *newService, IONotifier *n
 #ifdef DEBUG
     IOLog("%s[%p]::%s(%p, %p)\n", getName(), this, __FUNCTION__, newService, notifier);
 #endif
+    pPowerSource = (IOPMPowerSource *)newService;
     
     this->powerStateNotifier = 
-        newService->registerInterest(gIOGeneralInterest,
+        pPowerSource->registerInterest(gIOGeneralInterest,
                                      NoSleepExtension::_powerSourceStateChanged, this);
     notifier->remove();
+    updateSleepPowerState();
     return true;
 }
 
@@ -58,16 +60,20 @@ IOReturn NoSleepExtension::powerSourceStateChanged(UInt32 messageType, IOService
 #endif
     
     if (messageType == kIOPMMessageBatteryStatusHasChanged) {
-        isOnAC = ((IOPMPowerSource *)provider)->externalChargeCapable();
-        updateSleepPowerStateState();
+        updateSleepPowerState();
     }
     return kIOReturnSuccess;
 }
 
-void NoSleepExtension::updateSleepPowerStateState()
+void NoSleepExtension::updateSleepPowerState()
 {
-    forceClientMessage = true;
-    setSleepSuppressionMode(getCurrentSleepSuppressionMode());
+    // Check if update is needed
+    if(!isSleepStateInitialized ||
+       (pPowerSource != NULL && isOnAC != pPowerSource->externalChargeCapable())) {
+        forceClientMessage = true;
+        isOnAC = pPowerSource->externalChargeCapable();
+        setSleepSuppressionState(getCurrentSleepSuppressionState(), kNoSleepModeCurrent);
+    }
 }
 
 void NoSleepExtension::startPM(IOService *provider)

@@ -76,16 +76,16 @@ void NoSleepClientClass::stop( IOService * provider )
 const IOExternalMethodDispatch NoSleepClientClass::sMethods[] = {
 	{   // getSleepSuppressionMode
 		(IOExternalMethodAction) &NoSleepClientClass::getSleepSuppressionMode,
-		0,																		// No scalar input values.
+		1,																		// One scalar input values.
 		0,																		// No struct input value.
 		1,																		// One scalar output value.
 		0																		// No struct output value.
 	},
 	{   // setSleepSuppressionMode
 		(IOExternalMethodAction) &NoSleepClientClass::setSleepSuppressionMode,
-		1,																		// One scalar input values.
+		2,																		// Two scalar input values.
 		0,																		// No struct input value.
-		1,																		// One scalar output value.
+		0,																		// One scalar output value.
 		0																		// No struct output value.
 	},
 };
@@ -116,9 +116,10 @@ IOReturn NoSleepClientClass::getSleepSuppressionMode(NoSleepExtension* target,
                                                      IOExternalMethodArguments* arguments)
 {
 #ifdef DEBUG
-    IOLog("NoSleepClientClass::getSleepSuppressionMode\n");
+    IOLog("NoSleepClientClass::getSleepSuppressionState\n");
 #endif
-    arguments->scalarOutput[0] = (target->sleepSuppressionMode() == kForceClamshellSleepDisabled) ? 1 : 0;
+    arguments->scalarOutput[0] = 
+        (target->sleepSuppressionState((int)arguments->scalarInput[0]) == kNoSleepStateDisabled) ? 0 : 1;
     return kIOReturnSuccess;
 }
 
@@ -129,14 +130,10 @@ IOReturn NoSleepClientClass::setSleepSuppressionMode(NoSleepExtension* target,
 {
     bool ret;
 #ifdef DEBUG
-    IOLog("NoSleepClientClass::setSleepSuppressionMode\n");
+    IOLog("NoSleepClientClass::setSleepSuppressionState\n");
 #endif
-    if(arguments->scalarInput[0] == 0)
-    {
-        ret = target->setSleepSuppressionMode(kIgnoreClamshellActivity);
-    } else {
-        ret = target->setSleepSuppressionMode(kForceClamshellSleepDisabled);
-    }
-            
+    ret = target->setSleepSuppressionState(
+        ((arguments->scalarInput[0] == 0) ? kNoSleepStateDisabled : kNoSleepStateEnabled),
+        (int)arguments->scalarInput[1]);       
     return (ret == true) ? kIOReturnSuccess : kIOReturnError;
 }

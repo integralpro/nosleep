@@ -48,14 +48,14 @@ static void notificationHandler(void *refCon,
     [super dealloc];
 }
 
-- (BOOL)state
+- (BOOL)stateForMode:(int)mode
 {
-    return NoSleep_GetSleepSuppressionMode(_noSleepInterface);
+    return NoSleep_GetSleepSuppressionMode(_noSleepInterface, mode);
 }
 
-- (void)setState:(BOOL)state
+- (void)setState:(BOOL)state forMode:(int)mode
 {
-    NoSleep_SetSleepSuppressionMode(_noSleepInterface, state);
+    NoSleep_SetSleepSuppressionMode(_noSleepInterface, state, mode);
 }
 
 @end

@@ -83,7 +83,7 @@
 
 - (IBAction)updateState:(id)sender
 {
-    if([noSleep state]) {
+    if([noSleep stateForMode:kNoSleepModeCurrent]) {
         [statusItemImageView setImageState:YES];
     } else {
         [statusItemImageView setImageState:NO];
@@ -94,9 +94,9 @@
 {
     //if ([statusItemImageView image] == activeIcon) {
     if ([statusItemImageView imageState] == YES) {
-        [noSleep setState:NO];
+        [noSleep setState:NO forMode:kNoSleepModeCurrent];
     } else {
-        [noSleep setState:YES];
+        [noSleep setState:YES forMode:kNoSleepModeCurrent];
     }
 }
 

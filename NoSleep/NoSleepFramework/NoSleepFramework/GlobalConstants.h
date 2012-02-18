@@ -29,4 +29,6 @@
 //#define LAUNCH_AGENTS_PATH "/Library/LaunchAgents/"
 //#define NOSLEEP_HELPER_IDENTIFIER @"com.protech.NoSleepHelper"
 
-#define NOSLEEPSTATE "NoSleepState"
+#define kNoSleepModeCurrent  0
+#define kNoSleepModeAC       1
+#define kNoSleepModeBattery  2

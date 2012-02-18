@@ -43,8 +43,8 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
         isClamshellStateInitialized = true;
         
         //This should be checked
-        if(clamshellShouldSleep && (getCurrentSleepSuppressionMode() == kForceClamshellSleepDisabled))
-            setSleepSuppressionMode(kForceClamshellSleepDisabled);
+        if(clamshellShouldSleep && (getCurrentSleepSuppressionState() == kNoSleepStateEnabled))
+            setSleepSuppressionState(kNoSleepStateEnabled, kNoSleepModeCurrent);
     }
     
     return kIOReturnSuccess;
@@ -59,8 +59,14 @@ bool NoSleepExtension::start( IOService * provider )
     if( !super::start( provider ))
         return( false );
     
+    isSleepStateInitialized = false;
+    
+    acSleepSuppressionState = kNoSleepStateDisabled;
+    batterySleepSuppressionState = kNoSleepStateDisabled;
+    
     forceClientMessage = false;
     isOnAC = true;
+    pPowerSource = NULL;
     
     // This should be done ASAP, cause pRootDomain
     // is used later in other methods
@@ -70,11 +76,12 @@ bool NoSleepExtension::start( IOService * provider )
     OSReturn ret = readNVRAM(&loadedState);
     if(ret == kOSReturnSuccess) {
         unpackSleepState(loadedState,
-                         &batterySleepSuppressionMode,
-                         &acSleepSuppressionMode);
+                         &batterySleepSuppressionState,
+                         &acSleepSuppressionState);
     }
     
-    setSleepSuppressionMode(getCurrentSleepSuppressionMode());
+    /// NoSleep will be activeted after matching with the IOPMPowerSource
+    //updateSleepPowerState();
     
     clamshellStateInterestNotifier = 
         pRootDomain->registerInterest(gIOGeneralInterest,
@@ -110,38 +117,67 @@ void NoSleepExtension::stop( IOService * provider )
     
     saveState();
     
-    setSleepSuppressionMode(kIgnoreClamshellActivity);
+    setSleepSuppressionState(kNoSleepStateDisabled, kNoSleepModeCurrent);
     clamshellStateInterestNotifier->remove();
     
     IOLog("%s: successfully stopped\n", getName());
     super::stop(provider);
 }
 
-bool NoSleepExtension::setSleepSuppressionMode(SleepSuppressionMode mode)
+NoSleepState NoSleepExtension::sleepSuppressionState(int mode)
+{
+    switch (mode) {
+        default:
+        case kNoSleepModeCurrent:
+            return getCurrentSleepSuppressionState();
+        case kNoSleepModeAC:
+            return acSleepSuppressionState;
+        case kNoSleepModeBattery:
+            return batterySleepSuppressionState;
+    }
+}
+
+bool NoSleepExtension::setSleepSuppressionState(NoSleepState state, int mode)
 {
 #ifdef DEBUG
-    IOLog("%s[%p]::%s(%d)\n", getName(), this, __FUNCTION__, mode);
+    IOLog("%s[%p]::%s(%d, %d)\n", getName(), this, __FUNCTION__, state, mode);
 #endif
     
-    IOLog("%s: setting state %d\n", getName(), mode);
-    
-    SleepSuppressionMode oldMode = getCurrentSleepSuppressionMode();
-    
-    if(forceClientMessage || oldMode != mode) {
-        forceClientMessage = false;
-        
-        UInt32 msg = (mode == kForceClamshellSleepDisabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled; 
-        this->messageClients(msg);
-        
-        setCurrentSleepSuppressionMode(mode);
+    if(mode != kNoSleepModeCurrent) {
+        if(isOnAC) {
+            if(mode == kNoSleepModeBattery) {
+                batterySleepSuppressionState = state;
+                return true;
+            }
+        } else {
+            if(mode == kNoSleepModeAC) {
+                acSleepSuppressionState = state;
+                return true;
+            }
+        }
     }
     
-    switch (getCurrentSleepSuppressionMode()) {
-        case kForceClamshellSleepDisabled:
+    isSleepStateInitialized = true;
+    
+    IOLog("%s: setting state: %d, for mode: %d (%s-mode)\n", getName(), state, mode, isOnAC?"ac":"battery");
+    
+    NoSleepState oldState = getCurrentSleepSuppressionState();
+    
+    if(forceClientMessage || oldState != state) {
+        forceClientMessage = false;
+        
+        UInt32 msg = (state == kNoSleepStateEnabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled; 
+        this->messageClients(msg);
+        
+        setCurrentSleepSuppressionState(state);
+    }
+    
+    switch (getCurrentSleepSuppressionState()) {
+        case kNoSleepStateEnabled:
             pRootDomain->receivePowerNotification(kIOPMDisableClamshell);
             break;
             
-        case kIgnoreClamshellActivity:
+        case kNoSleepStateDisabled:
             pRootDomain->receivePowerNotification(kIOPMEnableClamshell);
             break;
             
@@ -159,7 +195,11 @@ void NoSleepExtension::saveState()
 #endif
     
     UInt8 savedState;
-    UInt8 stateToSave = packSleepState(batterySleepSuppressionMode, acSleepSuppressionMode);
+    UInt8 stateToSave = packSleepState(batterySleepSuppressionState, acSleepSuppressionState);
+    
+#ifdef DEBUG
+    IOLog("%s: value to save: %d\n", getName(), stateToSave);
+#endif
     
     OSReturn readResult = readNVRAM(&savedState);
     if((readResult != kOSReturnSuccess) || (stateToSave != savedState)) {
@@ -175,27 +215,25 @@ void NoSleepExtension::saveState()
 #endif
 }
 
-UInt8 NoSleepExtension::packSleepState(SleepSuppressionMode batterySleepSuppressionMode,
-                                       SleepSuppressionMode acSleepSuppressionMode)
+UInt8 NoSleepExtension::packSleepState(NoSleepState batterySleepSuppressionState,
+                                       NoSleepState acSleepSuppressionState)
 {
-    return (UInt8)((batterySleepSuppressionMode == kForceClamshellSleepDisabled)?0x10:0x00 |
-                   (acSleepSuppressionMode      == kForceClamshellSleepDisabled)?0x01:0x00);
+    return (UInt8)(((batterySleepSuppressionState == kNoSleepStateEnabled)?0x10:0x00) |
+                   ((acSleepSuppressionState      == kNoSleepStateEnabled)?0x01:0x00));
 }
 
 void NoSleepExtension::unpackSleepState(UInt8 value,
-                                        SleepSuppressionMode *batterySleepSuppressionMode,
-                                        SleepSuppressionMode *acSleepSuppressionMode)
+                                        NoSleepState *batterySleepSuppressionState,
+                                        NoSleepState *acSleepSuppressionState)
 {
-    *batterySleepSuppressionMode = kForceClamshellSleepDisabled;
-    
-    *batterySleepSuppressionMode = (value & 0x10) ? kForceClamshellSleepDisabled : kIgnoreClamshellActivity;
-    *acSleepSuppressionMode      = (value & 0x01) ? kForceClamshellSleepDisabled : kIgnoreClamshellActivity;
+    *batterySleepSuppressionState = (value & 0x10) ? kNoSleepStateEnabled : kNoSleepStateDisabled;
+    *acSleepSuppressionState      = (value & 0x01) ? kNoSleepStateEnabled : kNoSleepStateDisabled;
 }
 
 OSReturn NoSleepExtension::writeNVRAM(UInt8 value)
 {
 #ifdef DEBUG
-    IOLog("%s: writing nvram, value: %d\n", getName(), value);
+    IOLog("%s: writing nvram, value: 0x%02x\n", getName(), value);
 #endif
     
     bool ret;
@@ -239,7 +277,7 @@ OSReturn NoSleepExtension::readNVRAM(UInt8 *value)
                 
                 ret = kOSReturnSuccess;
 #ifdef DEBUG
-                IOLog("%s: reading nvram, value: %d\n", getName(), (*value));
+                IOLog("%s: reading nvram, value: 0x%02x\n", getName(), (*value));
 #endif
             }
 #ifdef DEBUG

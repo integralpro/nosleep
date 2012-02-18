@@ -9,11 +9,12 @@
 #include <NoSleep/GlobalConstants.h>
 
 class IOPMrootDomain;
+class IOPMPowerSource;
 
-enum SleepSuppressionMode
+enum NoSleepState
 {
-    kIgnoreClamshellActivity        = 0,
-    kForceClamshellSleepDisabled    = 1,
+    kNoSleepStateDisabled           = 0,
+    kNoSleepStateEnabled            = 1,
 };
 
 class NoSleepExtension : public IOService
@@ -37,11 +38,11 @@ protected:
                                               void * messageArgument, vm_size_t argSize);
     virtual bool powerSourcePublished(IOService * newService, IONotifier * notifier);
     
-    static UInt8 packSleepState(SleepSuppressionMode batterySleepSuppressionMode,
-                                SleepSuppressionMode acSleepSuppressionMode);
+    static UInt8 packSleepState(NoSleepState batterySleepSuppressionMode,
+                                NoSleepState acSleepSuppressionMode);
     static void unpackSleepState(UInt8 value,
-                                 SleepSuppressionMode *batterySleepSuppressionMode,
-                                 SleepSuppressionMode *acSleepSuppressionMode);
+                                 NoSleepState *batterySleepSuppressionMode,
+                                 NoSleepState *acSleepSuppressionMode);
     
     OSReturn writeNVRAM(UInt8 value);
     OSReturn readNVRAM(UInt8 *value);
@@ -50,10 +51,12 @@ protected:
     
 private:
     IONotifier *powerStateNotifier;
+    IOPMPowerSource *pPowerSource;
     
     IOPMrootDomain *pRootDomain;
-    //IORegistryEntry *pOptions;
     IONotifier *clamshellStateInterestNotifier;
+    
+    bool isSleepStateInitialized;
     
     bool isClamshellStateInitialized:1;
     bool clamshellState:1;
@@ -61,27 +64,27 @@ private:
     
     bool forceClientMessage;
     bool isOnAC;
-    SleepSuppressionMode batterySleepSuppressionMode;
-    SleepSuppressionMode acSleepSuppressionMode;
-    inline void setCurrentSleepSuppressionMode(SleepSuppressionMode mode) {
+    NoSleepState batterySleepSuppressionState;
+    NoSleepState acSleepSuppressionState;
+    inline void setCurrentSleepSuppressionState(NoSleepState state) {
         if(isOnAC) {
-            acSleepSuppressionMode = mode;
+            acSleepSuppressionState = state;
         } else {
-            batterySleepSuppressionMode = mode;
+            batterySleepSuppressionState = state;
         }
     }
-    inline SleepSuppressionMode getCurrentSleepSuppressionMode() {
+    inline NoSleepState getCurrentSleepSuppressionState() {
         if(isOnAC) {
-            return acSleepSuppressionMode;
+            return acSleepSuppressionState;
         } else {
-            return batterySleepSuppressionMode;
+            return batterySleepSuppressionState;
         }
     }
     
     // Power events
     void startPM(IOService *provider);
     void stopPM();
-    void updateSleepPowerStateState();
+    void updateSleepPowerState();
     
 public:
     virtual bool start( IOService * provider );
@@ -90,6 +93,6 @@ public:
     virtual void systemWillShutdown( IOOptionBits specifier );
     
     // Interface methods
-    bool setSleepSuppressionMode(SleepSuppressionMode mode);
-    inline SleepSuppressionMode sleepSuppressionMode() { return getCurrentSleepSuppressionMode(); }
+    bool setSleepSuppressionState(NoSleepState state, int mode);
+    NoSleepState sleepSuppressionState(int mode);
 };
