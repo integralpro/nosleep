@@ -101,7 +101,7 @@ bool NoSleep_InterfaceCreate(NoSleepInterfaceService *service, NoSleepInterfaceC
     }
     else
     {
-        fprintf(stderr, "Can't found a driver\n");
+        fprintf(stderr, "Can't find a driver\n");
         return false;
     }
     

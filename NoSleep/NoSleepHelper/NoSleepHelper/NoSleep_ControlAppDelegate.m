@@ -33,7 +33,7 @@
     //[statusItemImageView setImage:inactiveIcon];
     [statusItemImageView setImageState:NO];
     
-    [NSApp performSelector:@selector(terminate:)];
+    [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
 - (void)activateStatusMenu {

@@ -24,16 +24,33 @@ private:
     static IOReturn _clamshellEventInterestHandler( void * target, void * refCon,
                                                   UInt32 messageType, IOService * provider,
                                                   void * messageArgument, vm_size_t argSize );
+    static IOReturn _powerSourceStateChanged(void * target, void * refCon,
+                                             UInt32 messageType, IOService * provider,
+                                             void * messageArgument, vm_size_t argSize);
+    static bool _powerSourcePublished(void * target, void * refCon,
+                                      IOService * newService,
+                                      IONotifier * notifier);
 protected:
     virtual IOReturn clamshellEventInterestHandler(UInt32 messageType,
                                                    IOService * provider, void * messageArgument, vm_size_t argSize);
+    virtual IOReturn powerSourceStateChanged(UInt32 messageType, IOService * provider,
+                                              void * messageArgument, vm_size_t argSize);
+    virtual bool powerSourcePublished(IOService * newService, IONotifier * notifier);
     
-    OSReturn WriteNVRAM(OSBoolean *value);
-    OSReturn ReadNVRAM(OSBoolean **value);
+    static UInt8 packSleepState(SleepSuppressionMode batterySleepSuppressionMode,
+                                SleepSuppressionMode acSleepSuppressionMode);
+    static void unpackSleepState(UInt8 value,
+                                 SleepSuppressionMode *batterySleepSuppressionMode,
+                                 SleepSuppressionMode *acSleepSuppressionMode);
     
-    void SaveState();
+    OSReturn writeNVRAM(UInt8 value);
+    OSReturn readNVRAM(UInt8 *value);
+    
+    void saveState();
     
 private:
+    IONotifier *powerStateNotifier;
+    
     IOPMrootDomain *pRootDomain;
     //IORegistryEntry *pOptions;
     IONotifier *clamshellStateInterestNotifier;
@@ -42,11 +59,29 @@ private:
     bool clamshellState:1;
     bool clamshellShouldSleep:1;
     
-    SleepSuppressionMode currentSleepSuppressionMode;
+    bool forceClientMessage;
+    bool isOnAC;
+    SleepSuppressionMode batterySleepSuppressionMode;
+    SleepSuppressionMode acSleepSuppressionMode;
+    inline void setCurrentSleepSuppressionMode(SleepSuppressionMode mode) {
+        if(isOnAC) {
+            acSleepSuppressionMode = mode;
+        } else {
+            batterySleepSuppressionMode = mode;
+        }
+    }
+    inline SleepSuppressionMode getCurrentSleepSuppressionMode() {
+        if(isOnAC) {
+            return acSleepSuppressionMode;
+        } else {
+            return batterySleepSuppressionMode;
+        }
+    }
     
     // Power events
-    void StartPM(IOService *provider);
-    void StopPM();
+    void startPM(IOService *provider);
+    void stopPM();
+    void updateSleepPowerStateState();
     
 public:
     virtual bool start( IOService * provider );
@@ -54,6 +89,7 @@ public:
     virtual bool willTerminate( IOService * provider, IOOptionBits options );
     virtual void systemWillShutdown( IOOptionBits specifier );
     
+    // Interface methods
     bool setSleepSuppressionMode(SleepSuppressionMode mode);
-    inline SleepSuppressionMode sleepSuppressionMode() { return currentSleepSuppressionMode; }
+    inline SleepSuppressionMode sleepSuppressionMode() { return getCurrentSleepSuppressionMode(); }
 };

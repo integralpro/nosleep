@@ -43,7 +43,7 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
         isClamshellStateInitialized = true;
         
         //This should be checked
-        if(clamshellShouldSleep && (currentSleepSuppressionMode == kForceClamshellSleepDisabled))
+        if(clamshellShouldSleep && (getCurrentSleepSuppressionMode() == kForceClamshellSleepDisabled))
             setSleepSuppressionMode(kForceClamshellSleepDisabled);
     }
     
@@ -59,28 +59,30 @@ bool NoSleepExtension::start( IOService * provider )
     if( !super::start( provider ))
         return( false );
     
+    forceClientMessage = false;
+    isOnAC = true;
+    
     // This should be done ASAP, cause pRootDomain
     // is used later in other methods
     pRootDomain = getPMRootDomain();
 
-    SleepSuppressionMode mode;
-    
-    OSBoolean *loadedState = kOSBooleanFalse;
-    OSReturn ret = ReadNVRAM(&loadedState);
-    if(ret == kOSReturnSuccess && loadedState->isTrue()) {
-        mode = kForceClamshellSleepDisabled;
-    } else {
-        mode = kIgnoreClamshellActivity;
+    UInt8 loadedState;
+    OSReturn ret = readNVRAM(&loadedState);
+    if(ret == kOSReturnSuccess) {
+        unpackSleepState(loadedState,
+                         &batterySleepSuppressionMode,
+                         &acSleepSuppressionMode);
     }
     
-    setSleepSuppressionMode(mode);
+    setSleepSuppressionMode(getCurrentSleepSuppressionMode());
     
     clamshellStateInterestNotifier = 
-        pRootDomain->registerInterest(gIOGeneralInterest, NoSleepExtension::_clamshellEventInterestHandler, this);
+        pRootDomain->registerInterest(gIOGeneralInterest,
+                                      NoSleepExtension::_clamshellEventInterestHandler, this);
     
     registerService();
     
-    StartPM(provider);
+    startPM(provider);
     
     IOLog("%s: successfully started\n", getName());
     
@@ -93,7 +95,7 @@ bool NoSleepExtension::willTerminate( IOService * provider, IOOptionBits options
     IOLog("%s[%p]::%s(%p, %d)\n", getName(), this, __FUNCTION__,
 		  provider, options);
 #endif
-    SaveState();
+    saveState();
     return super::willTerminate(provider, options);
 }
 
@@ -104,9 +106,9 @@ void NoSleepExtension::stop( IOService * provider )
 		  provider);
 #endif
     
-    StopPM();
+    stopPM();
     
-    SaveState();
+    saveState();
     
     setSleepSuppressionMode(kIgnoreClamshellActivity);
     clamshellStateInterestNotifier->remove();
@@ -123,16 +125,18 @@ bool NoSleepExtension::setSleepSuppressionMode(SleepSuppressionMode mode)
     
     IOLog("%s: setting state %d\n", getName(), mode);
     
-    SleepSuppressionMode oldMode = currentSleepSuppressionMode;
+    SleepSuppressionMode oldMode = getCurrentSleepSuppressionMode();
     
-    if(oldMode != mode) {
+    if(forceClientMessage || oldMode != mode) {
+        forceClientMessage = false;
+        
         UInt32 msg = (mode == kForceClamshellSleepDisabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled; 
         this->messageClients(msg);
+        
+        setCurrentSleepSuppressionMode(mode);
     }
     
-    currentSleepSuppressionMode = mode;
-    
-    switch (currentSleepSuppressionMode) {
+    switch (getCurrentSleepSuppressionMode()) {
         case kForceClamshellSleepDisabled:
             pRootDomain->receivePowerNotification(kIOPMDisableClamshell);
             break;
@@ -148,72 +152,57 @@ bool NoSleepExtension::setSleepSuppressionMode(SleepSuppressionMode mode)
     return true;
 }
 
-void NoSleepExtension::SaveState()
+void NoSleepExtension::saveState()
 {
 #ifdef DEBUG
     IOLog("%s[%p]::%s()\n", getName(), this, __FUNCTION__);
 #endif
     
-    OSBoolean *savedState;
-    OSBoolean *stateToSave;
-    OSReturn readResult = ReadNVRAM(&savedState);
+    UInt8 savedState;
+    UInt8 stateToSave = packSleepState(batterySleepSuppressionMode, acSleepSuppressionMode);
     
-    if(currentSleepSuppressionMode == kIgnoreClamshellActivity) {
-        stateToSave = kOSBooleanFalse;
-    } else {
-        stateToSave = kOSBooleanTrue;
-    }
-    
-    if((readResult != kOSReturnSuccess) || 
-       (!stateToSave->isEqualTo(savedState))) {
-        WriteNVRAM(stateToSave);
+    OSReturn readResult = readNVRAM(&savedState);
+    if((readResult != kOSReturnSuccess) || (stateToSave != savedState)) {
+        writeNVRAM(stateToSave);
     }
 #ifdef DEBUG
     else {
         IOLog("%s: skip writing, reason: readResult == %s, stateToSave %s savedState\n",
               getName(),
               (readResult == kOSReturnSuccess)?"kOSReturnSuccess":"kOSReturnError",
-              stateToSave->isEqualTo(savedState)?"==":"!=");
+              stateToSave == savedState?"==":"!=");
     }
 #endif
 }
 
-OSReturn NoSleepExtension::WriteNVRAM(OSBoolean *value)
+UInt8 NoSleepExtension::packSleepState(SleepSuppressionMode batterySleepSuppressionMode,
+                                       SleepSuppressionMode acSleepSuppressionMode)
+{
+    return (UInt8)((batterySleepSuppressionMode == kForceClamshellSleepDisabled)?0x10:0x00 |
+                   (acSleepSuppressionMode      == kForceClamshellSleepDisabled)?0x01:0x00);
+}
+
+void NoSleepExtension::unpackSleepState(UInt8 value,
+                                        SleepSuppressionMode *batterySleepSuppressionMode,
+                                        SleepSuppressionMode *acSleepSuppressionMode)
+{
+    *batterySleepSuppressionMode = kForceClamshellSleepDisabled;
+    
+    *batterySleepSuppressionMode = (value & 0x10) ? kForceClamshellSleepDisabled : kIgnoreClamshellActivity;
+    *acSleepSuppressionMode      = (value & 0x01) ? kForceClamshellSleepDisabled : kIgnoreClamshellActivity;
+}
+
+OSReturn NoSleepExtension::writeNVRAM(UInt8 value)
 {
 #ifdef DEBUG
-    IOLog("%s: writing nvram, value: %s\n", getName(), value->getValue()?"true":"false");
+    IOLog("%s: writing nvram, value: %d\n", getName(), value);
 #endif
-    
-//	IODTPlatformExpert *platform = OSDynamicCast(IODTPlatformExpert, getPlatform());
-//    
-//    OSReturn ret = kOSReturnError;
-//    if (platform)
-//	{
-//        const OSSymbol *key = OSSymbol::withCStringNoCopy(NOSLEEPSTATE);
-//        OSData *savedData;
-//        OSData *newData = OSData::withCapacity(1);
-//        *((UInt8 *)newData->getBytesNoCopy()) = (value->isTrue() ? 0x01 : 0x00);
-//        
-//        ret = platform->readNVRAMProperty(this, &key, &savedData);
-//        if(ret == kOSReturnSuccess) {
-//            
-//            if(!savedData->isEqualTo(newData)) {
-//                ret = platform->writeNVRAMProperty(this, key, newData);
-//            }
-//            
-//            savedData->release();
-//        }
-//        
-//        newData->release();
-//        key->release();
-//	}
     
     bool ret;
     IORegistryEntry *entry = IORegistryEntry::fromPath( "/options", gIODTPlane );
     if ( entry )
     {
-        char buffer = value->isTrue() ? 0x01 : 0x00;
-        OSData *dataToSave = OSData::withBytes(&buffer, 1);
+        OSData *dataToSave = OSData::withBytes(&value, 1);
         
         ret = entry->setProperty(IORegistrySleepSuppressionMode, dataToSave);
         
@@ -229,36 +218,10 @@ OSReturn NoSleepExtension::WriteNVRAM(OSBoolean *value)
     return ret?kOSReturnSuccess:kOSReturnError;
 }
 
-OSReturn NoSleepExtension::ReadNVRAM(OSBoolean **value)
+OSReturn NoSleepExtension::readNVRAM(UInt8 *value)
 {
 #ifdef DEBUG
     IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, value);
-#endif
-
-//    IODTPlatformExpert *platform = OSDynamicCast(IODTPlatformExpert, getPlatform());
-//    
-//    OSReturn ret = kOSReturnError;
-//    if (platform)
-//	{
-//        const OSSymbol *key = OSSymbol::withCStringNoCopy(NOSLEEPSTATE);
-//        OSData *savedData;
-//        
-//        ret = platform->readNVRAMProperty(this, &key, &savedData);
-//        if(ret == kOSReturnSuccess) {
-//            
-//            if(*((UInt8 *)savedData->getBytesNoCopy()) == 0x00) {
-//                *value = kOSBooleanFalse;
-//            } else {
-//                *value = kOSBooleanTrue;
-//            }
-//            
-//            savedData->release();
-//        }
-//        key->release();
-//	}
-    
-#ifdef DEBUG
-    IOLog("%s: reading nvram\n", getName());
 #endif
     
     OSReturn ret = kOSReturnError;
@@ -270,16 +233,13 @@ OSReturn NoSleepExtension::ReadNVRAM(OSBoolean **value)
         IOLog("%s: rawValueClassName: %s\n", getName(), rawValue->getMetaClass()->getClassName());
 #endif
         if(rawValue != NULL) {
-            IOLog("%s: before cast\n", getName());
             OSData *data = OSDynamicCast(OSData, rawValue);
-            IOLog("%s: after cast\n", getName());
             if(data->getLength() == 1) {
-                *value = (((char *)data->getBytesNoCopy())[0] == 1)
-                ? kOSBooleanTrue : kOSBooleanFalse;
+                *value = ((UInt8 *)data->getBytesNoCopy())[0];
                 
                 ret = kOSReturnSuccess;
 #ifdef DEBUG
-                IOLog("%s: reading nvram, value: %s\n", getName(), (*value)->isTrue()?"true":"false");
+                IOLog("%s: reading nvram, value: %d\n", getName(), (*value));
 #endif
             }
 #ifdef DEBUG

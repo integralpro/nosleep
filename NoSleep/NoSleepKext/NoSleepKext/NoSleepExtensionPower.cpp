@@ -12,6 +12,7 @@
 #include <IOKit/assert.h>
 
 #include <IOKit/pwr_mgt/IOPM.h>
+#include <IOKit/pwr_mgt/IOPMPowerSource.h>
 
 #define super IOService
 
@@ -19,7 +20,57 @@ static IOPMPowerState myPowerStates[] = {
     {1, kIOPMPowerOn, kIOPMPowerOn, kIOPMPowerOn, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
-void NoSleepExtension::StartPM(IOService *provider)
+IOReturn NoSleepExtension::_powerSourceStateChanged(void * target, void * refCon,
+                                     UInt32 messageType, IOService * provider,
+                                     void * messageArgument, vm_size_t argSize )
+{
+    return ((NoSleepExtension *)target)->powerSourceStateChanged(messageType, provider,
+                                                                 messageArgument,
+                                                                 argSize);
+}
+
+bool NoSleepExtension::_powerSourcePublished(void * target, void * refCon,
+                                             IOService * newService,
+                                             IONotifier * notifier)
+{
+    return ((NoSleepExtension *)target)->powerSourcePublished(newService, notifier);
+}
+
+bool NoSleepExtension::powerSourcePublished(IOService *newService, IONotifier *notifier)
+{
+#ifdef DEBUG
+    IOLog("%s[%p]::%s(%p, %p)\n", getName(), this, __FUNCTION__, newService, notifier);
+#endif
+    
+    this->powerStateNotifier = 
+        newService->registerInterest(gIOGeneralInterest,
+                                     NoSleepExtension::_powerSourceStateChanged, this);
+    notifier->remove();
+    return true;
+}
+
+IOReturn NoSleepExtension::powerSourceStateChanged(UInt32 messageType, IOService * provider,
+                                               void * messageArgument, vm_size_t argSize )
+{
+#ifdef DEBUG
+    IOLog("%s[%p]::%s(%d, %p, %p, %ld)\n", getName(), this, __FUNCTION__,
+          messageType, provider, messageArgument, argSize);
+#endif
+    
+    if (messageType == kIOPMMessageBatteryStatusHasChanged) {
+        isOnAC = ((IOPMPowerSource *)provider)->externalChargeCapable();
+        updateSleepPowerStateState();
+    }
+    return kIOReturnSuccess;
+}
+
+void NoSleepExtension::updateSleepPowerStateState()
+{
+    forceClientMessage = true;
+    setSleepSuppressionMode(getCurrentSleepSuppressionMode());
+}
+
+void NoSleepExtension::startPM(IOService *provider)
 {
 #ifdef DEBUG
     IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
@@ -27,13 +78,26 @@ void NoSleepExtension::StartPM(IOService *provider)
     PMinit();
     provider->joinPMtree(this);
     registerPowerDriver(this, myPowerStates, 1);
+
+    if (OSDictionary *tmpDict = serviceMatching("IOPMPowerSource"))
+    {
+        addMatchingNotification(gIOFirstPublishNotification, tmpDict,
+                                &NoSleepExtension::_powerSourcePublished,
+                                this, this);
+        tmpDict->release();
+    }
 }
 
-void NoSleepExtension::StopPM()
+void NoSleepExtension::stopPM()
 {
 #ifdef DEBUG
     IOLog("%s[%p]::%s()\n", getName(), this, __FUNCTION__);
 #endif
+    if(powerStateNotifier){
+        powerStateNotifier->remove();
+        powerStateNotifier = NULL;
+    }
+    
     PMstop();
 }
 
@@ -43,6 +107,6 @@ void NoSleepExtension::systemWillShutdown( IOOptionBits specifier )
     IOLog("%s[%p]::%s(%d)\n", getName(), this, __FUNCTION__,
 		  specifier);
 #endif
-    SaveState();
+    saveState();
     return super::systemWillShutdown(specifier);
 }
