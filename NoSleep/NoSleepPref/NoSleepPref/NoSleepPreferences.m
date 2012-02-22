@@ -68,23 +68,15 @@ typedef enum {
 
 - (void)notificationReceived:(uint32_t)messageType :(void *)messageArgument
 {
-    switch (messageType) {
-        case kNoSleepCommandDisabled:
-            state = NO;
-            break;
-        case kNoSleepCommandEnabled:
-            state = YES;
-            break;
-        default:
-            break;
-    }
-    [m_checkBoxEnable setState:state];
+    [self updateEnableState];
 }
 
 - (void)updateEnableState
 {
-    state = [m_noSleepInterface stateForMode:kNoSleepModeCurrent];
-    [m_checkBoxEnable setState:state];
+    stateAC = [m_noSleepInterface stateForMode:kNoSleepModeAC];
+    stateBattery = [m_noSleepInterface stateForMode:kNoSleepModeBattery];
+    [m_checkBoxEnableAC setState:stateAC];
+    [m_checkBoxEnableBattery setState:stateBattery];
 }
 
 - (void)willSelect
@@ -93,19 +85,26 @@ typedef enum {
          m_noSleepInterface = [[NoSleepInterfaceWrapper alloc] init];   
     }
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:@NOSLEEP_HELPER_PATH]) {
-        [m_checkBoxShowIcon setEnabled:NO];
-        [m_checkBoxShowIcon setState:NO];
-    } else {
+    if([[NSFileManager defaultManager] fileExistsAtPath:@NOSLEEP_HELPER_PATH]) {
         [m_checkBoxShowIcon setEnabled:YES];
         [m_checkBoxShowIcon setState:[self loginItem:kLICheck]];
+        
+        [m_checkBoxShowIcon setToolTip:@""];
+    } else {
+        [m_checkBoxShowIcon setEnabled:NO];
+        [m_checkBoxShowIcon setState:NO];
+        
+        [m_checkBoxShowIcon setToolTip:@"("@NOSLEEP_HELPER_PATH@" not found)"];
     }
     
     if(!m_noSleepInterface) {
-        [m_checkBoxEnable setEnabled:NO];
-        [m_checkBoxEnable setState:NO];
+        [m_checkBoxEnableAC setEnabled:NO];
+        [m_checkBoxEnableAC setState:NO];
+        [m_checkBoxEnableBattery setEnabled:NO];
+        [m_checkBoxEnableBattery setState:NO];
     } else {
-        [m_checkBoxEnable setEnabled:YES];
+        [m_checkBoxEnableAC setEnabled:YES];
+        [m_checkBoxEnableBattery setEnabled:YES];
         [m_noSleepInterface setNotificationDelegate:self];
         [self updateEnableState];
     }
@@ -124,11 +123,19 @@ typedef enum {
     }
 }
 
-- (IBAction)checkboxEnableClicked:(id)sender {
-    BOOL newState = [m_checkBoxEnable state];
-    if(newState != state) {
-        [m_noSleepInterface setState:newState forMode:kNoSleepModeCurrent];
-        state = newState;
+- (IBAction)checkboxEnableACClicked:(id)sender {
+    BOOL newState = [m_checkBoxEnableAC state];
+    if(newState != stateAC) {
+        [m_noSleepInterface setState:newState forMode:kNoSleepModeAC];
+        stateAC = newState;
+    }
+}
+
+- (IBAction)checkboxEnableBatteryClicked:(id)sender {
+    BOOL newState = [m_checkBoxEnableBattery state];
+    if(newState != stateBattery) {
+        [m_noSleepInterface setState:newState forMode:kNoSleepModeBattery];
+        stateBattery = newState;
     }
 }
 

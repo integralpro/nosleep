@@ -12,13 +12,18 @@
 @interface NoSleepPreferences : NSPreferencePane <NoSleepNotificationDelegate> {
 @private
     NoSleepInterfaceWrapper *m_noSleepInterface;
-    BOOL state;
+    BOOL stateAC;
+    BOOL stateBattery;
     
-    IBOutlet NSButton *m_checkBoxEnable;
+    IBOutlet NSButton *m_checkBoxEnableAC;
+    IBOutlet NSButton *m_checkBoxEnableBattery;
     IBOutlet NSButton *m_checkBoxShowIcon;
 }
 
-- (IBAction)checkboxEnableClicked:(id)sender;
+- (void)updateEnableState;
+
+- (IBAction)checkboxEnableACClicked:(id)sender;
+- (IBAction)checkboxEnableBatteryClicked:(id)sender;
 - (IBAction)checkboxShowIconClicked:(id)sender;
 
 @end

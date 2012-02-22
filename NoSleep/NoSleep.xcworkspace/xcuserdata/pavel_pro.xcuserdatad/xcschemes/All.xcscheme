@@ -62,7 +62,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "921DD7FB14EADE65000EC9D0"
+            BuildableName = "NoSleepHelper.app"
+            BlueprintName = "NoSleepHelper"
+            ReferencedContainer = "container:NoSleepHelper/NoSleepHelper.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

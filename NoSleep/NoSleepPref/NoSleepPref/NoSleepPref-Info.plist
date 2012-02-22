@@ -27,7 +27,7 @@
 	<key>NSMainNibFile</key>
 	<string>NoSleepPref</string>
 	<key>NSPrefPaneIconFile</key>
-	<string>NoSleepPref.tiff</string>
+	<string>Logo.icns</string>
 	<key>NSPrefPaneIconLabel</key>
 	<string>NoSleep</string>
 	<key>NSPrincipalClass</key>

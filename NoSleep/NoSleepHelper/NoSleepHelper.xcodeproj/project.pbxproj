@@ -9,16 +9,13 @@
 /* Begin PBXBuildFile section */
 		921DD80114EADE65000EC9D0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921DD80014EADE65000EC9D0 /* Cocoa.framework */; };
 		921DD80D14EADE65000EC9D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD80C14EADE65000EC9D0 /* main.m */; };
-		921DD81114EADE65000EC9D0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 921DD80F14EADE65000EC9D0 /* Credits.rtf */; };
 		921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82314EADEC4000EC9D0 /* MainMenu.xib */; };
 		921DD82E14EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82514EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m */; };
-		921DD82F14EADEC4000EC9D0 /* image-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82714EADEC4000EC9D0 /* image-blue.png */; };
-		921DD83014EADEC4000EC9D0 /* image-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82814EADEC4000EC9D0 /* image-gray.png */; };
-		921DD83114EADEC4000EC9D0 /* image-zz.icns in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82914EADEC4000EC9D0 /* image-zz.icns */; };
-		921DD83214EADEC4000EC9D0 /* ZzTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */; };
 		921DD83314EADEC4000EC9D0 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82C14EADEC4000EC9D0 /* StatusItemView.m */; };
 		92987EA214EC358D00DA7075 /* libNoSleep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9E14EC358200DA7075 /* libNoSleep.a */; };
 		92987EA414EC35A400DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987EA314EC35A400DA7075 /* IOKit.framework */; };
+		9299A84614F5739D00F1DB9F /* Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9299A84514F5739D00F1DB9F /* Logo.icns */; };
+		9299A84714F57CFF00F1DB9F /* ZzTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82A14EADEC4000EC9D0 /* ZzTemplate.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +69,10 @@
 		921DD82B14EADEC4000EC9D0 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		921DD82C14EADEC4000EC9D0 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		92987EA314EC35A400DA7075 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		9299A84114F56E1F00F1DB9F /* LogoClear.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = LogoClear.icns; path = ../../../NoSleepFramework/NoSleepFramework/LogoClear.icns; sourceTree = "<group>"; };
+		9299A84214F56E1F00F1DB9F /* LogoFilled.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = LogoFilled.icns; path = ../../../NoSleepFramework/NoSleepFramework/LogoFilled.icns; sourceTree = "<group>"; };
+		9299A84514F5739D00F1DB9F /* Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Logo.icns; path = ../../../NoSleepFramework/NoSleepFramework/Logo.icns; sourceTree = "<group>"; };
 		92D9229814EAEA9D008AB70E /* NoSleepFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NoSleepFramework.xcodeproj; path = ../NoSleepFramework/NoSleepFramework.xcodeproj; sourceTree = "<group>"; };
-		92D9231214EAF42A008AB70E /* NoSleep.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NoSleep.framework; path = ../NoSleepFramework/build/Debug/NoSleep.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				92987EA314EC35A400DA7075 /* IOKit.framework */,
-				92D9231214EAF42A008AB70E /* NoSleep.framework */,
 				921DD80014EADE65000EC9D0 /* Cocoa.framework */,
 				921DD80214EADE65000EC9D0 /* Other Frameworks */,
 			);
@@ -157,6 +155,9 @@
 		921DD82614EADEC4000EC9D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9299A84514F5739D00F1DB9F /* Logo.icns */,
+				9299A84114F56E1F00F1DB9F /* LogoClear.icns */,
+				9299A84214F56E1F00F1DB9F /* LogoFilled.icns */,
 				921DD82714EADEC4000EC9D0 /* image-blue.png */,
 				921DD82814EADEC4000EC9D0 /* image-gray.png */,
 				921DD82914EADEC4000EC9D0 /* image-zz.icns */,
@@ -254,12 +255,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				921DD81114EADE65000EC9D0 /* Credits.rtf in Resources */,
+				9299A84714F57CFF00F1DB9F /* ZzTemplate.png in Resources */,
 				921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */,
-				921DD82F14EADEC4000EC9D0 /* image-blue.png in Resources */,
-				921DD83014EADEC4000EC9D0 /* image-gray.png in Resources */,
-				921DD83114EADEC4000EC9D0 /* image-zz.icns in Resources */,
-				921DD83214EADEC4000EC9D0 /* ZzTemplate.png in Resources */,
+				9299A84614F5739D00F1DB9F /* Logo.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
