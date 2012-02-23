@@ -107,6 +107,7 @@
 				<string key="NSFrameSize">{24, 16}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">StatusItemView</string>
 			</object>
 		</object>
@@ -156,10 +157,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">orderFrontStandardAboutPanel:</string>
-						<reference key="source" ref="1014"/>
+						<reference key="source" ref="1050"/>
 						<reference key="destination" ref="438886651"/>
 					</object>
-					<int key="connectionID">568</int>
+					<int key="connectionID">571</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -291,7 +292,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">570</int>
+			<int key="maxID">571</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

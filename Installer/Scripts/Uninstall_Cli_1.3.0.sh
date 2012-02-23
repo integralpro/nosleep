@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "Uninstaling NoSleepCtrl"
+sudo echo
 
 CLI_PATH=/usr/local/bin/NoSleepCtrl
 

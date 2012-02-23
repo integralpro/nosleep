@@ -16,6 +16,10 @@
 		921DD87114EAE313000EC9D0 /* NoSleepNotificationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD86B14EAE313000EC9D0 /* NoSleepNotificationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92987E8E14EC2F6C00DA7075 /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD86814EAE313000EC9D0 /* NoSleepInterface.m */; };
 		92987E8F14EC2F6C00DA7075 /* NoSleepInterfaceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD86A14EAE313000EC9D0 /* NoSleepInterfaceWrapper.m */; };
+		9299A8A114F6BC2000F1DB9F /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9299A8A014F6BC2000F1DB9F /* Utilities.m */; };
+		9299A8A214F6BC2000F1DB9F /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9299A8A014F6BC2000F1DB9F /* Utilities.m */; };
+		9299A8A414F6BC5400F1DB9F /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 9299A8A314F6BC5400F1DB9F /* Utilities.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9299A8A514F6BC5400F1DB9F /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 9299A8A314F6BC5400F1DB9F /* Utilities.h */; };
 		92D9231F14EAF7D8008AB70E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D9231E14EAF7D8008AB70E /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,8 @@
 		921DD86A14EAE313000EC9D0 /* NoSleepInterfaceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSleepInterfaceWrapper.m; sourceTree = "<group>"; };
 		921DD86B14EAE313000EC9D0 /* NoSleepNotificationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSleepNotificationDelegate.h; sourceTree = "<group>"; };
 		92987E8A14EC2F5700DA7075 /* libNoSleep.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNoSleep.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9299A8A014F6BC2000F1DB9F /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		9299A8A314F6BC5400F1DB9F /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		92D9231E14EAF7D8008AB70E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -98,6 +104,8 @@
 		921DD85114EAE2D9000EC9D0 /* NoSleepFramework */ = {
 			isa = PBXGroup;
 			children = (
+				9299A8A314F6BC5400F1DB9F /* Utilities.h */,
+				9299A8A014F6BC2000F1DB9F /* Utilities.m */,
 				921DD86614EAE313000EC9D0 /* GlobalConstants.h */,
 				921DD86714EAE313000EC9D0 /* NoSleepInterface.h */,
 				921DD86814EAE313000EC9D0 /* NoSleepInterface.m */,
@@ -129,6 +137,7 @@
 				921DD86F14EAE313000EC9D0 /* NoSleepInterfaceWrapper.h in Headers */,
 				921DD86C14EAE313000EC9D0 /* GlobalConstants.h in Headers */,
 				921DD87114EAE313000EC9D0 /* NoSleepNotificationDelegate.h in Headers */,
+				9299A8A414F6BC5400F1DB9F /* Utilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +145,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9299A8A514F6BC5400F1DB9F /* Utilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +227,7 @@
 			files = (
 				921DD86E14EAE313000EC9D0 /* NoSleepInterface.m in Sources */,
 				921DD87014EAE313000EC9D0 /* NoSleepInterfaceWrapper.m in Sources */,
+				9299A8A114F6BC2000F1DB9F /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +237,7 @@
 			files = (
 				92987E8E14EC2F6C00DA7075 /* NoSleepInterface.m in Sources */,
 				92987E8F14EC2F6C00DA7075 /* NoSleepInterfaceWrapper.m in Sources */,
+				9299A8A214F6BC2000F1DB9F /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

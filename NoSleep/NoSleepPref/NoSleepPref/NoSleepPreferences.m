@@ -9,52 +9,9 @@
 #import "NoSleepPreferences.h"
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
+#import <NoSleep/Utilities.h>
 
 @implementation NoSleepPreferences
-
-typedef enum {
-    kLICheck    = 0,
-    kLIRegister,
-    kLIUnregister,
-} LoginItemAction;
-
-- (BOOL)loginItem:(LoginItemAction)action {
-    UInt32 seedValue;
-    
-    LSSharedFileListRef loginItemsRefs = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    
-    NSArray *loginItemsArray = (NSArray *)LSSharedFileListCopySnapshot(loginItemsRefs, &seedValue);  
-    for (id item in loginItemsArray) {    
-        LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
-        CFURLRef path;
-        if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*)&path, NULL) == noErr) {
-            if ([[(NSURL *)path path] isEqualToString:@NOSLEEP_HELPER_PATH]) {
-                // if exists
-                if(action == kLIUnregister) {
-                    LSSharedFileListItemRemove(loginItemsRefs, itemRef);
-                }
-                
-                return YES;
-            }
-            CFRelease(path);
-        }
-    }
-    
-    if(action == kLIRegister) {
-        //CFURLRef url1 = (CFURLRef)[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:NOSLEEP_HELPER_IDENTIFIER];
-        //NSURL *url11 = (NSURL*)url1;
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:@NOSLEEP_HELPER_PATH];
-        
-        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItemsRefs, kLSSharedFileListItemLast,
-                                                                     NULL, NULL, (CFURLRef)url, NULL, NULL);
-        
-        if (item) {
-            CFRelease(item);
-        }
-    }
-    
-    return NO;
-}
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
@@ -87,7 +44,7 @@ typedef enum {
     
     if([[NSFileManager defaultManager] fileExistsAtPath:@NOSLEEP_HELPER_PATH]) {
         [m_checkBoxShowIcon setEnabled:YES];
-        [m_checkBoxShowIcon setState:[self loginItem:kLICheck]];
+        [m_checkBoxShowIcon setState:registerLoginItem(kLICheck)];
         
         [m_checkBoxShowIcon setToolTip:@""];
     } else {
@@ -153,9 +110,9 @@ static void performAgentAction(const char *action)
 - (void)checkboxShowIconClicked:(id)sender {
     BOOL showIconState = [m_checkBoxShowIcon state];
     if(showIconState) {
-        [self loginItem:kLIRegister];
+        registerLoginItem(kLIRegister);
     } else {
-        [self loginItem:kLIUnregister];
+        registerLoginItem(kLIUnregister);
     }
 }
 

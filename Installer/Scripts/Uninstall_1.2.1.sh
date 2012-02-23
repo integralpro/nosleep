@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "Uninstalling 1.2.1 and previous"
+sudo echo
 
 KEXT_ID=com.protech.nosleep
 KEXT_PATH=/System/Library/Extensions/nosleep.kext

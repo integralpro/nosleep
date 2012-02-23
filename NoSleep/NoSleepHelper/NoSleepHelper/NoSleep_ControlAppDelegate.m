@@ -9,6 +9,7 @@
 #import "NoSleep_ControlAppDelegate.h"
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
+#import <NoSleep/Utilities.h>
 
 @implementation NoSleep_ControlAppDelegate
 
@@ -53,7 +54,14 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{    
+{   
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
+    if([args containsObject:@"--unregister-loginitem"]) {
+        registerLoginItem(kLIUnregister);
+    } else if([args containsObject:@"--register-loginitem"]) {
+        registerLoginItem(kLIRegister);
+    }
+    
     //inactiveIcon = [NSImage imageNamed:@"ZzTemplate.png"];
     //activeIcon = [NSImage imageNamed:@"ZzTemplate.png"];
     icon = [NSImage imageNamed:@"ZzTemplate.png"];
