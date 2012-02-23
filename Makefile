@@ -1,7 +1,5 @@
 CONFIG=Release
 
-PAYLOAD=NoSleep.kext NoSleep.prefPane NoSleepHelper.app
-
 BUILDDIR=DerivedData/NoSleep/Build/Products/$(CONFIG)
 
 SUDO=sudo
@@ -10,7 +8,11 @@ KEXTUNLOAD=/sbin/kextunload
 KEXTUTIL=/usr/bin/kextutil
 
 .PHONY: all
-all: binaries
+all: delivery
+
+.PHONY: package
+package: binaries
+	packagesbuild Installer/NoSleepPkg.pkgproj
 
 .PHONY: binaries
 binaries:
@@ -19,6 +21,17 @@ binaries:
 .PHONY: clean
 clean:
 	/bin/rm -rf DerivedData Delivery
+
+.PHONY: delivery
+delivery:
+	$(MAKE) clean
+	$(MAKE) package
+	mkdir Delivery
+	cat Installer/Scripts/Uninstall_1.3.0.sh > Delivery/Uninstall.command
+	echo >> Delivery/Uninstall.command
+	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
+	chmod +x Delivery/Uninstall.command
+	cp -r DerivedData/Installer/NoSleep.mpkg Delivery/
 
 .PHONY: dk, dkc
 dkc:

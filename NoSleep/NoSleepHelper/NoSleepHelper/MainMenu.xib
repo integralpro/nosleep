@@ -49,27 +49,37 @@
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSMenuItem" id="300849602">
-						<reference key="NSMenu" ref="714355135"/>
-						<string key="NSTitle">Preferences...</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="107864903">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="480729032">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
-					</object>
 					<object class="NSMenuItem" id="438886651">
 						<reference key="NSMenu" ref="714355135"/>
 						<string key="NSTitle">About NoSleep</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="107864903"/>
-						<reference key="NSMixedImage" ref="480729032"/>
+						<object class="NSCustomResource" key="NSOnImage" id="594763869">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="198291279">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
+					</object>
+					<object class="NSMenuItem" id="31634829">
+						<reference key="NSMenu" ref="714355135"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="594763869"/>
+						<reference key="NSMixedImage" ref="198291279"/>
+					</object>
+					<object class="NSMenuItem" id="300849602">
+						<reference key="NSMenu" ref="714355135"/>
+						<string key="NSTitle">Preferences...</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="594763869"/>
+						<reference key="NSMixedImage" ref="198291279"/>
 					</object>
 					<object class="NSMenuItem" id="628323258">
 						<reference key="NSMenu" ref="714355135"/>
@@ -78,16 +88,16 @@
 						<string key="NSTitle"/>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="107864903"/>
-						<reference key="NSMixedImage" ref="480729032"/>
+						<reference key="NSOnImage" ref="594763869"/>
+						<reference key="NSMixedImage" ref="198291279"/>
 					</object>
 					<object class="NSMenuItem" id="482230773">
 						<reference key="NSMenu" ref="714355135"/>
 						<string key="NSTitle">Quit NoSleep Utility</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="107864903"/>
-						<reference key="NSMixedImage" ref="480729032"/>
+						<reference key="NSOnImage" ref="594763869"/>
+						<reference key="NSMixedImage" ref="198291279"/>
 					</object>
 				</object>
 			</object>
@@ -97,7 +107,6 @@
 				<string key="NSFrameSize">{24, 16}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">StatusItemView</string>
 			</object>
 		</object>
@@ -198,8 +207,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="482230773"/>
 							<reference ref="300849602"/>
-							<reference ref="438886651"/>
 							<reference ref="628323258"/>
+							<reference ref="438886651"/>
+							<reference ref="31634829"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Menu</string>
@@ -229,6 +239,11 @@
 						<reference key="object" ref="628323258"/>
 						<reference key="parent" ref="714355135"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">570</int>
+						<reference key="object" ref="31634829"/>
+						<reference key="parent" ref="714355135"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -246,9 +261,11 @@
 					<string>563.IBPluginDependency</string>
 					<string>565.IBPluginDependency</string>
 					<string>569.IBPluginDependency</string>
+					<string>570.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -274,7 +291,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">569</int>
+			<int key="maxID">570</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
