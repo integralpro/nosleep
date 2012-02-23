@@ -17,11 +17,27 @@ int verboseLevel = 1;
 bool modeAC = false;
 bool modeBattery = false;
 
+bool getValue = false;
 bool setNewValue = false;
 char *newValue;
 
 static void usage() {
-    
+    printf("Usage: NoSleepCtrl [OPTIONS] ...\n\n");
+    printf("Options:\n");
+    printf("  -h\t\t Show this usage guide\n");
+    printf("  -v VRBLVL\t Verbose level. Default value is 1.\n");
+    printf("    \t\t 0 - minimal output,\n");
+    printf("    \t\t 1 - normal output,\n");
+    printf("    \t\t 2 - include driver output.\n");
+    printf("  -a\t\t Mode specifier. Used to select AC-Adapter mode\n");
+    printf("  -b\t\t Mode specifier. Used to select Battery mode\n");
+    printf("    \t\t Modes can be combined (-a -b).\n");
+    printf("    \t\t Use no specificators to select a current mode\n");
+    printf("  -g\t\t Get status for selected mode\n");
+    printf("  -s NVAL\t Set status for selected mode\n");
+    printf("    \t\t NVAL should have (%%d) or (%%d,%%d) format, depending\n");
+    printf("    \t\t on the specified mode (without parentheses)\n");
+    printf("\n");
 }
 
 int main (int argc, const char **argv)
@@ -30,7 +46,7 @@ int main (int argc, const char **argv)
     
     opterr = 0;
     
-    while ((c = getopt (argc, (char *const *)argv, "abs:v:")) != -1)
+    while ((c = getopt (argc, (char *const *)argv, "abgs:v:h")) != -1)
         switch (c)
     {
         case 'h':
@@ -41,7 +57,6 @@ int main (int argc, const char **argv)
                 if(sscanf(optarg, "%d", &verboseLevel) != 1 ||
                    verboseLevel < 0 || verboseLevel > 2) {
                     fprintf (stderr, "Verbose level should be one of [0, 1, 2]\n");
-                    usage();
                     return 0x11;
                 }
                 if(verboseLevel == 2) {
@@ -60,6 +75,9 @@ int main (int argc, const char **argv)
             setNewValue = true;
             newValue = optarg;
             break;
+        case 'g':
+            getValue = true;
+            break;
         case '?':
             if (optopt == 's' || optopt == 'v')
                 fprintf (stderr, "Option -%c requires an argument.\n", optopt);
@@ -69,7 +87,7 @@ int main (int argc, const char **argv)
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
                          optopt);
-            return 1;
+            return 0x11;
         default:
             abort();
     }
@@ -77,10 +95,15 @@ int main (int argc, const char **argv)
     //for (index = optind; index < argc; index++)
     //    printf ("Non-option argument %s\n", argv[index]);
     
+    if(setNewValue == false && getValue == false) {
+        usage();
+        return 0x10;
+    }
+    
     NoSleepInterfaceWrapper *interface = [[NoSleepInterfaceWrapper alloc] init];
     if(interface == NULL) {
         fprintf(stderr, "NoSleep extension is not loaded.\n");
-        return 0x11;
+        return 0x13;
     }
     
     int ret = 0;
@@ -118,7 +141,7 @@ int main (int argc, const char **argv)
                 }
             }
         }
-    } else {
+    } else if(getValue) {
         if(modeAC == false && modeBattery == false) {
             bool current = [interface stateForMode:kNoSleepModeCurrent];
             if(verboseLevel != 0) {
@@ -151,6 +174,8 @@ int main (int argc, const char **argv)
             }
             printf("\n");
         }
+    } else {
+        usage();
     }
 
     [interface release];
