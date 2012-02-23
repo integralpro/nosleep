@@ -105,11 +105,15 @@
     switch (messageType) {
         case kNoSleepCommandDisabled:
             //[statusItemImageView setImage:inactiveIcon];
-            [statusItemImageView setImageState:NO];
+            if(messageArgument == kNoSleepModeCurrent) {
+                [statusItemImageView setImageState:NO];
+            }
             break;
         case kNoSleepCommandEnabled:
             //[statusItemImageView setImage:activeIcon];
-            [statusItemImageView setImageState:YES];
+            if(messageArgument == kNoSleepModeCurrent) {
+                [statusItemImageView setImageState:YES];
+            }
             break;
         default:
             break;

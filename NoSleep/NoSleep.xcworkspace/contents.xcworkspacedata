@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:NoSleepCtrl/NoSleepCtrl.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NoSleepPref/NoSleepPref.xcodeproj">
    </FileRef>
    <FileRef

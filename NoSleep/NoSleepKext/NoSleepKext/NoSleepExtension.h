@@ -8,6 +8,8 @@
 #include <IOKit/IOService.h>
 #include <NoSleep/GlobalConstants.h>
 
+#define KCmdFromState(x) (((x) == kNoSleepStateEnabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled)
+
 class IOPMrootDomain;
 class IOPMPowerSource;
 

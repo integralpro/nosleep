@@ -147,11 +147,13 @@ bool NoSleepExtension::setSleepSuppressionState(NoSleepState state, int mode)
         if(isOnAC) {
             if(mode == kNoSleepModeBattery) {
                 batterySleepSuppressionState = state;
+                this->messageClients(KCmdFromState(state), (void *)mode);
                 return true;
             }
         } else {
             if(mode == kNoSleepModeAC) {
                 acSleepSuppressionState = state;
+                this->messageClients(KCmdFromState(state), (void *)mode);
                 return true;
             }
         }
@@ -166,8 +168,7 @@ bool NoSleepExtension::setSleepSuppressionState(NoSleepState state, int mode)
     if(forceClientMessage || oldState != state) {
         forceClientMessage = false;
         
-        UInt32 msg = (state == kNoSleepStateEnabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled; 
-        this->messageClients(msg);
+        this->messageClients(KCmdFromState(state), (void *)kNoSleepModeCurrent);
         
         setCurrentSleepSuppressionState(state);
     }

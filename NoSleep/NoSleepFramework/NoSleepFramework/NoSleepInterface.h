@@ -16,7 +16,8 @@ typedef io_object_t NoSleepInterestNotification;
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+    extern bool NoSleepVerbose;
+    
     NoSleepInterestNotification NoSleep_ReceiveStateChanged(NoSleepInterfaceConnect m_connect, IOServiceInterestCallback callback, void *refCon);
     void NoSleep_ReleaseStateChanged(NoSleepInterestNotification notifyObj);
     

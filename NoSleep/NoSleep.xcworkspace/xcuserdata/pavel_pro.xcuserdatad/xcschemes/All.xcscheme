@@ -47,6 +47,20 @@
                ReferencedContainer = "container:NoSleepPref/NoSleepPref.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9299A86314F6108B00F1DB9F"
+               BuildableName = "NoSleepCtrl"
+               BlueprintName = "NoSleepCtrl"
+               ReferencedContainer = "container:NoSleepCtrl/NoSleepCtrl.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -66,10 +80,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "921DD7FB14EADE65000EC9D0"
-            BuildableName = "NoSleepHelper.app"
-            BlueprintName = "NoSleepHelper"
-            ReferencedContainer = "container:NoSleepHelper/NoSleepHelper.xcodeproj">
+            BlueprintIdentifier = "9299A86314F6108B00F1DB9F"
+            BuildableName = "NoSleepCtrl"
+            BlueprintName = "NoSleepCtrl"
+            ReferencedContainer = "container:NoSleepCtrl/NoSleepCtrl.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

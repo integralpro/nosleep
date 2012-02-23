@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		921DD84C14EAE2D9000EC9D0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921DD84B14EAE2D9000EC9D0 /* Cocoa.framework */; };
-		921DD86C14EAE313000EC9D0 /* GlobalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD86614EAE313000EC9D0 /* GlobalConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		921DD86C14EAE313000EC9D0 /* GlobalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD86614EAE313000EC9D0 /* GlobalConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		921DD86D14EAE313000EC9D0 /* NoSleepInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD86714EAE313000EC9D0 /* NoSleepInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		921DD86E14EAE313000EC9D0 /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD86814EAE313000EC9D0 /* NoSleepInterface.m */; };
 		921DD86F14EAE313000EC9D0 /* NoSleepInterfaceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DD86914EAE313000EC9D0 /* NoSleepInterfaceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -127,8 +127,8 @@
 			files = (
 				921DD86D14EAE313000EC9D0 /* NoSleepInterface.h in Headers */,
 				921DD86F14EAE313000EC9D0 /* NoSleepInterfaceWrapper.h in Headers */,
-				921DD87114EAE313000EC9D0 /* NoSleepNotificationDelegate.h in Headers */,
 				921DD86C14EAE313000EC9D0 /* GlobalConstants.h in Headers */,
+				921DD87114EAE313000EC9D0 /* NoSleepNotificationDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

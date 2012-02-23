@@ -19,6 +19,8 @@
 
 #import <NoSleep/GlobalConstants.h>
 
+bool NoSleepVerbose = false;
+
 NoSleepInterestNotification NoSleep_ReceiveStateChanged(NoSleepInterfaceService service,
                                                         IOServiceInterestCallback callback,
                                                         void *refCon)
@@ -53,7 +55,9 @@ NoSleepInterestNotification NoSleep_ReceiveStateChanged(NoSleepInterfaceService 
         
         if (kr != KERN_SUCCESS)
         {
-            fprintf(stderr, "IOServiceAddInterestNotification returned 0x%08x\n", kr);
+            if(NoSleepVerbose) {
+                fprintf(stderr, "IOServiceAddInterestNotification returned 0x%08x\n", kr);
+            }
             return 0;
         }
     }
@@ -76,13 +80,17 @@ bool NoSleep_InterfaceCreate(NoSleepInterfaceService *service, NoSleepInterfaceC
     kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kNoSleepDriverClassName), &iterator);
 
     if (kernResult != KERN_SUCCESS) {
-        fprintf(stderr, "IOServiceGetMatchingServices returned 0x%08x\n", kernResult);
+        if(NoSleepVerbose) {
+            fprintf(stderr, "IOServiceGetMatchingServices returned 0x%08x\n", kernResult);
+        }
         return false;
     }
     
     while ((_service = IOIteratorNext(iterator)) != IO_OBJECT_NULL) {
 		driverFound = true;
-		printf("Found a device of class "kNoSleepDriverClassName"\n");
+        if(NoSleepVerbose) {
+            printf("Found a device of class "kNoSleepDriverClassName"\n");
+        }
         break;
 	}
     
@@ -93,7 +101,9 @@ bool NoSleep_InterfaceCreate(NoSleepInterfaceService *service, NoSleepInterfaceC
         kernResult = IOServiceOpen(_service, mach_task_self(), 0, connect);
 
         if (kernResult != KERN_SUCCESS) {
-            fprintf(stderr, "IOServiceOpen returned 0x%08x\n", kernResult);
+            if(NoSleepVerbose) {
+                fprintf(stderr, "IOServiceOpen returned 0x%08x\n", kernResult);
+            }
             return false;
         }
         
@@ -101,11 +111,15 @@ bool NoSleep_InterfaceCreate(NoSleepInterfaceService *service, NoSleepInterfaceC
     }
     else
     {
-        fprintf(stderr, "Can't find a driver\n");
+        if(NoSleepVerbose) {
+            fprintf(stderr, "Can't find a driver\n");
+        }
         return false;
     }
     
-    fprintf(stderr, "IOServiceOpen was successful\n");
+    if(NoSleepVerbose) {
+        fprintf(stderr, "IOServiceOpen was successful\n");
+    }
     return true;
 }
 
@@ -114,11 +128,15 @@ bool NoSleep_InterfaceDestroy(NoSleepInterfaceConnect connect)
     kern_return_t kernResult = IOServiceClose(connect);
     
     if (kernResult == KERN_SUCCESS) {
-        printf("IOServiceClose was successful\n");
+        if(NoSleepVerbose) {
+            printf("IOServiceClose was successful\n");
+        }
         return true;
     }
     else {
-	    fprintf(stderr, "IOServiceClose returned 0x%08x\n", kernResult);
+        if(NoSleepVerbose) {
+            fprintf(stderr, "IOServiceClose returned 0x%08x\n", kernResult);
+        }
         return false;
     }
 }
