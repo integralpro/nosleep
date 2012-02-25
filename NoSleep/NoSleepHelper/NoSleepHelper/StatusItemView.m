@@ -8,7 +8,7 @@
 
 #import "StatusItemView.h"
 
-#define StatusItemViewPaddingWidth 6
+#define StatusItemViewPaddingWidth 4
 #define StatusItemViewPaddingHeight 3
 #define StatusItemViewPaddingIconToText 3
 
@@ -124,21 +124,21 @@
 {
     int newWidth= 0;
     
-    if ((title!=NULL) || ([buttonCell image]!=NULL))
-        newWidth+=(2 * StatusItemViewPaddingWidth);
-    if ((title!=NULL) && ([buttonCell image]!=NULL))
-        newWidth+=StatusItemViewPaddingIconToText;
+    if ((title != NULL) || ([buttonCell image] != NULL))
+        newWidth += (2 * StatusItemViewPaddingWidth);
+    if ((title != NULL) && ([buttonCell image] != NULL))
+        newWidth += StatusItemViewPaddingIconToText;
     
-    if (title!=NULL)
+    if (title != NULL)
     {
         // Update status item size (which will also update this view's bounds)
         NSRect titleBounds = [self titleBoundingRect];
-        newWidth += titleBounds.size.width ;
+        newWidth += titleBounds.size.width;
     }
     if ([buttonCell image]!=NULL)
     {
         NSRect iconRect = [[buttonCell image] alignmentRect];
-        newWidth += iconRect.size.width + 8;
+        newWidth += iconRect.size.width;// + 8
     }
     [statusItem setLength:newWidth];
 }
@@ -205,34 +205,30 @@
                                 withHighlight:isMenuVisible];
     
     int x=0;
-    if (([buttonCell image]!=NULL) || (title!=NULL))
+    if (([buttonCell image] != NULL) || (title != NULL))
     {
-        x=x+StatusItemViewPaddingWidth;
+        x += StatusItemViewPaddingWidth;
     }
-    if ([buttonCell image]!=NULL)
+    if ([buttonCell image] != NULL)
     {
-        //NSPoint origin = NSMakePoint(x,2);
+        NSRect rect = [[buttonCell image] alignmentRect];
+        rect.size.width += 8;
+        rect.size.height += StatusItemViewPaddingHeight;
+        //NSPoint origin = NSMakePoint(x,StatusItemViewPaddingHeight);
         //[[buttonCell image] drawAtPoint:origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-        NSRect alr = [[buttonCell image] alignmentRect];
-        alr.size.width += 8;
-        alr.size.height += 2;
-        alr.origin.x += x;
-        //alr.origin.y -= 5;
         
-        [buttonCell drawInteriorWithFrame:alr inView:self];
-        x+=alr.size.width;
+        [buttonCell drawInteriorWithFrame:rect inView:self];
+        x += rect.size.width;
     }
-    if (([buttonCell image]!=NULL) && (title!=NULL))
+    if (([buttonCell image] != NULL) && (title != NULL))
     {
-        x=x+StatusItemViewPaddingIconToText;
+        x += StatusItemViewPaddingIconToText;
     }
-    if (title!=NULL)
+    if (title != NULL)
     {
         // Draw title string
-        NSPoint origin = NSMakePoint(x,
-                                     StatusItemViewPaddingHeight);
-        [title drawAtPoint:origin
-            withAttributes:[self titleAttributes]];
+        NSPoint origin = NSMakePoint(x, StatusItemViewPaddingHeight);
+        [title drawAtPoint:origin withAttributes:[self titleAttributes]];
     }
 }
 

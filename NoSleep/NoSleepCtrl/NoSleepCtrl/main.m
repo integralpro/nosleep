@@ -29,10 +29,10 @@ static void usage() {
     printf("    \t\t 0 - minimal output,\n");
     printf("    \t\t 1 - normal output,\n");
     printf("    \t\t 2 - include driver output.\n");
-    printf("  -a\t\t Mode specifier. Used to select AC-Adapter mode\n");
-    printf("  -b\t\t Mode specifier. Used to select Battery mode\n");
+    printf("  -a\t\t Mode qualifier. Used to select AC-Adapter mode\n");
+    printf("  -b\t\t Mode qualifier. Used to select Battery mode\n");
     printf("    \t\t Modes can be combined (-a -b).\n");
-    printf("    \t\t Use no specificators to select a current mode\n");
+    printf("    \t\t Use no qualifiers to select a current mode\n");
     printf("  -g\t\t Get status for selected mode\n");
     printf("  -s NVAL\t Set status for selected mode\n");
     printf("    \t\t NVAL should have (%%d) or (%%d,%%d) format, depending\n");

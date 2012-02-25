@@ -300,6 +300,7 @@
 				9299A87314F6108B00F1DB9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
