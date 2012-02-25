@@ -33,6 +33,20 @@ delivery:
 	chmod +x Delivery/Uninstall.command
 	cp -r DerivedData/Installer/NoSleep.mpkg Delivery/
 
+.PHONY: dmg
+dmg: delivery
+	if [ -e DerivedData/DMG ]; then rm -rf DerivedData/DMG; fi
+	mkdir -p DerivedData/DMG
+	./Utilities/create-dmg \
+		--window-size 480 300 \
+		--icon-size 96 \
+		--volname "NoSleep Extension" \
+		--icon "NoSleep.mpkg" 160 130 \
+		--icon "Uninstall.command" 320 130 \
+		DerivedData/DMG/NoSleep.dmg \
+		Delivery
+	cp DerivedData/DMG/NoSleep.dmg Delivery
+
 .PHONY: dk, dkc
 dkc:
 	$(SUDO) $(KEXTUNLOAD) -b com.protech.NoSleep
