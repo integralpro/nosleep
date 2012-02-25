@@ -233,6 +233,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -250,6 +251,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_VERSION = 1.3.0;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -260,6 +262,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -270,6 +273,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_VERSION = 1.3.0;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -278,7 +282,6 @@
 		921DD7C614EADC26000EC9D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepKext/NoSleepKext-Prefix.pch";
@@ -289,7 +292,6 @@
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				PRODUCT_NAME = NoSleep;
-				PRODUCT_VERSION = 1.3;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -297,7 +299,6 @@
 		921DD7C714EADC26000EC9D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepKext/NoSleepKext-Prefix.pch";
@@ -308,7 +309,6 @@
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				PRODUCT_NAME = NoSleep;
-				PRODUCT_VERSION = 1.3;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;

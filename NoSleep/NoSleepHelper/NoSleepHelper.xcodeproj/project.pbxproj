@@ -12,8 +12,6 @@
 		921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82314EADEC4000EC9D0 /* MainMenu.xib */; };
 		921DD82E14EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82514EADEC4000EC9D0 /* NoSleep_ControlAppDelegate.m */; };
 		921DD83314EADEC4000EC9D0 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD82C14EADEC4000EC9D0 /* StatusItemView.m */; };
-		926E928D14F96323009BA51D /* LogoClear.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9299A84114F56E1F00F1DB9F /* LogoClear.icns */; };
-		926E928E14F96323009BA51D /* LogoFilled.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9299A84214F56E1F00F1DB9F /* LogoFilled.icns */; };
 		92987EA214EC358D00DA7075 /* libNoSleep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9E14EC358200DA7075 /* libNoSleep.a */; };
 		92987EA414EC35A400DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987EA314EC35A400DA7075 /* IOKit.framework */; };
 		9299A84614F5739D00F1DB9F /* Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9299A84514F5739D00F1DB9F /* Logo.icns */; };
@@ -257,8 +255,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				926E928D14F96323009BA51D /* LogoClear.icns in Resources */,
-				926E928E14F96323009BA51D /* LogoFilled.icns in Resources */,
 				9299A84714F57CFF00F1DB9F /* ZzTemplate.png in Resources */,
 				921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */,
 				9299A84614F5739D00F1DB9F /* Logo.icns in Resources */,
@@ -328,7 +324,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_VERSION = 1.3;
+				PRODUCT_VERSION = 1.3.0;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -350,7 +346,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_VERSION = 1.3;
+				PRODUCT_VERSION = 1.3.0;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};

@@ -537,7 +537,7 @@
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.3</string>
+				<string>1.3.0</string>
 			</dict>
 			<key>UUID</key>
 			<string>985F2846-052E-414F-BFC0-8173AD213D19</string>
@@ -1055,7 +1055,7 @@
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.3</string>
+				<string>1.3.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
