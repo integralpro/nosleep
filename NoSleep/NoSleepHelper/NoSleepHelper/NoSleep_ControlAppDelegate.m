@@ -87,6 +87,7 @@
 
 - (void)dealloc
 {
+    [super dealloc];
 }
 
 - (IBAction)updateState:(id)sender
