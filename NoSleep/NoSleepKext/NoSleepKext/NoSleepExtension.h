@@ -10,7 +10,7 @@
 
 #define KCmdFromState(x) (((x) == kNoSleepStateEnabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled)
 
-#define	kIOPMSleepDisabledKey "SleepDisabled"
+#define kIOPMSleepDisabledKey "SleepDisabled"
 
 class IOPMrootDomain;
 class IOPMPowerSource;
