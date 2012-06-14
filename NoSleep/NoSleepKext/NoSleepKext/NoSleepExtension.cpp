@@ -20,6 +20,11 @@
 #define super IOService
 OSDefineMetaClassAndStructors( NoSleepExtension, IOService );
 
+void NoSleepExtension::_switchOffUserSleepDisabled(thread_call_param_t us, thread_call_param_t)
+{
+    ((NoSleepExtension *)us)->setUserSleepDisabled(false);
+}
+
 IOReturn NoSleepExtension::_clamshellEventInterestHandler(void * target, void * refCon,
                                                           UInt32 messageType, IOService * provider,
                                                           void * messageArgument, vm_size_t argSize)
@@ -43,11 +48,43 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
         isClamshellStateInitialized = true;
         
         //This should be checked
-        if(clamshellShouldSleep && (getCurrentSleepSuppressionState() == kNoSleepStateEnabled))
-            setSleepSuppressionState(kNoSleepStateEnabled, kNoSleepModeCurrent);
-    }
+        if((getCurrentSleepSuppressionState() == kNoSleepStateEnabled)) {
+            setUserSleepDisabled(true);
+            
+            AbsoluteTime deadline;
+            clock_interval_to_deadline(10, kSecondScale, &deadline);	
+            thread_call_enter_delayed(delayTimer, deadline);
+            
+            if(clamshellShouldSleep) {
+                pRootDomain->receivePowerNotification(kIOPMDisableClamshell);
+            }
+        }
+    } 
     
     return kIOReturnSuccess;
+}
+
+void NoSleepExtension::setUserSleepDisabled(bool disable)
+{
+    static bool oldValue = false;
+    if(oldValue == disable) {
+        return;
+    }
+    oldValue = disable;
+    
+#ifdef DEBUG
+    IOLog("%s[%p]::%s(%d)\n", getName(), this, __FUNCTION__,
+          disable?1:0);
+#endif
+    
+    const OSSymbol *sleepdisabled_string = OSSymbol::withCString("SleepDisabled");
+
+    const OSObject *objects[] = { OSBoolean::withBoolean(disable) };
+    const OSSymbol *keys[] = { sleepdisabled_string };
+    OSDictionary *dict = OSDictionary::withObjects(objects, keys, 1);
+    pRootDomain->setProperties(dict);
+    dict->release();
+    //pRootDomain->removeProperty(sleepdisabled_string);
 }
 
 bool NoSleepExtension::start( IOService * provider )
@@ -58,6 +95,8 @@ bool NoSleepExtension::start( IOService * provider )
 #endif
     if( !super::start( provider ))
         return( false );
+    
+    delayTimer = thread_call_allocate(_switchOffUserSleepDisabled, (thread_call_param_t) this);
     
     isSleepStateInitialized = false;
     
@@ -120,6 +159,11 @@ void NoSleepExtension::stop( IOService * provider )
     setSleepSuppressionState(kNoSleepStateDisabled, kNoSleepModeCurrent);
     clamshellStateInterestNotifier->remove();
     
+    if(delayTimer) {
+        thread_call_cancel(delayTimer);
+        thread_call_free(delayTimer);
+    }
+    
     IOLog("%s: successfully stopped\n", getName());
     super::stop(provider);
 }
@@ -179,6 +223,9 @@ bool NoSleepExtension::setSleepSuppressionState(NoSleepState state, int mode)
             break;
             
         case kNoSleepStateDisabled:
+            thread_call_cancel(delayTimer);
+            setUserSleepDisabled(false);
+            
             pRootDomain->receivePowerNotification(kIOPMEnableClamshell);
             break;
             
@@ -199,7 +246,7 @@ void NoSleepExtension::saveState()
     UInt8 stateToSave = packSleepState(batterySleepSuppressionState, acSleepSuppressionState);
     
 #ifdef DEBUG
-    IOLog("%s: value to save: %d\n", getName(), stateToSave);
+    IOLog("%s: value to save: 0x%02x\n", getName(), stateToSave);
 #endif
     
     OSReturn readResult = readNVRAM(&savedState);
