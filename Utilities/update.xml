@@ -12,7 +12,8 @@
 	    <pubDate>Wed, 09 Jan 2012 19:20:11 +0000</pubDate>
 	    <enclosure url="http://macosx-nosleep-extension.googlecode.com/files/NoSleep.dmg"
 	        sparkle:version="1.3.1"
-	        sparkle:dsaSignature="MEQCIHszvHJUh1KA/s6kapJSL6NrS6N9BEFmn7mSh9oSzmyCAiA1FAzlzbLQitu159M/vZTkeOfcoYfUAkZMHYpqBO1lJA=="
+	        sparkle:dsaSignature="MEQCIBlNI6E6Els80ciyJOXrsO2OtH+2UOBeG5M4TxxWIby5AiBFRQPY8o0gUQm1
+cbzDWr7/rWtpEZ0AzcWlPme8w2ZbTQ=="
 	        length="518736"
 	        type="application/octet-stream" />
 	</item>
