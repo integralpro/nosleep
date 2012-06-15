@@ -17,6 +17,8 @@
     IBOutlet NSMenu *statusItemMenu;
     IBOutlet StatusItemView *statusItemImageView;
     
+    IBOutlet SUUpdater *updater;
+    
     NSStatusItem *statusItem;
     //NSImage *inactiveIcon;
     //NSImage *activeIcon;
@@ -28,6 +30,8 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSMenu *statusItemMenu;
 @property (assign) IBOutlet StatusItemView *statusItemImageView;
+
+@property (assign) IBOutlet SUUpdater *updater;
 
 - (IBAction)openPreferences:(id)sender;
 

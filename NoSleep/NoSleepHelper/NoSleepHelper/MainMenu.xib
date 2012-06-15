@@ -168,12 +168,20 @@
 					<int key="connectionID">564</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">updater</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="111815525"/>
+					</object>
+					<int key="connectionID">578</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">checkForUpdates:</string>
 						<reference key="source" ref="111815525"/>
 						<reference key="destination" ref="551891667"/>
 					</object>
-					<int key="connectionID">577</int>
+					<int key="connectionID">580</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -323,7 +331,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">577</int>
+			<int key="maxID">580</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -376,12 +384,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>statusItemImageView</string>
 							<string>statusItemMenu</string>
+							<string>updater</string>
 							<string>window</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>StatusItemView</string>
 							<string>NSMenu</string>
+							<string>SUUpdater</string>
 							<string>NSWindow</string>
 						</object>
 					</object>
@@ -391,6 +401,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>statusItemImageView</string>
 							<string>statusItemMenu</string>
+							<string>updater</string>
 							<string>window</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -402,6 +413,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">statusItemMenu</string>
 								<string key="candidateClassName">NSMenu</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">updater</string>
+								<string key="candidateClassName">SUUpdater</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>

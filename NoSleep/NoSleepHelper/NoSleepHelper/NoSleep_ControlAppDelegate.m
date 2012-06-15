@@ -11,11 +11,24 @@
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/Utilities.h>
 
+#include <signal.h>
+
 @implementation NoSleep_ControlAppDelegate
 
 @synthesize window;
 @synthesize statusItemMenu;
 @synthesize statusItemImageView;
+
+@synthesize updater;
+
+static void handleSIGTERM(int signum) {
+    if([[((NoSleep_ControlAppDelegate *)[NSApp delegate]) updater] updateInProgress]) {
+        return;
+    }
+    
+    signal(signum, SIG_DFL);
+    raise(signum);
+}
 
 - (IBAction)openPreferences:(id)sender {
     BOOL ret = [[NSWorkspace sharedWorkspace] openFile:@NOSLEEP_PREFPANE_PATH];
@@ -54,7 +67,9 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{   
+{
+    signal(SIGTERM, handleSIGTERM);
+    
     NSArray *args = [[NSProcessInfo processInfo] arguments];
     if([args containsObject:@"--unregister-loginitem"]) {
         registerLoginItem(kLIUnregister);

@@ -7,14 +7,21 @@ KEXT_ID=com.protech.NoSleep
 KEXT_PATH=/System/Library/Extensions/NoSleep.kext
 PERF_PATH=/Library/PreferencePanes/NoSleep.prefPane
 HELPER_PATH=/Applications/Utilities/NoSleep.app
+AGENT_PATH=/Library/LaunchAgents/com.protech.NoSleep.plist
 
-#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill -9 &> /dev/null
+if [ -e "$AGENT_PATH" ]; then
+	echo "Removing LaunchAgent..."
+	sudo launchctl load "$AGENT_PATH"
+	sudo launchctl stop $KEXT_ID
+	sudo launchctl unload "$AGENT_PATH"
+	sudo rm -f "$AGENT_PATH"
+fi
 
 if [ -e "$HELPER_PATH" ]; then
     echo "Removing NoSleep.app..."
-    open "$HELPER_PATH" --args --unregister-loginitem
-    sleep 5
-	#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill -9 &> /dev/null
+    #open "$HELPER_PATH" --args --unregister-loginitem
+    #sleep 5
+	#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null
     sudo rm -rf "$HELPER_PATH"
 fi
 
