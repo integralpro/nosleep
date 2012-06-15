@@ -51,7 +51,7 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
         if((getCurrentSleepSuppressionState() == kNoSleepStateEnabled)) {
             setUserSleepDisabled(true);
             
-            AbsoluteTime deadline;
+            UInt64 deadline;
             clock_interval_to_deadline(10, kSecondScale, &deadline);	
             thread_call_enter_delayed(delayTimer, deadline);
             
