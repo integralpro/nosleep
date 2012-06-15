@@ -1,20 +1,20 @@
 #!/bin/sh
 
-echo "Uninstalling 1.3.0"
+echo "Uninstalling 1.3.1"
 sudo echo
 
 KEXT_ID=com.protech.NoSleep
 KEXT_PATH=/System/Library/Extensions/NoSleep.kext
 PERF_PATH=/Library/PreferencePanes/NoSleep.prefPane
-HELPER_PATH=/Applications/Utilities/NoSleepHelper.app
+HELPER_PATH=/Applications/Utilities/NoSleep.app
 
-#ps aux|grep NoSleepHelper|awk '{print $2}'|xargs kill -9 &> /dev/null
+#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill -9 &> /dev/null
 
 if [ -e "$HELPER_PATH" ]; then
-    echo "Removing NoSleepHelper..."
+    echo "Removing NoSleep.app..."
     open "$HELPER_PATH" --args --unregister-loginitem
     sleep 5
-	#ps aux|grep NoSleepHelper|awk '{print $2}'|xargs kill -9 &> /dev/null
+	#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill -9 &> /dev/null
     sudo rm -rf "$HELPER_PATH"
 fi
 

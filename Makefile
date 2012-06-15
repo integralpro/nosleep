@@ -27,7 +27,7 @@ delivery:
 	$(MAKE) clean
 	$(MAKE) package
 	mkdir Delivery
-	cat Installer/Scripts/Uninstall_1.3.0.sh > Delivery/Uninstall.command
+	cat Installer/Scripts/Uninstall_1.3.1.sh > Delivery/Uninstall.command
 	echo >> Delivery/Uninstall.command
 	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
 	chmod +x Delivery/Uninstall.command

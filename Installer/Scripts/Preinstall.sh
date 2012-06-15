@@ -5,3 +5,4 @@ sudo echo
 
 ./Uninstall_1.2.1.sh
 ./Uninstall_1.3.0.sh
+./Uninstall_1.3.1.sh

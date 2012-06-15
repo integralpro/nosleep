@@ -24,7 +24,7 @@
 #define SHOW_UI_ALERT_KEXT_NOT_LOADED() NSRunAlertPanel(@"Oops!", @"NoSleep Kernel Extension is not loaded.", @"OK", nil, nil)
 
 //#define LAUNCH_AGENT "com.protech.nosleep.launch.plist"
-#define NOSLEEP_HELPER_PATH "/Applications/Utilities/NoSleepHelper.app"
+#define NOSLEEP_HELPER_PATH "/Applications/Utilities/NoSleep.app"
 #define NOSLEEP_PREFPANE_PATH "/Library/PreferencePanes/NoSleep.prefPane"
 //#define LAUNCH_AGENTS_PATH "/Library/LaunchAgents/"
 //#define NOSLEEP_HELPER_IDENTIFIER @"com.protech.NoSleepHelper"

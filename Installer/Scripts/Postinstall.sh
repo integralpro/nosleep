@@ -1,7 +1,7 @@
 #!/bin/sh
 
 KEXT_PATH=/System/Library/Extensions/NoSleep.kext
-HELPER_PATH=/Applications/Utilities/NoSleepHelper.app
+HELPER_PATH=/Applications/Utilities/NoSleep.app
 
 sudo kextload "$KEXT_PATH"
 

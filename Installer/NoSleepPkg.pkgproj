@@ -25,7 +25,7 @@
 											<key>GID</key>
 											<integer>80</integer>
 											<key>PATH</key>
-											<string>../DerivedData/NoSleep/Build/Products/Release/NoSleepHelper.app</string>
+											<string>../DerivedData/NoSleep/Build/Products/Release/NoSleep.app</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -513,6 +513,22 @@
 						<integer>0</integer>
 						<key>PATH</key>
 						<string>Scripts/Uninstall_1.3.0.sh</string>
+						<key>PATH_TYPE</key>
+						<integer>1</integer>
+						<key>PERMISSIONS</key>
+						<integer>493</integer>
+						<key>TYPE</key>
+						<integer>3</integer>
+						<key>UID</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>CHILDREN</key>
+						<array/>
+						<key>GID</key>
+						<integer>0</integer>
+						<key>PATH</key>
+						<string>Scripts/Uninstall_1.3.1.sh</string>
 						<key>PATH_TYPE</key>
 						<integer>1</integer>
 						<key>PERMISSIONS</key>

@@ -153,6 +153,9 @@
 /* Begin PBXProject section */
 		9299A85B14F6108B00F1DB9F /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = 9299A85E14F6108B00F1DB9F /* Build configuration list for PBXProject "NoSleepCtrl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
