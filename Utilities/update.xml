@@ -7,11 +7,11 @@
       <language>en</language>   
       
 	<item>
-	    <title>Version 1.3.1 (2 bugs fixed; 3 new features)</title>
+	    <title>Version 1.3.999 (2 bugs fixed; 3 new features)</title>
 	    <sparkle:releaseNotesLink>http://www.schneier.com/code/sol-test.txt</sparkle:releaseNotesLink>
 	    <pubDate>Wed, 09 Jan 2012 19:20:11 +0000</pubDate>
 	    <enclosure url="http://macosx-nosleep-extension.googlecode.com/files/NoSleep.dmg"
-	        sparkle:version="1.3.1"
+	        sparkle:version="1.3.999"
 	        sparkle:dsaSignature="MEQCIBlNI6E6Els80ciyJOXrsO2OtH+2UOBeG5M4TxxWIby5AiBFRQPY8o0gUQm1
 cbzDWr7/rWtpEZ0AzcWlPme8w2ZbTQ=="
 	        length="518736"
