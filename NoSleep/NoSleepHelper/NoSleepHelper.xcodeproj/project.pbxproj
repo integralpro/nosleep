@@ -408,6 +408,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/NoSleepHelper\"",
 				);
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
@@ -426,6 +427,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/NoSleepHelper\"",
 				);
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepHelper/NoSleepHelper-Prefix.pch";
 				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";

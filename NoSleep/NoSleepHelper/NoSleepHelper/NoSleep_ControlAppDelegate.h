@@ -11,6 +11,8 @@
 
 #import <NoSleep/NoSleepInterfaceWrapper.h>
 
+#import <Sparkle/Sparkle.h>
+
 @interface NoSleep_ControlAppDelegate : NSObject <NSApplicationDelegate, NoSleepNotificationDelegate> {
 @private
     IBOutlet NSWindow *window;

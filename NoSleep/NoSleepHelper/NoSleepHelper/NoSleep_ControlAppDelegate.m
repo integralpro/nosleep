@@ -69,13 +69,14 @@ static void handleSIGTERM(int signum) {
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     signal(SIGTERM, handleSIGTERM);
+    //[updater setUpdateCheckInterval:60*60*24*7];
     
-    NSArray *args = [[NSProcessInfo processInfo] arguments];
-    if([args containsObject:@"--unregister-loginitem"]) {
-        registerLoginItem(kLIUnregister);
-    } else if([args containsObject:@"--register-loginitem"]) {
-        registerLoginItem(kLIRegister);
-    }
+    //NSArray *args = [[NSProcessInfo processInfo] arguments];
+    //if([args containsObject:@"--unregister-loginitem"]) {
+    //    registerLoginItem(kLIUnregister);
+    //} else if([args containsObject:@"--register-loginitem"]) {
+    //    registerLoginItem(kLIRegister);
+    //}
     
     //inactiveIcon = [NSImage imageNamed:@"ZzTemplate.png"];
     //activeIcon = [NSImage imageNamed:@"ZzTemplate.png"];

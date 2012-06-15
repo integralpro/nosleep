@@ -21,7 +21,7 @@ if [ -e "$HELPER_PATH" ]; then
     echo "Removing NoSleep.app..."
     #open "$HELPER_PATH" --args --unregister-loginitem
     #sleep 5
-	#ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null
+    ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null
     sudo rm -rf "$HELPER_PATH"
 fi
 
