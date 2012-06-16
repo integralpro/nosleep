@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Uninstalling 1.3.0"
-sudo echo
+sudo true
 
 KEXT_ID=com.protech.NoSleep
 KEXT_PATH=/System/Library/Extensions/NoSleep.kext

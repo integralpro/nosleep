@@ -1,16 +1,12 @@
 #!/bin/sh
 
-KEXT_PATH=/System/Library/Extensions/NoSleep.kext
-HELPER_PATH=/Applications/Utilities/NoSleep.app
-AGENT_PATH=/Library/LaunchAgents/com.protech.NoSleep.plist
+if [ "$COMMON_DEFINED" = "" ]; then
+	source `dirname "$0"`/Common.sh
+fi
 
 sudo kextload "$KEXT_PATH"
 
-#defaults write loginwindow AutoLaunchedApplicationDictionary -array-add \
-#'<dict><key>Hide</key><false/><key>Path</key><string>'$HELPER_PATH'</string></dict>'
-
-#open "$HELPER_PATH" --args --register-loginitem
-sudo launchctl load "$AGENT_PATH"
-sudo launchctl start com.protech.NoSleep
+$USER_SUDO_CMD launchctl unload -S Aqua $AGENT_PATH
+$USER_SUDO_CMD launchctl load -S Aqua $AGENT_PATH
 
 echo "Done"

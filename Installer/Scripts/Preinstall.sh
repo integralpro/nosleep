@@ -1,8 +1,7 @@
 #!/bin/sh
 
-echo "Enter your password"
-sudo echo
+f=`dirname "$0"`
 
-./Uninstall_1.2.1.sh
-./Uninstall_1.3.0.sh
-./Uninstall_1.3.1.sh
+$f/./Uninstall_1.2.1.sh
+$f/./Uninstall_1.3.0.sh
+$f/./Uninstall_1.3.1.sh
