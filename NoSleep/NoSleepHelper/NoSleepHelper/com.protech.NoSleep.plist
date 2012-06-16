@@ -12,5 +12,7 @@
 	<array>
 		<string>/Applications/Utilities/NoSleep.app/Contents/MacOS/NoSleep</string>
 	</array>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
 </dict>
 </plist>
