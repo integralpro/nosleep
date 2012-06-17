@@ -7,12 +7,6 @@ if [ "$COMMON_DEFINED" = "" ]; then
 	source `dirname "$0"`/Common.sh
 fi
 
-if [ -e "$AGENT_PATH" ]; then
-	echo "Removing LaunchAgent..."
-	$USER_SUDO_CMD launchctl unload -S Aqua "$AGENT_PATH"
-	sudo rm -f "$AGENT_PATH"
-fi
-
 if [ -e "$HELPER_PATH" ]; then
     echo "Removing NoSleep.app..."
     ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null

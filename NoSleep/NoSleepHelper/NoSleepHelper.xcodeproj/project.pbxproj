@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92183DE6158B9A8800740015 /* com.protech.NoSleep.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92183DE5158B9A8800740015 /* com.protech.NoSleep.plist */; };
-		92183DE8158B9ABC00740015 /* com.protech.NoSleep.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92183DE5158B9A8800740015 /* com.protech.NoSleep.plist */; };
 		921DD80114EADE65000EC9D0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921DD80014EADE65000EC9D0 /* Cocoa.framework */; };
 		921DD80D14EADE65000EC9D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 921DD80C14EADE65000EC9D0 /* main.m */; };
 		921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921DD82314EADEC4000EC9D0 /* MainMenu.xib */; };
@@ -70,14 +68,12 @@
 			dstPath = LaunchAgents;
 			dstSubfolderSpec = 16;
 			files = (
-				92183DE8158B9ABC00740015 /* com.protech.NoSleep.plist in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		92183DE5158B9A8800740015 /* com.protech.NoSleep.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.protech.NoSleep.plist; sourceTree = "<group>"; };
 		921DD7FC14EADE65000EC9D0 /* NoSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		921DD80014EADE65000EC9D0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		921DD80314EADE65000EC9D0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,14 +115,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92183DE7158B9A9000740015 /* LaunchAgent */ = {
-			isa = PBXGroup;
-			children = (
-				92183DE5158B9A8800740015 /* com.protech.NoSleep.plist */,
-			);
-			name = LaunchAgent;
-			sourceTree = "<group>";
-		};
 		921DD7F114EADE64000EC9D0 = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +171,6 @@
 		921DD80714EADE65000EC9D0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				92183DE7158B9A9000740015 /* LaunchAgent */,
 				921DD80814EADE65000EC9D0 /* NoSleepHelper-Info.plist */,
 				921DD80C14EADE65000EC9D0 /* main.m */,
 				921DD80E14EADE65000EC9D0 /* NoSleepHelper-Prefix.pch */,
@@ -303,7 +290,6 @@
 				9299A84714F57CFF00F1DB9F /* ZzTemplate.png in Resources */,
 				921DD82D14EADEC4000EC9D0 /* MainMenu.xib in Resources */,
 				9299A84614F5739D00F1DB9F /* Logo.icns in Resources */,
-				92183DE6158B9A8800740015 /* com.protech.NoSleep.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

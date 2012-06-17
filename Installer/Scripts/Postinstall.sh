@@ -6,7 +6,7 @@ fi
 
 sudo kextload "$KEXT_PATH"
 
-$USER_SUDO_CMD launchctl unload -S Aqua $AGENT_PATH
-$USER_SUDO_CMD launchctl load -S Aqua $AGENT_PATH
+defaults write /Library/Preferences/loginwindow AutoLaunchedApplicationDictionary -array-add '{Path="$HELPER_PATH";}'
+open $HELPER_PATH
 
 echo "Done"

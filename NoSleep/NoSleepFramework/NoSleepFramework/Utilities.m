@@ -12,43 +12,45 @@
 
 BOOL registerLoginItem(LoginItemAction action) {
     UInt32 seedValue;
+    LSSharedFileListItemRef existingItem = NULL;
+    
+    NSURL *itemURL = [NSURL fileURLWithPath:@NOSLEEP_HELPER_PATH];
     
     LSSharedFileListRef loginItemsRefs = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if(!loginItemsRefs) {
+        return NO;
+    }
     
-    NSArray *loginItemsArray = (NSArray *)LSSharedFileListCopySnapshot(loginItemsRefs, &seedValue);  
+    NSArray *loginItemsArray = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItemsRefs, &seedValue)) autorelease];  
     for (id item in loginItemsArray) {    
         LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
-        NSString *displayName = (NSString *)LSSharedFileListItemCopyDisplayName(itemRef);
-        if([[@NOSLEEP_HELPER_PATH lastPathComponent] isEqualToString:displayName]) {
-            //CFURLRef path;
-            //if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*)&path, NULL) == noErr) {
-               // NSString *url = [(NSURL *)path path];
-                //if ([url isEqualToString:@NOSLEEP_HELPER_PATH]) {
-                    // if exists
-                    if(action == kLIUnregister) {
-                        LSSharedFileListItemRemove(loginItemsRefs, itemRef);
-                    }
-                    
-                    return YES;
-                //}
-                //CFRelease(path);
-            //}
+        
+        UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
+        CFURLRef URL = NULL;
+        OSStatus err = LSSharedFileListItemResolve(itemRef, resolutionFlags, &URL, /*outRef*/ NULL);
+        if (err == noErr) {
+            Boolean foundIt = CFEqual(URL, itemURL);
+            CFRelease(URL);
+            
+            if (foundIt) {
+                existingItem = itemRef;
+                break;
+            }
         }
-        [displayName release];
     }
     
-    if(action == kLIRegister) {
-        //CFURLRef url1 = (CFURLRef)[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:NOSLEEP_HELPER_IDENTIFIER];
-        //NSURL *url11 = (NSURL*)url1;
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:@NOSLEEP_HELPER_PATH];
-        
-        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItemsRefs, kLSSharedFileListItemLast,
-                                                                     NULL, NULL, (CFURLRef)url, NULL, NULL);
-        
-        if (item) {
-            CFRelease(item);
-        }
+    if(action == kLICheck) {
+        return existingItem != NULL;
+    } else if (action == kLIRegister && (existingItem == NULL)) {
+        LSSharedFileListInsertItemURL(loginItemsRefs, kLSSharedFileListItemBeforeFirst,
+                                      NULL, NULL, (CFURLRef)itemURL, NULL, NULL);
+        return YES;
+    } else if (action == kLIUnregister && (existingItem != NULL)) {
+        LSSharedFileListItemRemove(loginItemsRefs, existingItem);
+        return YES;
     }
+    
+    CFRelease(loginItemsRefs);
     
     return NO;
 }
