@@ -14,6 +14,9 @@
 
 @implementation NoSleepPreferences
 
+#define appID "com.protech.NoSleep"
+#define isBWIconEnabledID "IsBWIconEnabled"
+
 - (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
     [self didChangeValueForKey:@"lastUpdateDate"];
 }
@@ -39,6 +42,27 @@
     return [NSDateFormatter localizedStringFromDate:[[self updater] lastUpdateCheckDate]
                                           dateStyle:NSDateFormatterFullStyle
                                           timeStyle:NSDateFormatterFullStyle];
+}
+
+- (BOOL)isBWEnabled {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(isBWIconEnabledID), CFSTR(appID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
+- (void)setIsBWEnabled:(BOOL)value {
+    CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
+    CFPreferencesSetAppValue(CFSTR(isBWIconEnabledID), booleanValue, CFSTR(appID));
+    CFPreferencesAppSynchronize(CFSTR(appID));
+    
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    [center postNotificationName: @"UpdateSettings"
+                          object: [NSString stringWithCString:appID encoding:NSASCIIStringEncoding]
+                        userInfo: nil
+              deliverImmediately: YES];
 }
 
 - (id)initWithBundle:(NSBundle *)bundle
@@ -127,17 +151,6 @@
         stateBattery = newState;
     }
 }
-
-/*
-#define kAgentActionLoad "load"
-#define kAgentActionUnload "unload"
-static void performAgentAction(const char *action)
-{
-    if (fork() == 0) {
-        execlp("launchctl", action, "", NULL);
-    }
-}
-*/
 
 - (void)checkboxShowIconClicked:(id)sender {
     BOOL showIconState = [m_checkBoxShowIcon state];

@@ -22,9 +22,6 @@
     IBOutlet SUUpdater *updater;
     
     NSStatusItem *statusItem;
-    //NSImage *inactiveIcon;
-    //NSImage *activeIcon;
-    NSImage *icon;
     
     NoSleepInterfaceWrapper *noSleep;
 }

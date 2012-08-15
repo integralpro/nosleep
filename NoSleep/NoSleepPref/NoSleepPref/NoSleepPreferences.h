@@ -28,6 +28,8 @@
 - (IBAction)checkboxEnableBatteryClicked:(id)sender;
 - (IBAction)checkboxShowIconClicked:(id)sender;
 
+- (BOOL)isBWEnabled;
+- (void)setIsBWEnabled:(BOOL)value;
 - (IBAction)updateNow:(id)sender;
 - (BOOL)autoUpdate;
 - (void)setAutoUpdate:(BOOL)value;
