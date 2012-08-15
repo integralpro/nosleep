@@ -62,15 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92183DE3158B99A900740015 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = LaunchAgents;
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -221,7 +212,6 @@
 				921DD7F914EADE65000EC9D0 /* Frameworks */,
 				921DD7FA14EADE65000EC9D0 /* Resources */,
 				92069E62158B0421005EBF18 /* CopyFiles */,
-				92183DE3158B99A900740015 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -240,7 +230,7 @@
 		921DD7F314EADE64000EC9D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 921DD7F614EADE64000EC9D0 /* Build configuration list for PBXProject "NoSleepHelper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -389,6 +379,7 @@
 		921DD81B14EADE65000EC9D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -408,6 +399,7 @@
 		921DD81C14EADE65000EC9D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

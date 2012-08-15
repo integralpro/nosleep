@@ -42,4 +42,6 @@
 
 - (void)activateStatusMenu;
 
+- (IBAction)lockScreen:(id)sender;
+
 @end

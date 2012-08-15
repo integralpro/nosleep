@@ -145,4 +145,12 @@ static void handleSIGTERM(int signum) {
     }
 }
 
+- (IBAction)lockScreen:(id)sender {
+    CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
+    if(portRef) {
+        CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
+        CFRelease(portRef);
+    }
+}
+
 @end
