@@ -17,6 +17,11 @@
 #include <IOKit/IOPlatformExpert.h>
 #include <IOKit/IOUserClient.h>
 
+#include <mach/port.h>
+#include <mach/task.h>
+#include <kern/task.h>
+#include <kern/task.h>
+
 #define super IOService
 OSDefineMetaClassAndStructors( NoSleepExtension, IOService );
 
@@ -58,7 +63,16 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
             if(clamshellShouldSleep) {
                 pRootDomain->receivePowerNotification(kIOPMDisableClamshell);
             }
+         
+            // Lock screen when lid closed
+            if(clamshellState == true && oldClamshellState == false) {
+                //notify_post("com.apple.loginwindow.notify");
+                //mach_port_t bp = bootstrap_port;
+                //task_get_bootstrap_port(bootstrap_port, &bp);
+            }
         }
+        
+        oldClamshellState = clamshellState;
     } 
     
     return kIOReturnSuccess;
@@ -95,6 +109,9 @@ bool NoSleepExtension::start( IOService * provider )
 #endif
     if( !super::start( provider ))
         return( false );
+    
+    task_t x = current_task();
+    //IOLog("task: %p, %p\n", x, bootstrap_port);
     
     delayTimer = thread_call_allocate(_switchOffUserSleepDisabled, (thread_call_param_t) this);
     

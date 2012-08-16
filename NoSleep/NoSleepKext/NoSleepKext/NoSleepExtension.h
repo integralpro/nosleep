@@ -68,6 +68,7 @@ private:
     
     bool isClamshellStateInitialized:1;
     bool clamshellState:1;
+    bool oldClamshellState:1;
     bool clamshellShouldSleep:1;
     
     bool forceClientMessage;
