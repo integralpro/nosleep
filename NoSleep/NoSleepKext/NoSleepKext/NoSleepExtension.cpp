@@ -132,7 +132,7 @@ bool NoSleepExtension::start( IOService * provider )
     
     IOLog("%s: successfully started\n", getName());
     
-    return( true );
+    return true;
 }
 
 bool NoSleepExtension::willTerminate( IOService * provider, IOOptionBits options )

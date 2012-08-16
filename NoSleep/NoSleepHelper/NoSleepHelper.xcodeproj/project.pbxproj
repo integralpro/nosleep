@@ -347,7 +347,7 @@
 				PRODUCT_VERSION = 1.3.1;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				URL = "https://dl.dropbox.com/u/5014673/update.xml";
+				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
 			};
 			name = Debug;
 		};
@@ -370,7 +370,7 @@
 				PRODUCT_VERSION = 1.3.1;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				URL = "https://dl.dropbox.com/u/5014673/update.xml";
+				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
 			};
 			name = Release;
 		};
