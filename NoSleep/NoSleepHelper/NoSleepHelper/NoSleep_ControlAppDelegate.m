@@ -65,29 +65,14 @@ static void handleSIGTERM(int signum) {
     NSImage *icon = [NSImage imageNamed:@"ZzActive.pdf"];
     [icon setTemplate:YES];
     [statusItemImageView setImage: icon];
-    [icon release];
     
-    icon = [NSImage imageNamed:@"ZzInactive.pdf"];
-    [statusItemImageView setInactiveImage: icon];
-    [icon release];
-    
-    icon = [NSImage imageNamed:@"ZzActive.pdf"];
-    [statusItemImageView setActiveImage: icon];
-    [icon release];
+    [statusItemImageView setInactiveImage: [NSImage imageNamed:@"ZzInactive.pdf"]];
+    [statusItemImageView setActiveImage: [NSImage imageNamed:@"ZzActive.pdf"]];
     
     [statusItemImageView setImageState:NO];
     [statusItemImageView setMenu:statusItemMenu];
     
     [statusItem setView:statusItemImageView];
-    
-    [self updateSettings];
-    
-    NSString *observedObject = [[NSBundle bundleForClass:[self class]] bundleIdentifier];
-    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
-    [center addObserver: self
-               selector: @selector(callbackWithNotification:)
-                   name: @"UpdateSettings"
-                 object: observedObject];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -103,6 +88,16 @@ static void handleSIGTERM(int signum) {
     [noSleep setNotificationDelegate:self];
     
     [self activateStatusMenu];
+    
+    [self updateSettings];
+    
+    NSString *observedObject = [[NSBundle bundleForClass:[self class]] bundleIdentifier];
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    [center addObserver: self
+               selector: @selector(callbackWithNotification:)
+                   name: @"UpdateSettings"
+                 object: observedObject];
+    
     [self updateState:nil];
 }
 
