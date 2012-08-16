@@ -10,8 +10,60 @@
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/Utilities.h>
+#import <Sparkle/Sparkle.h>
 
 @implementation NoSleepPreferences
+
+#define appID "com.protech.NoSleep"
+#define isBWIconEnabledID "IsBWIconEnabled"
+
+- (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
+    [self didChangeValueForKey:@"lastUpdateDate"];
+}
+
+- (SUUpdater *)updater {
+    return [SUUpdater updaterForBundle:[NSBundle bundleWithPath:@NOSLEEP_HELPER_PATH]];
+}
+
+- (IBAction)updateNow:(id)sender {
+    [self willChangeValueForKey:@"lastUpdateDate"];
+    [[self updater] checkForUpdates:sender];
+}
+
+- (BOOL)autoUpdate {
+    return [[self updater] automaticallyChecksForUpdates];
+}
+
+- (void)setAutoUpdate:(BOOL)value {
+    [[self updater] setAutomaticallyChecksForUpdates:value];
+}
+
+- (NSString *)lastUpdateDate {
+    return [NSDateFormatter localizedStringFromDate:[[self updater] lastUpdateCheckDate]
+                                          dateStyle:NSDateFormatterFullStyle
+                                          timeStyle:NSDateFormatterFullStyle];
+}
+
+- (BOOL)isBWEnabled {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(isBWIconEnabledID), CFSTR(appID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
+- (void)setIsBWEnabled:(BOOL)value {
+    CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
+    CFPreferencesSetAppValue(CFSTR(isBWIconEnabledID), booleanValue, CFSTR(appID));
+    CFPreferencesAppSynchronize(CFSTR(appID));
+    
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    [center postNotificationName: @"UpdateSettings"
+                          object: [NSString stringWithCString:appID encoding:NSASCIIStringEncoding]
+                        userInfo: nil
+              deliverImmediately: YES];
+}
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
@@ -71,6 +123,8 @@
     if(!m_noSleepInterface) {
         SHOW_UI_ALERT_KEXT_NOT_LOADED();           
     }
+    
+    [[self updater] setDelegate:self];
 }
 
 - (void)didUnselect {
@@ -78,6 +132,8 @@
         [m_noSleepInterface release];
         m_noSleepInterface = nil;
     }
+    
+    [[self updater] setDelegate:nil];
 }
 
 - (IBAction)checkboxEnableACClicked:(id)sender {
@@ -95,17 +151,6 @@
         stateBattery = newState;
     }
 }
-
-/*
-#define kAgentActionLoad "load"
-#define kAgentActionUnload "unload"
-static void performAgentAction(const char *action)
-{
-    if (fork() == 0) {
-        execlp("launchctl", action, "", NULL);
-    }
-}
-*/
 
 - (void)checkboxShowIconClicked:(id)sender {
     BOOL showIconState = [m_checkBoxShowIcon state];

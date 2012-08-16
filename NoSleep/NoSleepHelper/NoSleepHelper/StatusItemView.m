@@ -14,6 +14,9 @@
 
 @implementation StatusItemView
 
+@synthesize inactiveImage;
+@synthesize activeImage;
+@synthesize isBWIconEnabled;
 @synthesize statusItem;
 @synthesize target;
 @synthesize mouseDownSelector;
@@ -31,6 +34,10 @@
         buttonCell = [[NSButtonCell alloc] init];
         [buttonCell setBezelStyle:NSTexturedSquareBezelStyle];
         [buttonCell setButtonType:NSToggleButton];
+        
+        inactiveImage = nil;
+        activeImage = nil;
+        isBWIconEnabled = YES;
     }
     return self;
 }
@@ -205,25 +212,36 @@
                                 withHighlight:isMenuVisible];
     
     int x=0;
-    if (([buttonCell image] != NULL) || (title != NULL))
+    
+    NSImage *image;
+    if(isBWIconEnabled) {
+        image = [buttonCell state] ? activeImage : inactiveImage;
+    } else {
+        image = [buttonCell image];
+    }
+    
+    if ((image != NULL) || (title != NULL))
     {
         x += StatusItemViewPaddingWidth;
     }
-    if ([buttonCell image] != NULL)
+    if (image != NULL)
     {
-        NSRect rect = [[buttonCell image] alignmentRect];
-        rect.size.width += 8;
-        rect.size.height += StatusItemViewPaddingHeight;
-        //NSPoint origin = NSMakePoint(x,StatusItemViewPaddingHeight);
-        //[[buttonCell image] drawAtPoint:origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-        
-        [buttonCell drawInteriorWithFrame:rect inView:self];
+        if(isBWIconEnabled) {
+            NSPoint origin = NSMakePoint(x, StatusItemViewPaddingHeight);
+            [image drawAtPoint:origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];            
+        } else {
+            NSRect rect = [[buttonCell image] alignmentRect];
+            rect.size.width += 8;
+            rect.size.height += StatusItemViewPaddingHeight;
+            [buttonCell drawInteriorWithFrame:rect inView:self];
+        }
         x += rect.size.width;
     }
-    if (([buttonCell image] != NULL) && (title != NULL))
+    if ((image != NULL) && (title != NULL))
     {
         x += StatusItemViewPaddingIconToText;
     }
+    
     if (title != NULL)
     {
         // Draw title string

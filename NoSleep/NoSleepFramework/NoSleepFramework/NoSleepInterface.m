@@ -60,9 +60,11 @@ NoSleepInterestNotification NoSleep_ReceiveStateChanged(NoSleepInterfaceService 
             }
             return 0;
         }
+        
+        return (NoSleepInterfaceConnect)notifyObj;
     }
     
-    return (NoSleepInterfaceConnect)notifyObj;
+    return 0;
 }
 
 void NoSleep_ReleaseStateChanged(NoSleepInterestNotification notifyObj)

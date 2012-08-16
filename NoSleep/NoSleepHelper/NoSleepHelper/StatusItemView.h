@@ -11,22 +11,27 @@
 @interface StatusItemView : NSView <NSMenuDelegate> {
     NSStatusItem *statusItem;
     NSString *title;
-    //NSImage *icon;
     NSButtonCell *buttonCell;
+    NSImage *inactiveImage;
+    NSImage *activeImage;
     BOOL imageState;
     BOOL isMenuVisible;
     BOOL isEnabled;
+    BOOL isBWIconEnabled;
     
     SEL mouseDownSelector;
     SEL rightMouseDownSelector;
     id target;
 }
 
+@property (retain, nonatomic) NSImage *inactiveImage;
+@property (retain, nonatomic) NSImage *activeImage;
 @property (retain, nonatomic) NSStatusItem *statusItem;
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) id target;
 @property (nonatomic) SEL mouseDownSelector;
 @property (nonatomic) SEL rightMouseDownSelector;
+@property (nonatomic) BOOL isBWIconEnabled;
 
 - (NSImage*)image;
 - (void) setImage:(NSImage*)newIcon;

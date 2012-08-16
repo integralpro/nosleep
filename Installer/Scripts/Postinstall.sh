@@ -1,13 +1,12 @@
 #!/bin/sh
 
-KEXT_PATH=/System/Library/Extensions/NoSleep.kext
-HELPER_PATH=/Applications/Utilities/NoSleepHelper.app
+if [ "$COMMON_DEFINED" = "" ]; then
+	source `dirname "$0"`/Common.sh
+fi
 
 sudo kextload "$KEXT_PATH"
 
-#defaults write loginwindow AutoLaunchedApplicationDictionary -array-add \
-#'<dict><key>Hide</key><false/><key>Path</key><string>'$HELPER_PATH'</string></dict>'
-
-open "$HELPER_PATH" --args --register-loginitem
+defaults write /Library/Preferences/loginwindow AutoLaunchedApplicationDictionary -array-add '{Path="$HELPER_PATH";}'
+open $HELPER_PATH
 
 echo "Done"

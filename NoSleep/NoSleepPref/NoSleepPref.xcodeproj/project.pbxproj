@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92183DEA158BAEBC00740015 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92183DE9158BAEBC00740015 /* Sparkle.framework */; };
+		92183DED158BAED500740015 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92183DE9158BAEBC00740015 /* Sparkle.framework */; };
 		92987E9414EC2FAA00DA7075 /* libNoSleep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9214EC2FA400DA7075 /* libNoSleep.a */; };
 		92987E9614EC2FFD00DA7075 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92987E9514EC2FFD00DA7075 /* IOKit.framework */; };
 		9299A83614F5308E00F1DB9F /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9299A83514F5308E00F1DB9F /* AppleACW.icns */; };
@@ -51,7 +53,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		92183DEC158BAECD00740015 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92183DED158BAED500740015 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		92183DE9158BAEBC00740015 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../NoSleepHelper/Sparkle.framework; sourceTree = "<group>"; };
 		92987E9514EC2FFD00DA7075 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9299A83314F2F5CB00F1DB9F /* AppleAC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleAC.icns; sourceTree = "<group>"; };
 		9299A83514F5308E00F1DB9F /* AppleACW.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleACW.icns; sourceTree = "<group>"; };
@@ -82,6 +98,7 @@
 				92987E9414EC2FAA00DA7075 /* libNoSleep.a in Frameworks */,
 				92D922C614EAEB29008AB70E /* Cocoa.framework in Frameworks */,
 				92D922C814EAEB29008AB70E /* PreferencePanes.framework in Frameworks */,
+				92183DEA158BAEBC00740015 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +126,7 @@
 		92D922C414EAEB29008AB70E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92183DE9158BAEBC00740015 /* Sparkle.framework */,
 				92987E9514EC2FFD00DA7075 /* IOKit.framework */,
 				92D922C514EAEB29008AB70E /* Cocoa.framework */,
 				92D922C714EAEB29008AB70E /* PreferencePanes.framework */,
@@ -192,6 +210,7 @@
 				92D922BD14EAEB29008AB70E /* Frameworks */,
 				92D922BE14EAEB29008AB70E /* Headers */,
 				92D922BF14EAEB29008AB70E /* Resources */,
+				92183DEC158BAECD00740015 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -209,6 +228,9 @@
 /* Begin PBXProject section */
 		92D922B714EAEB29008AB70E /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = 92D922BA14EAEB29008AB70E /* Build configuration list for PBXProject "NoSleepPref" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -364,6 +386,10 @@
 		92D922E014EAEB2A008AB70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../NoSleepHelper\"",
+				);
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
@@ -378,6 +404,10 @@
 		92D922E114EAEB2A008AB70E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../NoSleepHelper\"",
+				);
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";

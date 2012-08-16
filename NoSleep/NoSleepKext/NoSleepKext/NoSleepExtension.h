@@ -10,6 +10,8 @@
 
 #define KCmdFromState(x) (((x) == kNoSleepStateEnabled)?kNoSleepCommandEnabled:kNoSleepCommandDisabled)
 
+#define kIOPMSleepDisabledKey "SleepDisabled"
+
 class IOPMrootDomain;
 class IOPMPowerSource;
 
@@ -24,6 +26,8 @@ class NoSleepExtension : public IOService
     OSDeclareDefaultStructors( NoSleepExtension );
     
 private:
+    static void _switchOffUserSleepDisabled(thread_call_param_t us, thread_call_param_t);
+    
     static IOReturn _clamshellEventInterestHandler( void * target, void * refCon,
                                                   UInt32 messageType, IOService * provider,
                                                   void * messageArgument, vm_size_t argSize );
@@ -52,6 +56,8 @@ protected:
     void saveState();
     
 private:
+    thread_call_t delayTimer;
+    
     IONotifier *powerStateNotifier;
     IOPMPowerSource *pPowerSource;
     
@@ -62,6 +68,7 @@ private:
     
     bool isClamshellStateInitialized:1;
     bool clamshellState:1;
+    bool oldClamshellState:1;
     bool clamshellShouldSleep:1;
     
     bool forceClientMessage;
@@ -82,6 +89,8 @@ private:
             return batterySleepSuppressionState;
         }
     }
+    
+    void setUserSleepDisabled(bool disable);
     
     // Power events
     void startPM(IOService *provider);

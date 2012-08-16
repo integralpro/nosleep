@@ -18,6 +18,8 @@
     IBOutlet NSButton *m_checkBoxEnableAC;
     IBOutlet NSButton *m_checkBoxEnableBattery;
     IBOutlet NSButton *m_checkBoxShowIcon;
+    
+    IBOutlet NSTextField *m_lastUpdateDate;
 }
 
 - (void)updateEnableState;
@@ -25,5 +27,12 @@
 - (IBAction)checkboxEnableACClicked:(id)sender;
 - (IBAction)checkboxEnableBatteryClicked:(id)sender;
 - (IBAction)checkboxShowIconClicked:(id)sender;
+
+- (BOOL)isBWEnabled;
+- (void)setIsBWEnabled:(BOOL)value;
+- (IBAction)updateNow:(id)sender;
+- (BOOL)autoUpdate;
+- (void)setAutoUpdate:(BOOL)value;
+- (NSString *)lastUpdateDate;
 
 @end

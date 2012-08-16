@@ -192,6 +192,9 @@
 /* Begin PBXProject section */
 		921DD83E14EAE2D9000EC9D0 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
 			buildConfigurationList = 921DD84114EAE2D9000EC9D0 /* Build configuration list for PBXProject "NoSleepFramework" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -300,6 +303,7 @@
 		921DD85E14EAE2D9000EC9D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -315,6 +319,7 @@
 		921DD85F14EAE2D9000EC9D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -330,6 +335,7 @@
 		92987E8C14EC2F5700DA7075 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = NoSleep;
@@ -339,6 +345,7 @@
 		92987E8D14EC2F5700DA7075 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = NoSleep;
