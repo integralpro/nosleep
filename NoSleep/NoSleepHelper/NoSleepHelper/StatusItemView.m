@@ -37,7 +37,7 @@
         
         inactiveImage = nil;
         activeImage = nil;
-        isBWIconEnabled = YES;
+        isBWIconEnabled = NO;
     }
     return self;
 }
@@ -53,7 +53,9 @@
 - (void)mouseDown:(NSEvent *)event {
     if(mouseDownSelector != nil)
     {
-        [target performSelector:mouseDownSelector withObject:event];
+        if([event clickCount] == 2) {
+            [target performSelector:mouseDownSelector withObject:event];
+        }
     }
 }
 
@@ -68,7 +70,7 @@
     [self setNeedsDisplay:YES];
 }
 
-- (void) setEnabled:(BOOL)newEnabled
+- (void)setEnabled:(BOOL)newEnabled
 {
     isEnabled=newEnabled;
     [self setNeedsDisplay:YES];

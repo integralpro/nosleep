@@ -42,8 +42,10 @@ static void handleSIGTERM(int signum) {
     SHOW_UI_ALERT_KEXT_NOT_LOADED();
 }
 
-- (void)applicationShouldBeTerminated {
-    [self showUnloadedExtensionDialog];
+- (void)applicationShouldBeTerminated:(BOOL)showUI {
+    if(showUI) {
+        [self showUnloadedExtensionDialog];
+    }
     //[statusItemImageView setImage:inactiveIcon];
     [statusItemImageView setImageState:NO];
     
@@ -82,7 +84,7 @@ static void handleSIGTERM(int signum) {
     
     noSleep = [[NoSleepInterfaceWrapper alloc] init];
     if(noSleep == nil) {
-        [self applicationShouldBeTerminated];
+        [self applicationShouldBeTerminated:YES];
         return;
     }
     [noSleep setNotificationDelegate:self];
@@ -123,15 +125,20 @@ static void handleSIGTERM(int signum) {
 - (IBAction)toggleState:(id)sender
 {
     if ([statusItemImageView imageState] == YES) {
-        [noSleep setState:NO forMode:kNoSleepModeCurrent];
+        [noSleep setState:NO forMode:kNoSleepModeAC];
+        [noSleep setState:NO forMode:kNoSleepModeBattery];
     } else {
-        [noSleep setState:YES forMode:kNoSleepModeCurrent];
+        [noSleep setState:YES forMode:kNoSleepModeAC];
+        [noSleep setState:YES forMode:kNoSleepModeBattery];
     }
 }
 
 - (void)notificationReceived:(uint32_t)messageType :(void *)messageArgument
 {
     switch (messageType) {
+        case kIOMessageServiceIsTerminated:
+            [self applicationShouldBeTerminated:NO];
+            break;
         case kNoSleepCommandDisabled:
             //[statusItemImageView setImage:inactiveIcon];
             if(messageArgument == kNoSleepModeCurrent) {
