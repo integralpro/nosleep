@@ -37,12 +37,14 @@ private:
     static bool _powerSourcePublished(void * target, void * refCon,
                                       IOService * newService,
                                       IONotifier * notifier);
+    
 protected:
     virtual IOReturn clamshellEventInterestHandler(UInt32 messageType,
                                                    IOService * provider, void * messageArgument, vm_size_t argSize);
     virtual IOReturn powerSourceStateChanged(UInt32 messageType, IOService * provider,
                                               void * messageArgument, vm_size_t argSize);
     virtual bool powerSourcePublished(IOService * newService, IONotifier * notifier);
+    virtual void lockScreen();
     
     static UInt8 packSleepState(NoSleepState batterySleepSuppressionMode,
                                 NoSleepState acSleepSuppressionMode);

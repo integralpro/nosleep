@@ -42,11 +42,9 @@ bool NoSleepClientClass::start( IOService * provider )
     return true;
 }
 
-
 /*
  * Kill ourselves off if the client closes its connection or the client dies.
  */
-
 IOReturn NoSleepClientClass::clientClose( void )
 {
     if( !isInactive())
@@ -72,7 +70,6 @@ void NoSleepClientClass::stop( IOService * provider )
  * Lookup the external methods - supply a description of the parameters 
  * available to be called 
  */
-
 const IOExternalMethodDispatch NoSleepClientClass::sMethods[] = {
 	{   // getSleepSuppressionMode
 		(IOExternalMethodAction) &NoSleepClientClass::getSleepSuppressionMode,
@@ -109,7 +106,6 @@ IOReturn NoSleepClientClass::externalMethod(uint32_t selector, IOExternalMethodA
     
 	return super::externalMethod(selector, arguments, dispatch, target, reference);
 }
-
 
 IOReturn NoSleepClientClass::getSleepSuppressionMode(NoSleepExtension* target,
                                                      void* reference,

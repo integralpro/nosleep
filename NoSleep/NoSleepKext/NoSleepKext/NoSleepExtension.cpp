@@ -17,13 +17,19 @@
 #include <IOKit/IOPlatformExpert.h>
 #include <IOKit/IOUserClient.h>
 
-#include <mach/port.h>
-#include <mach/task.h>
-#include <kern/task.h>
-#include <kern/task.h>
+//#include <notify.h>
+//#include <mach/port.h>
+//#include <mach/task.h>
+//#include <kern/task.h>
+//#include <kern/task.h>
+//#include <mach/message.h>
 
 #define super IOService
 OSDefineMetaClassAndStructors( NoSleepExtension, IOService );
+
+void NoSleepExtension::lockScreen() {
+    this->messageClients(kNoSleepCommandLockScreenRequest);
+}
 
 void NoSleepExtension::_switchOffUserSleepDisabled(thread_call_param_t us, thread_call_param_t)
 {
@@ -52,20 +58,21 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
         clamshellShouldSleep = (bool)(((uintptr_t)messageArgument) & kClamshellSleepBit);
         isClamshellStateInitialized = true;
         
-        //This should be checked
         if((getCurrentSleepSuppressionState() == kNoSleepStateEnabled)) {
             setUserSleepDisabled(true);
             
             UInt64 deadline;
-            clock_interval_to_deadline(10, kSecondScale, &deadline);	
+            clock_interval_to_deadline(2, kSecondScale, &deadline);
             thread_call_enter_delayed(delayTimer, deadline);
             
             if(clamshellShouldSleep) {
                 pRootDomain->receivePowerNotification(kIOPMDisableClamshell);
             }
-         
+
             // Lock screen when lid closed
             if(clamshellState == true && oldClamshellState == false) {
+                lockScreen();
+                //notify_
                 //notify_post("com.apple.loginwindow.notify");
                 //mach_port_t bp = bootstrap_port;
                 //task_get_bootstrap_port(bootstrap_port, &bp);
@@ -88,7 +95,7 @@ void NoSleepExtension::setUserSleepDisabled(bool disable)
     
 #ifdef DEBUG
     IOLog("%s[%p]::%s(%d)\n", getName(), this, __FUNCTION__,
-          disable?1:0);
+          disable ? 1 : 0);
 #endif
     
     const OSSymbol *sleepdisabled_string = OSSymbol::withCString("SleepDisabled");
@@ -110,7 +117,7 @@ bool NoSleepExtension::start( IOService * provider )
     if( !super::start( provider ))
         return( false );
     
-    task_t x = current_task();
+    //task_t x = current_task();
     //IOLog("task: %p, %p\n", x, bootstrap_port);
     
     delayTimer = thread_call_allocate(_switchOffUserSleepDisabled, (thread_call_param_t) this);
@@ -181,6 +188,8 @@ void NoSleepExtension::stop( IOService * provider )
         thread_call_free(delayTimer);
     }
     
+    setUserSleepDisabled(false);
+    
     IOLog("%s: successfully stopped\n", getName());
     super::stop(provider);
 }
@@ -242,7 +251,6 @@ bool NoSleepExtension::setSleepSuppressionState(NoSleepState state, int mode)
         case kNoSleepStateDisabled:
             thread_call_cancel(delayTimer);
             setUserSleepDisabled(false);
-            
             pRootDomain->receivePowerNotification(kIOPMEnableClamshell);
             break;
             

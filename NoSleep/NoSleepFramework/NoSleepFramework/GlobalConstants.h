@@ -14,6 +14,7 @@
 #define NoSleepClientClass com_protech_nosleepclientclass
 #define kNoSleepCommandDisabled iokit_vendor_specific_msg(0)
 #define kNoSleepCommandEnabled iokit_vendor_specific_msg(1)
+#define kNoSleepCommandLockScreenRequest iokit_vendor_specific_msg(2)
 // AppleNVRAM Variable name
 #define IORegistrySleepSuppressionMode "IORegistryCurrentSleepMode"
 
