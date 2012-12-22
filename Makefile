@@ -16,7 +16,7 @@ package: binaries
 
 .PHONY: binaries
 binaries:
-	xcodebuild -parallelizeTargets -workspace NoSleep/NoSleep.xcworkspace -scheme All -configuration $(CONFIG)
+	xcodebuild -parallelizeTargets -project NoSleep/NoSleep.xcodeproj -scheme All -configuration $(CONFIG)
 
 .PHONY: clean
 clean:

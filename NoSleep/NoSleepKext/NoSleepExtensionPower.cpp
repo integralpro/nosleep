@@ -55,8 +55,8 @@ IOReturn NoSleepExtension::powerSourceStateChanged(UInt32 messageType, IOService
                                                void * messageArgument, vm_size_t argSize )
 {
 #ifdef DEBUG
-    IOLog("%s[%p]::%s(%d, %p, %p, %ld)\n", getName(), this, __FUNCTION__,
-          messageType, provider, messageArgument, argSize);
+    IOLog("%s[%p]::%s(%ld, %p, %p, %p)\n", getName(), this, __FUNCTION__,
+          (long)messageType, provider, messageArgument, (void*)argSize);
 #endif
     
     if (messageType == kIOPMMessageBatteryStatusHasChanged) {
@@ -110,8 +110,8 @@ void NoSleepExtension::stopPM()
 void NoSleepExtension::systemWillShutdown( IOOptionBits specifier )
 {
 #ifdef DEBUG
-    IOLog("%s[%p]::%s(%d)\n", getName(), this, __FUNCTION__,
-		  specifier);
+    IOLog("%s[%p]::%s(%ld)\n", getName(), this, __FUNCTION__,
+		  (long)specifier);
 #endif
     saveState();
     return super::systemWillShutdown(specifier);

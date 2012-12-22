@@ -162,8 +162,8 @@ bool NoSleepExtension::start( IOService * provider )
 bool NoSleepExtension::willTerminate( IOService * provider, IOOptionBits options )
 {
 #ifdef DEBUG
-    IOLog("%s[%p]::%s(%p, %d)\n", getName(), this, __FUNCTION__,
-		  provider, options);
+    IOLog("%s[%p]::%s(%p, %lu)\n", getName(), this, __FUNCTION__,
+		  provider, (long)options);
 #endif
     saveState();
     return super::willTerminate(provider, options);
