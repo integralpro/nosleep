@@ -344,7 +344,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_VERSION = 1.3.1;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
@@ -367,7 +367,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_VERSION = 1.3.1;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";

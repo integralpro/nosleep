@@ -296,6 +296,7 @@
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				PRODUCT_NAME = NoSleep;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = kext;
 			};
@@ -315,6 +316,7 @@
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				PRODUCT_NAME = NoSleep;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = kext;
 			};

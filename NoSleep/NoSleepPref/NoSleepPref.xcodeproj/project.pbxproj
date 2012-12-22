@@ -229,7 +229,7 @@
 		92D922B714EAEB29008AB70E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 92D922BA14EAEB29008AB70E /* Build configuration list for PBXProject "NoSleepPref" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -354,7 +354,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_VERSION = 1.3.1;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -377,7 +377,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_VERSION = 1.3.1;
+				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -386,6 +386,7 @@
 		92D922E014EAEB2A008AB70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../NoSleepHelper\"",
@@ -404,6 +405,7 @@
 		92D922E114EAEB2A008AB70E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../NoSleepHelper\"",

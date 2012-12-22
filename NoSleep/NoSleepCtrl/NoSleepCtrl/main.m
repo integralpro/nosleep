@@ -10,8 +10,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <NoSleep/GlobalConstants.h>
-#include <NoSleep/NoSleepInterfaceWrapper.h>
+#import <NoSleep/GlobalConstants.h>
+#import <NoSleep/NoSleepInterfaceWrapper.h>
 
 int verboseLevel = 1;
 bool modeAC = false;
