@@ -16,15 +16,18 @@ void exit_handler(int arg0) {
 
 int main(int argc, const char * argv[])
 {
-    NoSleepVerbose = true;
-    CFShow(CFSTR("Starting NoSleep daemon...\n"));
+    signal(SIGINT, exit_handler);
+    
+    printf("Starting NoSleep daemon...");
     id noSleepController = [[NoSleepController alloc] init];
     if(noSleepController == nil) {
-        CFShow(CFSTR("Couldn't connect to NoSleep kernel extension\n"));
+        printf(" - BAD\n");
+        printf("Couldn't connect to NoSleep kernel extension\n");
         return 1;
     }
+    printf(" - OK\n");
     CFRunLoopRun();
     [noSleepController release];
-    CFShow(CFSTR("NoSleep daemon stopped\n"));
+    printf("NoSleep daemon stopped.\n");
     return 0;
 }

@@ -29,17 +29,33 @@
     [super dealloc];
 }
 
+static BOOL testLockScreen() {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
 -(void) notificationReceived:(uint32_t)messageType :(void *)messageArgument {
     switch (messageType) {
         case kIOMessageServiceIsTerminated: {
+            printf("NoSleep kext is terminated.\n");
             CFRunLoopStop(CFRunLoopGetCurrent());
             break;
         }
         case kNoSleepCommandLockScreenRequest: {
-            CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
-            if(portRef) {
-                CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
-                CFRelease(portRef);
+            printf("Incoming lock screen request - ");
+            if(testLockScreen()) {
+                printf("locked\n");
+                CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
+                if(portRef) {
+                    CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
+                    CFRelease(portRef);
+                }
+            } else {
+                printf("locking is not required\n");
             }
             break;
         }

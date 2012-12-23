@@ -244,8 +244,8 @@
 			children = (
 				92B88A831685948E00A2993F /* Common */,
 				92B88A6516858F6600A2993F /* NoSleepKext */,
-				92B88A871685950E00A2993F /* NoSleepHelper */,
 				92B88AE91685A5E800A2993F /* NoSleepFramework */,
+				92B88A871685950E00A2993F /* NoSleepHelper */,
 				92B88B6D16862BBA00A2993F /* NoSleepPref */,
 				92B88BC71686375500A2993F /* NoSleepCtrl */,
 				92B88BDC168639B300A2993F /* NoSleepDaemon */,
@@ -298,11 +298,11 @@
 				92B88ACF1685A58D00A2993F /* MainMenu.xib */,
 				92B88AD01685A58D00A2993F /* NoSleep_ControlAppDelegate.h */,
 				92B88AD11685A58D00A2993F /* NoSleep_ControlAppDelegate.m */,
-				92B88AD21685A58D00A2993F /* NoSleepHelper-Info.plist */,
-				92B88AD31685A58D00A2993F /* NoSleepHelper-Prefix.pch */,
-				92B88AD41685A58D00A2993F /* Resources */,
 				92B88ADB1685A58D00A2993F /* StatusItemView.h */,
 				92B88ADC1685A58D00A2993F /* StatusItemView.m */,
+				92B88AD31685A58D00A2993F /* NoSleepHelper-Prefix.pch */,
+				92B88AD21685A58D00A2993F /* NoSleepHelper-Info.plist */,
+				92B88AD41685A58D00A2993F /* Resources */,
 			);
 			name = NoSleepHelper;
 			sourceTree = "<group>";
@@ -1152,6 +1152,7 @@
 				92B88AA9168596BB00A2993F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92B88B251685AA0B00A2993F /* Build configuration list for PBXNativeTarget "NoSleepFramework" */ = {
 			isa = XCConfigurationList;
@@ -1160,6 +1161,7 @@
 				92B88B271685AA0B00A2993F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92B88B7C16862BBB00A2993F /* Build configuration list for PBXNativeTarget "NoSleepPref" */ = {
 			isa = XCConfigurationList;
@@ -1168,6 +1170,7 @@
 				92B88B7E16862BBB00A2993F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92B88BCC1686375500A2993F /* Build configuration list for PBXNativeTarget "NoSleepCtrl" */ = {
 			isa = XCConfigurationList;
@@ -1176,6 +1179,7 @@
 				92B88BCE1686375500A2993F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92B88BE1168639B300A2993F /* Build configuration list for PBXNativeTarget "NoSleepDaemon" */ = {
 			isa = XCConfigurationList;
@@ -1184,6 +1188,7 @@
 				92B88BE3168639B300A2993F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

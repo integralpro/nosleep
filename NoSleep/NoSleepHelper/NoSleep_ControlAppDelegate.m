@@ -97,7 +97,7 @@ static void handleSIGTERM(int signum) {
     NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
     [center addObserver: self
                selector: @selector(callbackWithNotification:)
-                   name: @"UpdateSettings"
+                   name: @NOSLEEP_SETTINGS_UPDATE_EVENTNAME
                  object: observedObject];
     
     [self updateState:nil];
@@ -157,7 +157,7 @@ static void handleSIGTERM(int signum) {
 }
 
 - (void)updateSettings {
-    CFBooleanRef isBWIconEnabled = (CFBooleanRef)[[NSUserDefaults standardUserDefaults] valueForKey:@"IsBWIconEnabled"];
+    CFBooleanRef isBWIconEnabled = (CFBooleanRef)[[NSUserDefaults standardUserDefaults] valueForKey:@NOSLEEP_SETTINGS_isBWIconEnabledID];
     if(isBWIconEnabled != nil) {
         [statusItemImageView setIsBWIconEnabled:CFBooleanGetValue(isBWIconEnabled)];
     }

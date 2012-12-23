@@ -14,9 +14,6 @@
 
 @implementation NoSleepPreferences
 
-#define appID "com.protech.NoSleep"
-#define isBWIconEnabledID "IsBWIconEnabled"
-
 - (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
     [self didChangeValueForKey:@"lastUpdateDate"];
 }
@@ -46,7 +43,7 @@
 
 - (BOOL)isBWEnabled {
     Boolean b = false;
-    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(isBWIconEnabledID), CFSTR(appID), &b);
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_isBWIconEnabledID), CFSTR(NOSLEEP_ID), &b);
     if(b) {
         return ret;
     }
@@ -55,14 +52,29 @@
 
 - (void)setIsBWEnabled:(BOOL)value {
     CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
-    CFPreferencesSetAppValue(CFSTR(isBWIconEnabledID), booleanValue, CFSTR(appID));
-    CFPreferencesAppSynchronize(CFSTR(appID));
+    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_isBWIconEnabledID), booleanValue, CFSTR(NOSLEEP_ID));
+    CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
     
     NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
-    [center postNotificationName: @"UpdateSettings"
-                          object: [NSString stringWithCString:appID encoding:NSASCIIStringEncoding]
+    [center postNotificationName: @NOSLEEP_SETTINGS_UPDATE_EVENTNAME
+                          object: [NSString stringWithCString:NOSLEEP_ID encoding:NSASCIIStringEncoding]
                         userInfo: nil
               deliverImmediately: YES];
+}
+
+- (BOOL)toLockScreen {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
+- (void)setToLockScreen:(BOOL)value {
+    CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
+    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), booleanValue, CFSTR(NOSLEEP_ID));
+    CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
 }
 
 - (id)initWithBundle:(NSBundle *)bundle

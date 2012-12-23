@@ -28,8 +28,9 @@
 - (IBAction)checkboxEnableBatteryClicked:(id)sender;
 - (IBAction)checkboxShowIconClicked:(id)sender;
 
-- (BOOL)isBWEnabled;
-- (void)setIsBWEnabled:(BOOL)value;
+@property (assign) BOOL isBWEnabled;
+@property (assign) BOOL toLockScreen;
+
 - (IBAction)updateNow:(id)sender;
 - (BOOL)autoUpdate;
 - (void)setAutoUpdate:(BOOL)value;
