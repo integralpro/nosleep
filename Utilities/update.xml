@@ -15,5 +15,14 @@
 	        length="1175791"
 	        type="application/octet-stream" />
 	</item>
+  <item>
+	    <title>NoSleep - Version 1.3.2</title>
+	    <sparkle:releaseNotesLink>http://code.google.com/p/macosx-nosleep-extension/wiki/ChangeLog</sparkle:releaseNotesLink>
+	    <pubDate>Tue, 25 Mar 2013 02:40:00 +0700</pubDate>
+	    <enclosure url="https://macosx-nosleep-extension.googlecode.com/files/NoSleep-1.3.2.dmg?update=1"
+	        sparkle:version="1.3.2"
+	        length="1164504"
+	        type="application/octet-stream" />
+	</item>
 </channel>
 </rss>
