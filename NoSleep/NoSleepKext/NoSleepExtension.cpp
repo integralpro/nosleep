@@ -62,7 +62,7 @@ IOReturn NoSleepExtension::clamshellEventInterestHandler(UInt32 messageType, IOS
             setUserSleepDisabled(true);
             
             UInt64 deadline;
-            clock_interval_to_deadline(2, kSecondScale, &deadline);
+            clock_interval_to_deadline(10, kSecondScale, &deadline);
             thread_call_enter_delayed(delayTimer, deadline);
             
             if(clamshellShouldSleep) {
