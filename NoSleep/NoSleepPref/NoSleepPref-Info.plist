@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>Logo.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.protech.${PRODUCT_NAME:rfc1034identifier}Pref</string>
 	<key>CFBundleInfoDictionaryVersion</key>

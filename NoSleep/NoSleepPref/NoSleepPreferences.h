@@ -9,6 +9,8 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import <NoSleep/NoSleepInterfaceWrapper.h>
 
+//#import "AuthorizationService.h"
+
 @interface NoSleepPreferences : NSPreferencePane <NoSleepNotificationDelegate> {
 @private
     NoSleepInterfaceWrapper *m_noSleepInterface;
@@ -20,6 +22,8 @@
     IBOutlet NSButton *m_checkBoxShowIcon;
     
     IBOutlet NSTextField *m_lastUpdateDate;
+    
+    //AuthorizationService *authService;
 }
 
 - (void)updateEnableState;

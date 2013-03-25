@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921A63081688C3BB00BCB825 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
+		921A63151688C3EC00BCB825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 921A63131688C3E000BCB825 /* main.m */; };
+		921A63191688C41000BCB825 /* NoSleepPrefHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 921A63061688C3BB00BCB825 /* NoSleepPrefHelper */; };
+		921A63201688F0B000BCB825 /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
+		921A63221688F20200BCB825 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
+		921A632D1688F29300BCB825 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		92B88A7B1685908900A2993F /* NoSleepClientClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A741685908900A2993F /* NoSleepClientClass.cpp */; };
 		92B88A7D1685908900A2993F /* NoSleepExtension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A761685908900A2993F /* NoSleepExtension.cpp */; };
 		92B88A7F1685908900A2993F /* NoSleepExtensionPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A781685908900A2993F /* NoSleepExtensionPower.cpp */; };
@@ -54,12 +60,47 @@
 		92B88BDB168639B300A2993F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
 		92B88BE7168639D600A2993F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BE4168639D600A2993F /* main.m */; };
 		92B88BE8168639D600A2993F /* NoSleepController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BE6168639D600A2993F /* NoSleepController.m */; };
-		92B88BE9168639FE00A2993F /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFC1685A6FA00A2993F /* NoSleepInterface.m */; };
-		92B88BEA168639FE00A2993F /* NoSleepInterfaceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFE1685A6FA00A2993F /* NoSleepInterfaceWrapper.m */; };
-		92B88BEB16863A0500A2993F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88AC81685A4C000A2993F /* IOKit.framework */; };
+		92B88BF716872D4800A2993F /* NoSleepDaemon in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88BD9168639B300A2993F /* NoSleepDaemon */; };
+		92B88BF816872E6B00A2993F /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
+		92B88BFB168752E100A2993F /* com.protech.NoSleep.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88BF91687426000A2993F /* com.protech.NoSleep.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		921A63161688C3F900BCB825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 921A63051688C3BB00BCB825;
+			remoteInfo = NoSleepPrefHelper;
+		};
+		921A63231688F21100BCB825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B88B181685AA0B00A2993F;
+			remoteInfo = NoSleepFramework;
+		};
+		921A63251688F21A00BCB825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B88B181685AA0B00A2993F;
+			remoteInfo = NoSleepFramework;
+		};
+		921A63271688F21F00BCB825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B88B181685AA0B00A2993F;
+			remoteInfo = NoSleepFramework;
+		};
+		921A63291688F22F00BCB825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B88A4E16858F1C00A2993F;
+			remoteInfo = NoSleepKext;
+		};
 		92B88B541685AF2F00A2993F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
@@ -74,9 +115,35 @@
 			remoteGlobalIDString = 92B88B181685AA0B00A2993F;
 			remoteInfo = NoSleepFramework;
 		};
+		92B88BF416872D2A00A2993F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92B88BD8168639B300A2993F;
+			remoteInfo = NoSleepDaemon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		921A63041688C3BB00BCB825 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		921A63181688C40300BCB825 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				921A63191688C41000BCB825 /* NoSleepPrefHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92B88B351685ABA500A2993F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,27 +166,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92B88BC11686375500A2993F /* CopyFiles */ = {
+		92B88BF616872D3600A2993F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 6;
 			files = (
+				92B88BF716872D4800A2993F /* NoSleepDaemon in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92B88BD7168639B300A2993F /* CopyFiles */ = {
+		92B88BFA168752D600A2993F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				92B88BFB168752E100A2993F /* com.protech.NoSleep.plist in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		921A63061688C3BB00BCB825 /* NoSleepPrefHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NoSleepPrefHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		921A63131688C3E000BCB825 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		921A631E1688D45900BCB825 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		92B88A4F16858F1C00A2993F /* NoSleep.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoSleep.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B88A741685908900A2993F /* NoSleepClientClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoSleepClientClass.cpp; path = NoSleepKext/NoSleepClientClass.cpp; sourceTree = "<group>"; };
 		92B88A751685908900A2993F /* NoSleepClientClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleepClientClass.h; path = NoSleepKext/NoSleepClientClass.h; sourceTree = "<group>"; };
@@ -178,9 +250,20 @@
 		92B88BE4168639D600A2993F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		92B88BE5168639D600A2993F /* NoSleepController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSleepController.h; sourceTree = "<group>"; };
 		92B88BE6168639D600A2993F /* NoSleepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSleepController.m; sourceTree = "<group>"; };
+		92B88BF91687426000A2993F /* com.protech.NoSleep.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.protech.NoSleep.plist; sourceTree = "<group>"; };
+		92BBA80C1700B5A60041F582 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		921A63031688C3BB00BCB825 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921A63201688F0B000BCB825 /* NoSleep.framework in Frameworks */,
+				921A63081688C3BB00BCB825 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92B88A4A16858F1C00A2993F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				921A63221688F20200BCB825 /* Security.framework in Frameworks */,
 				92B88B301685AAF700A2993F /* IOKit.framework in Frameworks */,
 				92B88B1A1685AA0B00A2993F /* Cocoa.framework in Frameworks */,
 			);
@@ -211,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				921A632D1688F29300BCB825 /* Security.framework in Frameworks */,
 				92B88B9A16862E5E00A2993F /* Sparkle.framework in Frameworks */,
 				92B88B9816862D9C00A2993F /* NoSleep.framework in Frameworks */,
 				92B88B6616862BBA00A2993F /* Cocoa.framework in Frameworks */,
@@ -231,7 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B88BEB16863A0500A2993F /* IOKit.framework in Frameworks */,
+				92B88BF816872E6B00A2993F /* NoSleep.framework in Frameworks */,
 				92B88BDB168639B300A2993F /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +324,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		921A63121688C3E000BCB825 /* NoSleepPrefHelper */ = {
+			isa = PBXGroup;
+			children = (
+				921A63131688C3E000BCB825 /* main.m */,
+			);
+			name = NoSleepPrefHelper;
+			path = NoSleepPref/NoSleepPrefHelper;
+			sourceTree = SOURCE_ROOT;
+		};
 		92B88A4016858EF000A2993F = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +357,7 @@
 				92B88B6516862BBA00A2993F /* NoSleep.prefPane */,
 				92B88BC31686375500A2993F /* NoSleepCtrl */,
 				92B88BD9168639B300A2993F /* NoSleepDaemon */,
+				921A63061688C3BB00BCB825 /* NoSleepPrefHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,6 +405,7 @@
 		92B88A8E168596BA00A2993F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				921A631E1688D45900BCB825 /* Security.framework */,
 				92B88B6A16862BBA00A2993F /* AppKit.framework */,
 				92B88B6B16862BBA00A2993F /* CoreData.framework */,
 				92B88B6C16862BBA00A2993F /* Foundation.framework */,
@@ -362,6 +458,7 @@
 		92B88B6D16862BBA00A2993F /* NoSleepPref */ = {
 			isa = PBXGroup;
 			children = (
+				921A63121688C3E000BCB825 /* NoSleepPrefHelper */,
 				92B88B7F16862BE800A2993F /* en.lproj */,
 				92B88B8416862BE800A2993F /* NoSleepPref-Info.plist */,
 				92B88B8516862BE800A2993F /* NoSleepPref-Prefix.pch */,
@@ -409,6 +506,8 @@
 				92B88BE4168639D600A2993F /* main.m */,
 				92B88BE5168639D600A2993F /* NoSleepController.h */,
 				92B88BE6168639D600A2993F /* NoSleepController.m */,
+				92B88BF91687426000A2993F /* com.protech.NoSleep.plist */,
+				92BBA80C1700B5A60041F582 /* Log.h */,
 			);
 			path = NoSleepDaemon;
 			sourceTree = "<group>";
@@ -448,6 +547,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		921A63051688C3BB00BCB825 /* NoSleepPrefHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 921A63101688C3BB00BCB825 /* Build configuration list for PBXNativeTarget "NoSleepPrefHelper" */;
+			buildPhases = (
+				921A63021688C3BB00BCB825 /* Sources */,
+				921A63031688C3BB00BCB825 /* Frameworks */,
+				921A63041688C3BB00BCB825 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				921A63281688F21F00BCB825 /* PBXTargetDependency */,
+			);
+			name = NoSleepPrefHelper;
+			productName = NoSleepPrefHelper;
+			productReference = 921A63061688C3BB00BCB825 /* NoSleepPrefHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 		92B88A4E16858F1C00A2993F /* NoSleepKext */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92B88A5E16858F1C00A2993F /* Build configuration list for PBXNativeTarget "NoSleepKext" */;
@@ -475,12 +592,14 @@
 				92B88A89168596BA00A2993F /* Frameworks */,
 				92B88A8A168596BA00A2993F /* Resources */,
 				92B88B351685ABA500A2993F /* CopyFiles */,
+				92B88BF616872D3600A2993F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				92B88B551685AF2F00A2993F /* PBXTargetDependency */,
 				92B88B581685B2F400A2993F /* PBXTargetDependency */,
+				92B88BF516872D2A00A2993F /* PBXTargetDependency */,
 			);
 			name = NoSleepHelper;
 			productName = NoSleep;
@@ -499,6 +618,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				921A632A1688F22F00BCB825 /* PBXTargetDependency */,
 			);
 			name = NoSleepFramework;
 			productName = NoSleep;
@@ -515,10 +635,13 @@
 				92B88B6216862BBA00A2993F /* Resources */,
 				92B88B6316862BBA00A2993F /* Rez */,
 				92B88BB516862F4B00A2993F /* CopyFiles */,
+				921A63181688C40300BCB825 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				921A63241688F21100BCB825 /* PBXTargetDependency */,
+				921A63171688C3F900BCB825 /* PBXTargetDependency */,
 			);
 			name = NoSleepPref;
 			productName = NoSleep;
@@ -531,7 +654,6 @@
 			buildPhases = (
 				92B88BBF1686375500A2993F /* Sources */,
 				92B88BC01686375500A2993F /* Frameworks */,
-				92B88BC11686375500A2993F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -548,11 +670,12 @@
 			buildPhases = (
 				92B88BD5168639B300A2993F /* Sources */,
 				92B88BD6168639B300A2993F /* Frameworks */,
-				92B88BD7168639B300A2993F /* CopyFiles */,
+				92B88BFA168752D600A2993F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				921A63261688F21A00BCB825 /* PBXTargetDependency */,
 			);
 			name = NoSleepDaemon;
 			productName = NoSleepDaemon;
@@ -585,6 +708,7 @@
 				92B88B6416862BBA00A2993F /* NoSleepPref */,
 				92B88BC21686375500A2993F /* NoSleepCtrl */,
 				92B88BD8168639B300A2993F /* NoSleepDaemon */,
+				921A63051688C3BB00BCB825 /* NoSleepPrefHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -646,6 +770,14 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		921A63021688C3BB00BCB825 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921A63151688C3EC00BCB825 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92B88A4916858F1C00A2993F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -698,8 +830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B88BE9168639FE00A2993F /* NoSleepInterface.m in Sources */,
-				92B88BEA168639FE00A2993F /* NoSleepInterfaceWrapper.m in Sources */,
 				92B88BE7168639D600A2993F /* main.m in Sources */,
 				92B88BE8168639D600A2993F /* NoSleepController.m in Sources */,
 			);
@@ -708,6 +838,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		921A63171688C3F900BCB825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 921A63051688C3BB00BCB825 /* NoSleepPrefHelper */;
+			targetProxy = 921A63161688C3F900BCB825 /* PBXContainerItemProxy */;
+		};
+		921A63241688F21100BCB825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B88B181685AA0B00A2993F /* NoSleepFramework */;
+			targetProxy = 921A63231688F21100BCB825 /* PBXContainerItemProxy */;
+		};
+		921A63261688F21A00BCB825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B88B181685AA0B00A2993F /* NoSleepFramework */;
+			targetProxy = 921A63251688F21A00BCB825 /* PBXContainerItemProxy */;
+		};
+		921A63281688F21F00BCB825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B88B181685AA0B00A2993F /* NoSleepFramework */;
+			targetProxy = 921A63271688F21F00BCB825 /* PBXContainerItemProxy */;
+		};
+		921A632A1688F22F00BCB825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B88A4E16858F1C00A2993F /* NoSleepKext */;
+			targetProxy = 921A63291688F22F00BCB825 /* PBXContainerItemProxy */;
+		};
 		92B88B551685AF2F00A2993F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92B88A4E16858F1C00A2993F /* NoSleepKext */;
@@ -717,6 +872,11 @@
 			isa = PBXTargetDependency;
 			target = 92B88B181685AA0B00A2993F /* NoSleepFramework */;
 			targetProxy = 92B88B571685B2F400A2993F /* PBXContainerItemProxy */;
+		};
+		92B88BF516872D2A00A2993F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92B88BD8168639B300A2993F /* NoSleepDaemon */;
+			targetProxy = 92B88BF416872D2A00A2993F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -740,11 +900,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		921A630E1688C3BB00BCB825 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		921A630F1688C3BB00BCB825 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		92B88A4716858EF000A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
+				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
@@ -756,7 +965,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPYRIGHT = "Copyright © 2012 Pavel Prokofiev. All rights reserved.";
+				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_VERSION = 1.3.2;
 				SDKROOT = macosx;
@@ -1127,6 +1336,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		921A63101688C3BB00BCB825 /* Build configuration list for PBXNativeTarget "NoSleepPrefHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921A630E1688C3BB00BCB825 /* Debug */,
+				921A630F1688C3BB00BCB825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		92B88A4516858EF000A2993F /* Build configuration list for PBXProject "NoSleep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

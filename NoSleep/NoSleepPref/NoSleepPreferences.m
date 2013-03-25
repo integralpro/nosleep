@@ -12,6 +12,8 @@
 #import <NoSleep/Utilities.h>
 #import <Sparkle/Sparkle.h>
 
+#define NoSleepPrefHelper "NoSleepPrefHelper"
+
 @implementation NoSleepPreferences
 
 - (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
@@ -36,6 +38,9 @@
 }
 
 - (NSString *)lastUpdateDate {
+    if([[self updater] lastUpdateCheckDate] == nil)
+        return @"Never";
+    
     return [NSDateFormatter localizedStringFromDate:[[self updater] lastUpdateCheckDate]
                                           dateStyle:NSDateFormatterFullStyle
                                           timeStyle:NSDateFormatterFullStyle];
@@ -50,7 +55,7 @@
     return NO;
 }
 
-- (void)setIsBWEnabled:(BOOL)value {
+- (void)setIsBWEnabled:(BOOL)value {    
     CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
     CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_isBWIconEnabledID), booleanValue, CFSTR(NOSLEEP_ID));
     CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
@@ -63,25 +68,48 @@
 }
 
 - (BOOL)toLockScreen {
-    Boolean b = false;
-    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
-    if(b) {
-        return ret;
-    }
-    return NO;
+    return GetLockScreen();
 }
 
 - (void)setToLockScreen:(BOOL)value {
-    CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
-    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), booleanValue, CFSTR(NOSLEEP_ID));
-    CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
+    SetLockScreen(value);
 }
+
+/*
+- (BOOL)validateToLockScreen:(BOOL)ioValue error:(NSError * __autoreleasing *)outError {
+    BOOL ret;
+    
+    //char *tmp = getenv("TMPDIR");
+    //setenv("TMPDIR", "/tmp/", 1);
+    
+    NSString *nsValue = ioValue ? @"1" : @"0";
+    OSStatus runTaskRes = [authService runTaskForPath:[self authorizedHelperPath]
+                                        withArguments:[NSArray arrayWithObjects:@"--set", @NOSLEEP_SETTINGS_toLockScreenID, @"--value", nsValue, nil] output:nil];
+    if(runTaskRes != errAuthorizationSuccess) {
+        if (outError != NULL) {
+            NSString *errorString = @"Your request is not authorized.";
+            NSDictionary *userInfoDict = @{ NSLocalizedDescriptionKey : errorString };
+            NSError *error = [[NSError alloc] initWithDomain:@"Authorization"
+                                                        code:-1
+                                                    userInfo:userInfoDict];
+            *outError = error;
+        }
+        return ret = NO;
+    }
+    ret = YES;
+    
+    //setenv("TMPDIR", tmp, 1);
+    return ret;
+}
+*/
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
     // Initialize the location of our preferences
     if ((self = [super initWithBundle:bundle]) != nil) {
         m_noSleepInterface = nil;
+        
+        //authService = [[AuthorizationService alloc] init];
     }
     
     return self;
@@ -171,6 +199,15 @@
     } else {
         registerLoginItem(kLIUnregister);
     }
+}
+
+- (NSString *)authorizedHelperPath {
+    return [[self bundle] pathForAuxiliaryExecutable:@NoSleepPrefHelper];
+}
+
+- (void)dealloc {
+    //[authService dealloc];
+    [super dealloc];
 }
 
 @end

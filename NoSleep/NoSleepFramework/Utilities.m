@@ -54,3 +54,18 @@ BOOL registerLoginItem(LoginItemAction action) {
     
     return NO;
 }
+
+BOOL GetLockScreen() {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
+void SetLockScreen(BOOL value) {
+    CFBooleanRef booleanValue = value ? kCFBooleanTrue : kCFBooleanFalse;
+    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), booleanValue, CFSTR(NOSLEEP_ID));
+    CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
+}

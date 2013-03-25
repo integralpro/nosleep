@@ -9,6 +9,8 @@
 #import "NoSleepController.h"
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
+#import <NoSleep/Utilities.h>
+#import "Log.h"
 
 @implementation NoSleepController
 
@@ -29,33 +31,25 @@
     [super dealloc];
 }
 
-static BOOL testLockScreen() {
-    Boolean b = false;
-    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
-    if(b) {
-        return ret;
-    }
-    return NO;
-}
-
 -(void) notificationReceived:(uint32_t)messageType :(void *)messageArgument {
+    log("Notification Received");
     switch (messageType) {
         case kIOMessageServiceIsTerminated: {
-            printf("NoSleep kext is terminated.\n");
+            log("NoSleep kext is terminated.");
             CFRunLoopStop(CFRunLoopGetCurrent());
             break;
         }
         case kNoSleepCommandLockScreenRequest: {
-            printf("Incoming lock screen request - ");
-            if(testLockScreen()) {
-                printf("locked\n");
+            log("Incoming lock screen request");
+            if(GetLockScreen()) {
+                log("Locked");
                 CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
                 if(portRef) {
                     CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
                     CFRelease(portRef);
                 }
             } else {
-                printf("locking is not required\n");
+                log("Locking is not required");
             }
             break;
         }

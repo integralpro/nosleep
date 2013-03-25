@@ -17,4 +17,7 @@ typedef enum {
 
 BOOL registerLoginItem(LoginItemAction action);
 
+BOOL GetLockScreen();
+void SetLockScreen(BOOL value);
+
 #endif

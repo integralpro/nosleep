@@ -9,25 +9,42 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <Cocoa/Cocoa.h>
 #import "NoSleepController.h"
+#import "Log.h"
+
+static bool isRunning = false;
 
 void exit_handler(int arg0) {
-    CFRunLoopStop(CFRunLoopGetMain());
+    if(isRunning) {
+        CFRunLoopStop(CFRunLoopGetMain());
+    }
 }
 
 int main(int argc, const char * argv[])
 {
-    signal(SIGINT, exit_handler);
+    int ret = 0;
     
-    printf("Starting NoSleep daemon...");
+    signal(SIGINT, exit_handler);
+    signal(SIGTERM, exit_handler);
+    
+    openlog("NoSleepDaemon", LOG_PID, LOG_USER);
+    
+    log("Starting NoSleep daemon...");
+    
     id noSleepController = [[NoSleepController alloc] init];
     if(noSleepController == nil) {
-        printf(" - BAD\n");
-        printf("Couldn't connect to NoSleep kernel extension\n");
-        return 1;
+        log("NoSleep daemon start - FAILED");
+        log("Couldn't connect to NoSleep kernel extension");
+        ret = 1;
+        goto exit;
     }
-    printf(" - OK\n");
+    log("NoSleep daemon start - OK");
+    isRunning = true;
     CFRunLoopRun();
+    isRunning = false;
     [noSleepController release];
-    printf("NoSleep daemon stopped.\n");
-    return 0;
+    log("NoSleep daemon stopped.");
+    
+exit:
+    closelog();
+    return ret;
 }

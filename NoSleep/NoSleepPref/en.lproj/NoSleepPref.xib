@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2844</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -58,6 +58,7 @@
 						<object class="NSButton" id="113665330">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{18, 63}, {264, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSNextKeyView" ref="488056484"/>
@@ -91,6 +92,7 @@
 						<object class="NSImageView" id="831643027">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<set class="NSMutableSet" key="NSDragTypes">
 								<string>Apple PDF pasteboard type</string>
 								<string>Apple PICT pasteboard type</string>
@@ -168,6 +170,7 @@
 										<object class="NSImageView" id="954760836">
 											<reference key="NSNextResponder" ref="427815573"/>
 											<int key="NSvFlags">265</int>
+											<array class="NSMutableArray" key="NSSubviews"/>
 											<set class="NSMutableSet" key="NSDragTypes">
 												<string>Apple PDF pasteboard type</string>
 												<string>Apple PICT pasteboard type</string>
@@ -200,6 +203,7 @@
 										<object class="NSImageView" id="530777431">
 											<reference key="NSNextResponder" ref="427815573"/>
 											<int key="NSvFlags">268</int>
+											<array class="NSMutableArray" key="NSSubviews"/>
 											<set class="NSMutableSet" key="NSDragTypes">
 												<string>Apple PDF pasteboard type</string>
 												<string>Apple PICT pasteboard type</string>
@@ -232,6 +236,7 @@
 										<object class="NSButton" id="554309994">
 											<reference key="NSNextResponder" ref="427815573"/>
 											<int key="NSvFlags">268</int>
+											<array class="NSMutableArray" key="NSSubviews"/>
 											<string key="NSFrame">{{131, 22}, {192, 18}}</string>
 											<reference key="NSSuperview" ref="427815573"/>
 											<reference key="NSNextKeyView" ref="779359825"/>
@@ -256,6 +261,7 @@
 										<object class="NSButton" id="779359825">
 											<reference key="NSNextResponder" ref="427815573"/>
 											<int key="NSvFlags">265</int>
+											<array class="NSMutableArray" key="NSSubviews"/>
 											<string key="NSFrame">{{417, 22}, {164, 18}}</string>
 											<reference key="NSSuperview" ref="427815573"/>
 											<reference key="NSNextKeyView" ref="469050601"/>
@@ -321,6 +327,7 @@
 						<object class="NSButton" id="488056484">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{18, 43}, {264, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSNextKeyView" ref="450180343"/>
@@ -347,6 +354,7 @@
 						<object class="NSButton" id="450180343">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{505, 41}, {143, 19}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSNextKeyView" ref="506978440"/>
@@ -420,6 +428,7 @@
 						<object class="NSButton" id="942816535">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{18, 83}, {264, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSNextKeyView" ref="113665330"/>
@@ -444,14 +453,15 @@
 						<object class="NSButton" id="469050601">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{18, 103}, {264, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSNextKeyView" ref="942816535"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1069527826">
-								<int key="NSCellFlags">-2080374784</int>
+								<int key="NSCellFlags">-2079850496</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Require password to open the lid</string>
+								<string key="NSContents">Require password on display opening</string>
 								<reference key="NSSupport" ref="646106532"/>
 								<reference key="NSControlView" ref="469050601"/>
 								<int key="NSButtonFlags">1211912448</int>
@@ -613,10 +623,14 @@
 							<string key="NSLabel">value: toLockScreen</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">toLockScreen</string>
+							<dictionary key="NSOptions">
+								<boolean value="NO" key="NSRaisesForNotApplicableKeys"/>
+								<boolean value="YES" key="NSValidatesImmediately"/>
+							</dictionary>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">270</int>
+					<int key="connectionID">282</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -896,9 +910,100 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">270</int>
+			<int key="maxID">282</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">NSPreferencePane</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_firstKeyView">NSView</string>
+						<string key="_initialKeyView">NSView</string>
+						<string key="_lastKeyView">NSView</string>
+						<string key="_window">NSWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_firstKeyView">
+							<string key="name">_firstKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_initialKeyView">
+							<string key="name">_initialKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_lastKeyView">
+							<string key="name">_lastKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_window">
+							<string key="name">_window</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSPreferencePane.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NoSleepPreferences</string>
+					<string key="superclassName">NSPreferencePane</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="checkboxEnableACClicked:">id</string>
+						<string key="checkboxEnableBatteryClicked:">id</string>
+						<string key="checkboxShowIconClicked:">id</string>
+						<string key="updateNow:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="checkboxEnableACClicked:">
+							<string key="name">checkboxEnableACClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="checkboxEnableBatteryClicked:">
+							<string key="name">checkboxEnableBatteryClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="checkboxShowIconClicked:">
+							<string key="name">checkboxShowIconClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateNow:">
+							<string key="name">updateNow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="m_checkBoxEnableAC">NSButton</string>
+						<string key="m_checkBoxEnableBattery">NSButton</string>
+						<string key="m_checkBoxShowIcon">NSButton</string>
+						<string key="m_lastUpdateDate">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="m_checkBoxEnableAC">
+							<string key="name">m_checkBoxEnableAC</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="m_checkBoxEnableBattery">
+							<string key="name">m_checkBoxEnableBattery</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="m_checkBoxShowIcon">
+							<string key="name">m_checkBoxShowIcon</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="m_lastUpdateDate">
+							<string key="name">m_lastUpdateDate</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NoSleepPreferences.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
