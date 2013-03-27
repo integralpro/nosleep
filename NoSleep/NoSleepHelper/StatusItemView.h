@@ -20,6 +20,7 @@
     BOOL isBWIconEnabled;
     
     SEL mouseDownSelector;
+    SEL mouseDoubleDownSelector;
     SEL rightMouseDownSelector;
     id target;
 }
@@ -30,6 +31,7 @@
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) id target;
 @property (nonatomic) SEL mouseDownSelector;
+@property (nonatomic) SEL mouseDoubleDownSelector;
 @property (nonatomic) SEL rightMouseDownSelector;
 @property (nonatomic) BOOL isBWIconEnabled;
 

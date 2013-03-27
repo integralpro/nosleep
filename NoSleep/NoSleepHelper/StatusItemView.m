@@ -20,6 +20,7 @@
 @synthesize statusItem;
 @synthesize target;
 @synthesize mouseDownSelector;
+@synthesize mouseDoubleDownSelector;
 @synthesize rightMouseDownSelector;
 
 - (id)initWithFrame:(NSRect)frame {
@@ -51,11 +52,16 @@
 }
 
 - (void)mouseDown:(NSEvent *)event {
-    if(mouseDownSelector != nil)
+    if(mouseDoubleDownSelector != nil)
     {
         if([event clickCount] == 2) {
-            [target performSelector:mouseDownSelector withObject:event];
+            [target performSelector:mouseDoubleDownSelector withObject:event];
         }
+    }
+    
+    if(mouseDownSelector != nil)
+    {
+        [target performSelector:mouseDownSelector withObject:event];
     }
 }
 

@@ -34,6 +34,9 @@
 
 - (IBAction)openPreferences:(id)sender;
 
+- (IBAction)clickAction:(id)sender;
+- (IBAction)doubleClickAction:(id)sender;
+
 - (IBAction)updateState:(id)sender;
 - (IBAction)toggleState:(id)sender;
 

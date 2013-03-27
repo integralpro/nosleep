@@ -34,6 +34,7 @@
 
 @property (assign) BOOL isBWEnabled;
 @property (assign) BOOL toLockScreen;
+@property (assign) BOOL useDoubleClick;
 
 - (IBAction)updateNow:(id)sender;
 - (BOOL)autoUpdate;

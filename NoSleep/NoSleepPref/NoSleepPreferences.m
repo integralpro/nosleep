@@ -56,8 +56,7 @@
 }
 
 - (void)setIsBWEnabled:(BOOL)value {    
-    CFBooleanRef booleanValue = value?kCFBooleanTrue:kCFBooleanFalse;
-    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_isBWIconEnabledID), booleanValue, CFSTR(NOSLEEP_ID));
+    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_isBWIconEnabledID), value?kCFBooleanTrue:kCFBooleanFalse, CFSTR(NOSLEEP_ID));
     CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
     
     NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
@@ -73,6 +72,20 @@
 
 - (void)setToLockScreen:(BOOL)value {
     SetLockScreen(value);
+}
+
+- (BOOL)useDoubleClick {
+    Boolean b = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_useDoubleClick), CFSTR(NOSLEEP_ID), &b);
+    if(b) {
+        return ret;
+    }
+    return NO;
+}
+
+- (void)setUseDoubleClick:(BOOL)value {
+    CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_useDoubleClick), value?kCFBooleanTrue:kCFBooleanFalse, CFSTR(NOSLEEP_ID));
+    CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
 }
 
 /*
@@ -203,11 +216,6 @@
 
 - (NSString *)authorizedHelperPath {
     return [[self bundle] pathForAuxiliaryExecutable:@NoSleepPrefHelper];
-}
-
-- (void)dealloc {
-    //[authService dealloc];
-    [super dealloc];
 }
 
 @end

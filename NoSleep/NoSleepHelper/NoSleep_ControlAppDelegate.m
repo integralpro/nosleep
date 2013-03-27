@@ -57,7 +57,8 @@ static void handleSIGTERM(int signum) {
     [statusItemImageView setStatusItem:statusItem];
     
     [statusItemImageView setTarget:self];
-    [statusItemImageView setMouseDownSelector:@selector(toggleState:)];
+    [statusItemImageView setMouseDownSelector:@selector(clickAction:)];
+    [statusItemImageView setMouseDoubleDownSelector:@selector(doubleClickAction:)];
     
     //[statusItemImageView setImage: inactiveIcon];
     //[statusItemImageView setTitle:@"Hello all!!"];
@@ -112,6 +113,22 @@ static void handleSIGTERM(int signum) {
 {
     [super dealloc];
 }
+
+static CFBooleanRef getUseDoubleClick() {
+    return (CFBooleanRef)[[NSUserDefaults standardUserDefaults] valueForKey:@NOSLEEP_SETTINGS_useDoubleClick];
+}
+
+- (IBAction)clickAction:(id)sender {
+    CFBooleanRef val = getUseDoubleClick();
+    if(val == kCFBooleanFalse || val == nil) {
+        [self toggleState:sender];
+    }
+}
+
+- (IBAction)doubleClickAction:(id)sender {
+    if(getUseDoubleClick() == kCFBooleanTrue) {
+        [self toggleState:sender];
+    }}
 
 - (IBAction)updateState:(id)sender
 {
