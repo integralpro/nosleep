@@ -38,3 +38,4 @@
 
 #define NOSLEEP_SETTINGS_isBWIconEnabledID "IsBWIconEnabled"
 #define NOSLEEP_SETTINGS_toLockScreenID "LockScreen"
+#define NOSLEEP_SETTINGS_useDoubleClick "UseDoubleClick"
