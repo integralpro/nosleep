@@ -340,10 +340,11 @@ OSReturn NoSleepExtension::readNVRAM(UInt8 *value)
     if ( entry )
     {
         OSObject *rawValue = entry->getProperty(IORegistrySleepSuppressionMode);
-#ifdef DEBUG
-        IOLog("%s: rawValueClassName: %s\n", getName(), rawValue->getMetaClass()->getClassName());
-#endif
+
         if(rawValue != NULL) {
+#ifdef DEBUG
+            IOLog("%s: rawValueClassName: %s\n", getName(), rawValue->getMetaClass()->getClassName());
+#endif
             OSData *data = OSDynamicCast(OSData, rawValue);
             if(data->getLength() == 1) {
                 *value = ((UInt8 *)data->getBytesNoCopy())[0];
