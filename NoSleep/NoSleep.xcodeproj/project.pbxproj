@@ -816,7 +816,7 @@
 		92B88A4716858EF000A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_VERSION = 1.3.3;
@@ -828,7 +828,7 @@
 		92B88A4816858EF000A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_VERSION = 1.3.3;

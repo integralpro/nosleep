@@ -16,11 +16,11 @@ package: binaries
 
 .PHONY: binaries
 binaries:
-	xcodebuild -parallelizeTargets -project NoSleep/NoSleep.xcodeproj -scheme All -configuration $(CONFIG)
+	xcodebuild -parallelizeTargets -project NoSleep/NoSleep.xcodeproj -alltargets -configuration $(CONFIG)
 
 .PHONY: clean
 clean:
-	/bin/rm -rf DerivedData Delivery
+	/bin/rm -rf Delivery NoSleep/build
 
 .PHONY: delivery
 delivery:
@@ -32,21 +32,22 @@ delivery:
 	echo >> Delivery/Uninstall.command
 	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
 	chmod +x Delivery/Uninstall.command
-	cp -r DerivedData/Installer/NoSleep.mpkg Delivery/
+	cp -r Installer/NoSleep.mpkg Delivery/
 
 .PHONY: dmg
 dmg: delivery
-	if [ -e DerivedData/DMG ]; then rm -rf DerivedData/DMG; fi
-	mkdir -p DerivedData/DMG
+	if [ -e DMG ]; then rm -rf DMG; fi
+	mkdir -p DMG
 	./Utilities/create-dmg \
 		--window-size 480 300 \
 		--icon-size 96 \
 		--volname "NoSleep Extension" \
 		--icon "NoSleep.mpkg" 160 130 \
 		--icon "Uninstall.command" 320 130 \
-		DerivedData/DMG/NoSleep.dmg \
+		DMG/NoSleep.dmg \
 		Delivery
-	cp DerivedData/DMG/NoSleep.dmg Delivery
+	cp DMG/NoSleep.dmg Delivery
+	rm -rf DMG
 
 .PHONY: dk, dkc
 dkc:
