@@ -17,7 +17,7 @@ static void notificationHandler(void *refCon,
                                 uint32_t messageType,
                                 void *messageArgument)
 {
-    NoSleepInterfaceWrapper *wrapper = (NoSleepInterfaceWrapper *)refCon;
+    NoSleepInterfaceWrapper *wrapper = (__bridge NoSleepInterfaceWrapper *)refCon;
     
     id<NoSleepNotificationDelegate> delegate = [wrapper notificationDelegate];
     if(delegate) {

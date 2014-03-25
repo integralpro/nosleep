@@ -20,7 +20,7 @@ binaries:
 
 .PHONY: clean
 clean:
-	/bin/rm -rf Delivery NoSleep/build
+	/bin/rm -rf DerivedData Delivery
 
 .PHONY: delivery
 delivery:
@@ -32,22 +32,21 @@ delivery:
 	echo >> Delivery/Uninstall.command
 	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
 	chmod +x Delivery/Uninstall.command
-	cp -r Installer/NoSleep.mpkg Delivery/
+	cp -r DerivedData/Installer/NoSleep.mpkg Delivery/
 
 .PHONY: dmg
 dmg: delivery
-	if [ -e DMG ]; then rm -rf DMG; fi
-	mkdir -p DMG
+	if [ -e DerivedData/DMG ]; then rm -rf DerivedData/DMG; fi
+	mkdir -p DerivedData/DMG
 	./Utilities/create-dmg \
 		--window-size 480 300 \
 		--icon-size 96 \
 		--volname "NoSleep Extension" \
 		--icon "NoSleep.mpkg" 160 130 \
 		--icon "Uninstall.command" 320 130 \
-		DMG/NoSleep.dmg \
+		DerivedData/DMG/NoSleep.dmg \
 		Delivery
-	cp DMG/NoSleep.dmg Delivery
-	rm -rf DMG
+	cp DerivedData/DMG/NoSleep.dmg Delivery
 
 .PHONY: dk, dkc
 dkc:

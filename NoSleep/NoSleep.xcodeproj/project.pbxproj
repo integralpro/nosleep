@@ -620,7 +620,7 @@
 		92B88A4216858EF000A2993F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 92B88A4516858EF000A2993F /* Build configuration list for PBXProject "NoSleep" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -816,11 +816,14 @@
 		92B88A4716858EF000A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
+				CODE_SIGN_IDENTITY = "Pavel Prokofiev";
+				COPYRIGHT = "Copyright © 2012-2014 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_VERSION = 1.3.3;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_VERSION = 1.3.4;
 				SDKROOT = macosx;
+				SYMROOT = ../DerivedData;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
 			};
 			name = Debug;
@@ -828,11 +831,13 @@
 		92B88A4816858EF000A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				COPYRIGHT = "Copyright © 2012-2013 Pavel Prokofiev. All rights reserved.";
+				CODE_SIGN_IDENTITY = "Pavel Prokofiev";
+				COPYRIGHT = "Copyright © 2012-2014 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_VERSION = 1.3.3;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_VERSION = 1.3.4;
 				SDKROOT = macosx;
+				SYMROOT = ../DerivedData;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
 			};
 			name = Release;
@@ -840,7 +845,6 @@
 		92B88A5F16858F1C00A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -875,7 +879,6 @@
 		92B88A6016858F1C00A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -903,7 +906,6 @@
 		92B88AA8168596BB00A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -912,7 +914,8 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/3rd-party\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/3rd-party",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -939,7 +942,6 @@
 		92B88AA9168596BB00A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -949,7 +951,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/3rd-party\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/3rd-party",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -968,7 +971,6 @@
 		92B88B261685AA0B00A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1005,7 +1007,6 @@
 		92B88B271685AA0B00A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1035,7 +1036,6 @@
 		92B88B7D16862BBB00A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1043,13 +1043,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/3rd-party",
+					"$(PROJECT_DIR)",
 					"$(inherited)",
-					"\"$(SRCROOT)/3rd-party\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
@@ -1073,7 +1073,6 @@
 		92B88B7E16862BBB00A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1082,12 +1081,12 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/3rd-party",
+					"$(PROJECT_DIR)",
 					"$(inherited)",
-					"\"$(SRCROOT)/3rd-party\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoSleepPref/NoSleepPref-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1104,7 +1103,6 @@
 		92B88BCD1686375500A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1131,7 +1129,6 @@
 		92B88BCE1686375500A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1151,7 +1148,6 @@
 		92B88BE2168639B300A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1178,7 +1174,6 @@
 		92B88BE3168639B300A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
