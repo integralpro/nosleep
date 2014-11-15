@@ -28,6 +28,8 @@
 	<false/>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>${COPYRIGHT}</string>
 	<key>NSMainNibFile</key>
@@ -36,7 +38,5 @@
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
 	<string>${URL}</string>
-	<key>LSUIElement</key>
-	<true/>
 </dict>
 </plist>

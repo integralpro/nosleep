@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		921A63221688F20200BCB825 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		921A632D1688F29300BCB825 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
+		926B8E1419F6D4910091EE2A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
+		927FE20719F3C693000CAF7B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
+		927FE20B19F40B06000CAF7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
+		927FE20C19F4128F000CAF7B /* NoSleep.kext in Resources */ = {isa = PBXBuildFile; fileRef = 92B88A4F16858F1C00A2993F /* NoSleep.kext */; };
+		927FE20E19F412DE000CAF7B /* MainMenu.xib in Sources */ = {isa = PBXBuildFile; fileRef = 92B88ACF1685A58D00A2993F /* MainMenu.xib */; };
 		92B88A7B1685908900A2993F /* NoSleepClientClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A741685908900A2993F /* NoSleepClientClass.cpp */; };
 		92B88A7D1685908900A2993F /* NoSleepExtension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A761685908900A2993F /* NoSleepExtension.cpp */; };
 		92B88A7F1685908900A2993F /* NoSleepExtensionPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A781685908900A2993F /* NoSleepExtensionPower.cpp */; };
@@ -17,7 +22,6 @@
 		92B88AE01685A58D00A2993F /* NoSleep_ControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AD11685A58D00A2993F /* NoSleep_ControlAppDelegate.m */; };
 		92B88AE51685A58D00A2993F /* ZzActive.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 92B88AD81685A58D00A2993F /* ZzActive.pdf */; };
 		92B88AE61685A58D00A2993F /* ZzInactive.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 92B88AD91685A58D00A2993F /* ZzInactive.pdf */; };
-		92B88AE81685A58D00A2993F /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88ADC1685A58D00A2993F /* StatusItemView.m */; };
 		92B88B1A1685AA0B00A2993F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88A8F168596BA00A2993F /* Cocoa.framework */; };
 		92B88B281685AA4400A2993F /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFC1685A6FA00A2993F /* NoSleepInterface.m */; };
 		92B88B291685AA4400A2993F /* NoSleepInterfaceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFE1685A6FA00A2993F /* NoSleepInterfaceWrapper.m */; };
@@ -27,24 +31,21 @@
 		92B88B2D1685AA5900A2993F /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B88B001685A6FA00A2993F /* Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92B88B2E1685AA6100A2993F /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88B011685A6FA00A2993F /* Utilities.m */; };
 		92B88B2F1685AAD000A2993F /* GlobalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B88A841685949900A2993F /* GlobalConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		92B88B301685AAF700A2993F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88AC81685A4C000A2993F /* IOKit.framework */; };
 		92B88B341685AB7E00A2993F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; };
 		92B88B511685AD9200A2993F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B88ACF1685A58D00A2993F /* MainMenu.xib */; };
 		92B88B531685ADB200A2993F /* Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B521685ADAE00A2993F /* Logo.icns */; };
-		92B88B591685B30300A2993F /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
-		92B88B5D1685B43B00A2993F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; };
+		92B88B591685B30300A2993F /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		92B88B5D1685B43B00A2993F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		92B88B5E1685B4C400A2993F /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
 		92B88B6616862BBA00A2993F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88A8F168596BA00A2993F /* Cocoa.framework */; };
 		92B88B6816862BBA00A2993F /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B6716862BBA00A2993F /* PreferencePanes.framework */; };
 		92B88B9716862D9000A2993F /* NoSleepPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88B8716862BE800A2993F /* NoSleepPreferences.m */; };
 		92B88B9816862D9C00A2993F /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
 		92B88B9A16862E5E00A2993F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; };
-		92B88BB616862F6300A2993F /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
+		92B88BB616862F6300A2993F /* NoSleep.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		92B88BB71686304400A2993F /* Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B521685ADAE00A2993F /* Logo.icns */; };
-		92B88BB81686312600A2993F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; };
+		92B88BB81686312600A2993F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88B331685AB6A00A2993F /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		92B88BB9168631B800A2993F /* NoSleepPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B8216862BE800A2993F /* NoSleepPref.xib */; };
-		92B88BBA168632FA00A2993F /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B8A16862BE800A2993F /* AppleACW.icns */; };
-		92B88BBB168632FA00A2993F /* AppleBattery.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B8B16862BE800A2993F /* AppleBattery.icns */; };
 		92B88BBC168635E000A2993F /* GlobalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B88A841685949900A2993F /* GlobalConstants.h */; };
 		92B88BBD168635E000A2993F /* NoSleepClientClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B88A751685908900A2993F /* NoSleepClientClass.h */; };
 		92B88BBE168635E000A2993F /* NoSleepExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B88A771685908900A2993F /* NoSleepExtension.h */; };
@@ -52,13 +53,13 @@
 		92B88BD0168637C400A2993F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BCF168637C400A2993F /* main.m */; };
 		92B88BD21686386000A2993F /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFC1685A6FA00A2993F /* NoSleepInterface.m */; };
 		92B88BD31686386000A2993F /* NoSleepInterfaceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFE1685A6FA00A2993F /* NoSleepInterfaceWrapper.m */; };
-		92B88BD41686386B00A2993F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88AC81685A4C000A2993F /* IOKit.framework */; };
 		92B88BDB168639B300A2993F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
 		92B88BE7168639D600A2993F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BE4168639D600A2993F /* main.m */; };
 		92B88BE8168639D600A2993F /* NoSleepController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BE6168639D600A2993F /* NoSleepController.m */; };
-		92B88BF716872D4800A2993F /* NoSleepDaemon in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88BD9168639B300A2993F /* NoSleepDaemon */; };
 		92B88BF816872E6B00A2993F /* NoSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; };
 		92B88BFB168752E100A2993F /* com.protech.NoSleep.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92B88BF91687426000A2993F /* com.protech.NoSleep.plist */; };
+		92D4D9141A16833E00CB5836 /* AppleBattery.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9121A16833E00CB5836 /* AppleBattery.icns */; };
+		92D4D9161A16835000CB5836 /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9151A16835000CB5836 /* AppleACW.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,13 +98,6 @@
 			remoteGlobalIDString = 92B88B181685AA0B00A2993F;
 			remoteInfo = NoSleepFramework;
 		};
-		92B88BF416872D2A00A2993F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92B88A4216858EF000A2993F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92B88BD8168639B300A2993F;
-			remoteInfo = NoSleepDaemon;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -129,16 +123,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92B88BF616872D3600A2993F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				92B88BF716872D4800A2993F /* NoSleepDaemon in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92B88BFA168752D600A2993F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,6 +138,8 @@
 /* Begin PBXFileReference section */
 		921A63131688C3E000BCB825 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		921A631E1688D45900BCB825 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		927FE20619F3C693000CAF7B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		927FE20919F40AE2000CAF7B /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
 		92B88A4F16858F1C00A2993F /* NoSleep.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoSleep.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B88A741685908900A2993F /* NoSleepClientClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoSleepClientClass.cpp; path = NoSleepKext/NoSleepClientClass.cpp; sourceTree = "<group>"; };
 		92B88A751685908900A2993F /* NoSleepClientClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleepClientClass.h; path = NoSleepKext/NoSleepClientClass.h; sourceTree = "<group>"; };
@@ -168,7 +154,6 @@
 		92B88A92168596BA00A2993F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		92B88A93168596BA00A2993F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		92B88A94168596BA00A2993F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		92B88AC81685A4C000A2993F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		92B88ACE1685A58D00A2993F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NoSleepHelper/main.m; sourceTree = "<group>"; };
 		92B88ACF1685A58D00A2993F /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = NoSleepHelper/MainMenu.xib; sourceTree = "<group>"; };
 		92B88AD01685A58D00A2993F /* NoSleep_ControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleep_ControlAppDelegate.h; path = NoSleepHelper/NoSleep_ControlAppDelegate.h; sourceTree = "<group>"; };
@@ -177,8 +162,6 @@
 		92B88AD31685A58D00A2993F /* NoSleepHelper-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NoSleepHelper-Prefix.pch"; path = "NoSleepHelper/NoSleepHelper-Prefix.pch"; sourceTree = "<group>"; };
 		92B88AD81685A58D00A2993F /* ZzActive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ZzActive.pdf; sourceTree = "<group>"; };
 		92B88AD91685A58D00A2993F /* ZzInactive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ZzInactive.pdf; sourceTree = "<group>"; };
-		92B88ADB1685A58D00A2993F /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusItemView.h; path = NoSleepHelper/StatusItemView.h; sourceTree = "<group>"; };
-		92B88ADC1685A58D00A2993F /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusItemView.m; path = NoSleepHelper/StatusItemView.m; sourceTree = "<group>"; };
 		92B88AF91685A6FA00A2993F /* NoSleepFramework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "NoSleepFramework-Info.plist"; path = "NoSleepFramework/NoSleepFramework-Info.plist"; sourceTree = "<group>"; };
 		92B88AFA1685A6FA00A2993F /* NoSleepFramework-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NoSleepFramework-Prefix.pch"; path = "NoSleepFramework/NoSleepFramework-Prefix.pch"; sourceTree = "<group>"; };
 		92B88AFB1685A6FA00A2993F /* NoSleepInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleepInterface.h; path = NoSleepFramework/NoSleepInterface.h; sourceTree = "<group>"; };
@@ -202,9 +185,6 @@
 		92B88B8516862BE800A2993F /* NoSleepPref-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NoSleepPref-Prefix.pch"; path = "NoSleepPref/NoSleepPref-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		92B88B8616862BE800A2993F /* NoSleepPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleepPreferences.h; path = NoSleepPref/NoSleepPreferences.h; sourceTree = SOURCE_ROOT; };
 		92B88B8716862BE800A2993F /* NoSleepPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoSleepPreferences.m; path = NoSleepPref/NoSleepPreferences.m; sourceTree = SOURCE_ROOT; };
-		92B88B8916862BE800A2993F /* AppleAC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleAC.icns; sourceTree = "<group>"; };
-		92B88B8A16862BE800A2993F /* AppleACW.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleACW.icns; sourceTree = "<group>"; };
-		92B88B8B16862BE800A2993F /* AppleBattery.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleBattery.icns; sourceTree = "<group>"; };
 		92B88BC31686375500A2993F /* NoSleepCtrl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NoSleepCtrl; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B88BC51686375500A2993F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		92B88BCF168637C400A2993F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NoSleepCtrl/main.m; sourceTree = SOURCE_ROOT; };
@@ -214,6 +194,8 @@
 		92B88BE6168639D600A2993F /* NoSleepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSleepController.m; sourceTree = "<group>"; };
 		92B88BF91687426000A2993F /* com.protech.NoSleep.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.protech.NoSleep.plist; sourceTree = "<group>"; };
 		92BBA80C1700B5A60041F582 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		92D4D9121A16833E00CB5836 /* AppleBattery.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleBattery.icns; sourceTree = "<group>"; };
+		92D4D9151A16835000CB5836 /* AppleACW.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleACW.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927FE20B19F40B06000CAF7B /* Security.framework in Frameworks */,
 				92B88B5E1685B4C400A2993F /* NoSleep.framework in Frameworks */,
 				92B88B341685AB7E00A2993F /* Sparkle.framework in Frameworks */,
 				92B88A90168596BA00A2993F /* Cocoa.framework in Frameworks */,
@@ -238,8 +221,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927FE20719F3C693000CAF7B /* IOKit.framework in Frameworks */,
 				921A63221688F20200BCB825 /* Security.framework in Frameworks */,
-				92B88B301685AAF700A2993F /* IOKit.framework in Frameworks */,
 				92B88B1A1685AA0B00A2993F /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B88BD41686386B00A2993F /* IOKit.framework in Frameworks */,
+				926B8E1419F6D4910091EE2A /* IOKit.framework in Frameworks */,
 				92B88BC61686375500A2993F /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,8 +328,6 @@
 				92B88ACF1685A58D00A2993F /* MainMenu.xib */,
 				92B88AD01685A58D00A2993F /* NoSleep_ControlAppDelegate.h */,
 				92B88AD11685A58D00A2993F /* NoSleep_ControlAppDelegate.m */,
-				92B88ADB1685A58D00A2993F /* StatusItemView.h */,
-				92B88ADC1685A58D00A2993F /* StatusItemView.m */,
 				92B88AD31685A58D00A2993F /* NoSleepHelper-Prefix.pch */,
 				92B88AD21685A58D00A2993F /* NoSleepHelper-Info.plist */,
 				92B88AD41685A58D00A2993F /* Resources */,
@@ -357,6 +338,8 @@
 		92B88A8E168596BA00A2993F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				927FE20919F40AE2000CAF7B /* SecurityFoundation.framework */,
+				927FE20619F3C693000CAF7B /* IOKit.framework */,
 				921A631E1688D45900BCB825 /* Security.framework */,
 				92B88B6A16862BBA00A2993F /* AppKit.framework */,
 				92B88B6B16862BBA00A2993F /* CoreData.framework */,
@@ -364,7 +347,6 @@
 				92B88A92168596BA00A2993F /* AppKit.framework */,
 				92B88A93168596BA00A2993F /* CoreData.framework */,
 				92B88A94168596BA00A2993F /* Foundation.framework */,
-				92B88AC81685A4C000A2993F /* IOKit.framework */,
 				92B88B331685AB6A00A2993F /* Sparkle.framework */,
 				92B88A8F168596BA00A2993F /* Cocoa.framework */,
 				92B88B6716862BBA00A2993F /* PreferencePanes.framework */,
@@ -435,9 +417,8 @@
 		92B88B8816862BE800A2993F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				92B88B8916862BE800A2993F /* AppleAC.icns */,
-				92B88B8A16862BE800A2993F /* AppleACW.icns */,
-				92B88B8B16862BE800A2993F /* AppleBattery.icns */,
+				92D4D9151A16835000CB5836 /* AppleACW.icns */,
+				92D4D9121A16833E00CB5836 /* AppleBattery.icns */,
 			);
 			name = Resources;
 			path = NoSleepPref/Resources;
@@ -526,14 +507,12 @@
 				92B88A89168596BA00A2993F /* Frameworks */,
 				92B88A8A168596BA00A2993F /* Resources */,
 				92B88B351685ABA500A2993F /* CopyFiles */,
-				92B88BF616872D3600A2993F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				92B88B551685AF2F00A2993F /* PBXTargetDependency */,
 				92B88B581685B2F400A2993F /* PBXTargetDependency */,
-				92B88BF516872D2A00A2993F /* PBXTargetDependency */,
 			);
 			name = NoSleepHelper;
 			productName = NoSleep;
@@ -620,7 +599,7 @@
 		92B88A4216858EF000A2993F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 			};
 			buildConfigurationList = 92B88A4516858EF000A2993F /* Build configuration list for PBXProject "NoSleep" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -656,6 +635,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927FE20C19F4128F000CAF7B /* NoSleep.kext in Resources */,
 				92B88B531685ADB200A2993F /* Logo.icns in Resources */,
 				92B88B511685AD9200A2993F /* MainMenu.xib in Resources */,
 				92B88AE51685A58D00A2993F /* ZzActive.pdf in Resources */,
@@ -674,9 +654,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B88BBA168632FA00A2993F /* AppleACW.icns in Resources */,
-				92B88BBB168632FA00A2993F /* AppleBattery.icns in Resources */,
 				92B88BB9168631B800A2993F /* NoSleepPref.xib in Resources */,
+				92D4D9141A16833E00CB5836 /* AppleBattery.icns in Resources */,
+				92D4D9161A16835000CB5836 /* AppleACW.icns in Resources */,
 				92B88BB71686304400A2993F /* Logo.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,9 +695,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927FE20E19F412DE000CAF7B /* MainMenu.xib in Sources */,
 				92B88ADE1685A58D00A2993F /* main.m in Sources */,
 				92B88AE01685A58D00A2993F /* NoSleep_ControlAppDelegate.m in Sources */,
-				92B88AE81685A58D00A2993F /* StatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,11 +766,6 @@
 			target = 92B88B181685AA0B00A2993F /* NoSleepFramework */;
 			targetProxy = 92B88B571685B2F400A2993F /* PBXContainerItemProxy */;
 		};
-		92B88BF516872D2A00A2993F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92B88BD8168639B300A2993F /* NoSleepDaemon */;
-			targetProxy = 92B88BF416872D2A00A2993F /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -816,12 +791,13 @@
 		92B88A4716858EF000A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Pavel Prokofiev";
+				ADDITIONAL_SDKS = "";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPYRIGHT = "Copyright © 2012-2014 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_VERSION = 1.3.4;
+				PRODUCT_VERSION = 1.4.0;
 				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
@@ -831,11 +807,12 @@
 		92B88A4816858EF000A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Pavel Prokofiev";
+				ADDITIONAL_SDKS = "";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPYRIGHT = "Copyright © 2012-2014 Pavel Prokofiev. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_VERSION = 1.3.4;
+				PRODUCT_VERSION = 1.4.0;
 				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
 				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";

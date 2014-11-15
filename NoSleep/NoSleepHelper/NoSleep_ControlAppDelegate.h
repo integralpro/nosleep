@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "StatusItemView.h"
 
 #import <NoSleep/NoSleepInterfaceWrapper.h>
 
@@ -17,28 +16,27 @@
 @private
     IBOutlet NSWindow *window;
     IBOutlet NSMenu *statusItemMenu;
-    IBOutlet StatusItemView *statusItemImageView;
     
     IBOutlet SUUpdater *updater;
     
     NSStatusItem *statusItem;
     
     NoSleepInterfaceWrapper *noSleep;
+    
+    NSImage *inactiveImage;
+    NSImage *activeImage;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSMenu *statusItemMenu;
-@property (assign) IBOutlet StatusItemView *statusItemImageView;
 
 @property (assign) IBOutlet SUUpdater *updater;
 
+@property (assign) NSCellStateValue enabled;
+
 - (IBAction)openPreferences:(id)sender;
 
-- (IBAction)clickAction:(id)sender;
-- (IBAction)doubleClickAction:(id)sender;
-
 - (IBAction)updateState:(id)sender;
-- (IBAction)toggleState:(id)sender;
 
 - (void)activateStatusMenu;
 

@@ -1,6 +1,7 @@
 CONFIG=Release
 
-BUILDDIR=DerivedData/NoSleep/Build/Products/$(CONFIG)
+BUILDDIR=DerivedData/$(CONFIG)
+INSTPLUGBUILDDIR=DerivedData/$(CONFIG)
 
 SUDO=sudo
 KEXTSTAT=/usr/sbin/kextstat
@@ -12,6 +13,7 @@ all: delivery
 
 .PHONY: package
 package: binaries
+	xcodebuild -parallelizeTargets -project Installer/Plugins.xcodeproj -alltargets -configuration $(CONFIG)
 	packagesbuild Installer/NoSleepPkg.pkgproj
 
 .PHONY: binaries
@@ -32,7 +34,7 @@ delivery:
 	echo >> Delivery/Uninstall.command
 	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
 	chmod +x Delivery/Uninstall.command
-	cp -r DerivedData/Installer/NoSleep.mpkg Delivery/
+	cp -r DerivedData/Installer/NoSleep.pkg Delivery/
 
 .PHONY: dmg
 dmg: delivery
@@ -42,7 +44,7 @@ dmg: delivery
 		--window-size 480 300 \
 		--icon-size 96 \
 		--volname "NoSleep Extension" \
-		--icon "NoSleep.mpkg" 160 130 \
+		--icon "NoSleep.pkg" 160 130 \
 		--icon "Uninstall.command" 320 130 \
 		DerivedData/DMG/NoSleep.dmg \
 		Delivery

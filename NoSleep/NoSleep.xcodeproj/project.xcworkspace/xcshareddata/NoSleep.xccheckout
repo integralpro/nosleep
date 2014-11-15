@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>322D5BD2-B754-4E53-9913-6D06743DE5E8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NoSleep</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFC619475243CE88869A8585E116474F29AC37B2</key>
+		<string>https://code.google.com/p/macosx-nosleep-extension/</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NoSleep/NoSleep.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFC619475243CE88869A8585E116474F29AC37B2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://code.google.com/p/macosx-nosleep-extension/</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFC619475243CE88869A8585E116474F29AC37B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFC619475243CE88869A8585E116474F29AC37B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>macosx-nosleep-extension</string>
+		</dict>
+	</array>
+</dict>
+</plist>
