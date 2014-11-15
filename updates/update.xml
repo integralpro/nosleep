@@ -33,5 +33,14 @@
 	        length="1201273"
 	        type="application/octet-stream" />
 	</item>
+	<item>
+	    <title>NoSleep - Version 1.4.0</title>
+	    <sparkle:releaseNotesLink>https://integralpro.github.io/nosleep/updates/ChangeLog.html</sparkle:releaseNotesLink>
+	    <pubDate>Sun, 16 Nov 2014 02:37:00 +0700</pubDate>
+	    <enclosure url="https://github.com/integralpro/nosleep/releases/download/v1.4.0/NoSleep-1.4.0.dmg"
+	        sparkle:version="1.4.0"
+	        length="1265086"
+	        type="application/octet-stream" />
+	</item>
 </channel>
 </rss>
