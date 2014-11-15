@@ -800,7 +800,7 @@
 				PRODUCT_VERSION = 1.4.0;
 				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
-				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
+				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
 			};
 			name = Debug;
 		};
@@ -815,7 +815,7 @@
 				PRODUCT_VERSION = 1.4.0;
 				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
-				URL = "https://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml";
+				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
 			};
 			name = Release;
 		};
