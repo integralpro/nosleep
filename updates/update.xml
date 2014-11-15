@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <channel>
+      <title>NoSleep Extension Changelog</title>
+      <link>http://macosx-nosleep-extension.googlecode.com/git/Utilities/update.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>   
+      
+	<item>
+	    <title>NoSleep - Version 1.3.1</title>
+	    <sparkle:releaseNotesLink>https://macosx-nosleep-extension.googlecode.com/git/Utilities/ChangeLog.html</sparkle:releaseNotesLink>
+	    <pubDate>Thu, 16 Aug 2012 03:46:11 +0700</pubDate>
+	    <enclosure url="https://macosx-nosleep-extension.googlecode.com/files/NoSleep-1.3.1.dmg?update=1"
+	        sparkle:version="1.3.1"
+	        length="1175791"
+	        type="application/octet-stream" />
+	</item>
+	<item>
+	    <title>NoSleep - Version 1.3.2</title>
+	    <sparkle:releaseNotesLink>https://macosx-nosleep-extension.googlecode.com/git/Utilities/ChangeLog.html</sparkle:releaseNotesLink>
+	    <pubDate>Tue, 25 Mar 2013 02:40:00 +0700</pubDate>
+	    <enclosure url="https://macosx-nosleep-extension.googlecode.com/files/NoSleep-1.3.2.dmg?update=1"
+	        sparkle:version="1.3.2"
+	        length="1164504"
+	        type="application/octet-stream" />
+	</item>
+	<item>
+	    <title>NoSleep - Version 1.3.3</title>
+	    <sparkle:releaseNotesLink>https://macosx-nosleep-extension.googlecode.com/git/Utilities/ChangeLog.html</sparkle:releaseNotesLink>
+	    <pubDate>Tue, 28 Mar 2013 03:00:00 +0700</pubDate>
+	    <enclosure url="https://macosx-nosleep-extension.googlecode.com/files/NoSleep-1.3.3.dmg?update=1"
+	        sparkle:version="1.3.3"
+	        length="1201273"
+	        type="application/octet-stream" />
+	</item>
+</channel>
+</rss>
