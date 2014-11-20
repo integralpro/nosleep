@@ -12,6 +12,7 @@
 
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/NoSleepInterfaceWrapper.h>
+#import <NoSleep/Utilities.h>
 
 int verboseLevel = 1;
 bool modeAC = false;
@@ -20,6 +21,8 @@ bool modeBattery = false;
 bool getValue = false;
 bool setNewValue = false;
 char *newValue;
+
+bool doLockScreen = false;
 
 static void usage() {
     printf("Usage: NoSleepCtrl [OPTIONS] ...\n\n");
@@ -37,6 +40,7 @@ static void usage() {
     printf("  -s NVAL\t Set status for selected mode\n");
     printf("    \t\t NVAL should have (%%d) or (%%d,%%d) format, depending\n");
     printf("    \t\t on the specified mode (without parentheses)\n");
+    printf("  -l\t\t Lock the screen\n");
     printf("\n");
 }
 
@@ -46,7 +50,7 @@ int main (int argc, const char **argv)
     
     opterr = 0;
     
-    while ((c = getopt (argc, (char *const *)argv, "abgs:v:h")) != -1)
+    while ((c = getopt (argc, (char *const *)argv, "abgs:v:hl")) != -1)
         switch (c)
     {
         case 'h':
@@ -88,10 +92,23 @@ int main (int argc, const char **argv)
                          "Unknown option character `\\x%x'.\n",
                          optopt);
             return 0x11;
+        case 'l':
+            doLockScreen = true;
+            break;
         default:
             abort();
     }
 
+    if(doLockScreen) {
+        //if(GetLockScreen()) {
+            CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
+            if(portRef) {
+                CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
+                CFRelease(portRef);
+            }
+        //}
+        return 0;
+    }
     //for (index = optind; index < argc; index++)
     //    printf ("Non-option argument %s\n", argv[index]);
     
