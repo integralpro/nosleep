@@ -22,7 +22,8 @@
 #define kNoSleepDriverClassName STR(NoSleepExtension)
 
 // GUI
-#define SHOW_UI_ALERT_KEXT_NOT_LOADED() NSRunAlertPanel(@"Oops!", @"NoSleep Kernel Extension is not loaded.", @"OK", nil, nil)
+//#define SHOW_UI_ALERT_KEXT_NOT_LOADED() NSRunAlertPanel(@"Oops!", @"NoSleep Kernel Extension is not loaded.", @"OK", nil, nil)
+#define SHOW_UI_ALERT_KEXT_NOT_LOADED() ShowAlertPanel(@"Oops!", @"NoSleep Kernel Extension is not loaded.", @"OK")
 
 #define NOSLEEP_ID "com.protech.NoSleep"
 
@@ -39,3 +40,8 @@
 #define NOSLEEP_SETTINGS_isBWIconEnabledID "IsBWIconEnabled"
 #define NOSLEEP_SETTINGS_toLockScreenID "LockScreen"
 #define NOSLEEP_SETTINGS_useDoubleClick "UseDoubleClick"
+
+//KextHelper
+#define KextHelper_ID "com.protech.KextHelper"
+
+extern void SACLockScreenImmediate();

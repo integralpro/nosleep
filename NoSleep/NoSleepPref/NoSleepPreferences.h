@@ -19,18 +19,16 @@
     
     IBOutlet NSButton *m_checkBoxEnableAC;
     IBOutlet NSButton *m_checkBoxEnableBattery;
-    IBOutlet NSButton *m_checkBoxShowIcon;
+    IBOutlet NSButton *m_checkBoxRunAtLogin;
     
     IBOutlet NSTextField *m_lastUpdateDate;
-    
-    //AuthorizationService *authService;
 }
 
 - (void)updateEnableState;
 
 - (IBAction)checkboxEnableACClicked:(id)sender;
 - (IBAction)checkboxEnableBatteryClicked:(id)sender;
-- (IBAction)checkboxShowIconClicked:(id)sender;
+- (IBAction)checkboxRunAtLoginClicked:(id)sender;
 
 @property (assign) BOOL isBWEnabled;
 @property (assign) BOOL toLockScreen;

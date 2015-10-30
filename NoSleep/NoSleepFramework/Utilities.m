@@ -6,66 +6,59 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#include <NoSleep/GlobalConstants.h>
-#include <Foundation/Foundation.h>
-#include <Utilities.h>
+#import <NoSleep/GlobalConstants.h>
+#import <Foundation/Foundation.h>
+#import <Utilities.h>
 
-BOOL registerLoginItem(LoginItemAction action) {
-    UInt32 seedValue;
-    LSSharedFileListItemRef existingItem = NULL;
-    
-    NSURL *itemURL = [NSURL fileURLWithPath:@NOSLEEP_HELPER_PATH];
-    
-    LSSharedFileListRef loginItemsRefs = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    if(!loginItemsRefs) {
-        return NO;
-    }
-    
-    NSArray *loginItemsArray = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItemsRefs, &seedValue)) autorelease];  
-    for (id item in loginItemsArray) {    
-        LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
-        
-        UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
-        CFURLRef URL = NULL;
-        OSStatus err = LSSharedFileListItemResolve(itemRef, resolutionFlags, &URL, /*outRef*/ NULL);
-        if (err == noErr) {
-            Boolean foundIt = CFEqual(URL, itemURL);
-            CFRelease(URL);
-            
-            if (foundIt) {
-                existingItem = itemRef;
-                break;
-            }
-        }
-    }
-    
-    if(action == kLICheck) {
-        return existingItem != NULL;
-    } else if (action == kLIRegister && (existingItem == NULL)) {
-        LSSharedFileListInsertItemURL(loginItemsRefs, kLSSharedFileListItemBeforeFirst,
-                                      NULL, NULL, (CFURLRef)itemURL, NULL, NULL);
-        return YES;
-    } else if (action == kLIUnregister && (existingItem != NULL)) {
-        LSSharedFileListItemRemove(loginItemsRefs, existingItem);
-        return YES;
-    }
-    
-    CFRelease(loginItemsRefs);
-    
-    return NO;
-}
+#import <xpc/xpc.h>
 
-BOOL GetLockScreen() {
-    Boolean b = false;
-    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &b);
-    if(b) {
+BOOL GetLockScreenProperty() {
+    Boolean valueExist = false;
+    Boolean ret = CFPreferencesGetAppBooleanValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), CFSTR(NOSLEEP_ID), &valueExist);
+    if(valueExist) {
         return ret;
     }
     return NO;
 }
 
-void SetLockScreen(BOOL value) {
+void SetLockScreenProperty(BOOL value) {
     CFBooleanRef booleanValue = value ? kCFBooleanTrue : kCFBooleanFalse;
     CFPreferencesSetAppValue(CFSTR(NOSLEEP_SETTINGS_toLockScreenID), booleanValue, CFSTR(NOSLEEP_ID));
     CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
+}
+
+void ShowAlertPanel(NSString *title, NSString *message, NSString *button) {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:button];
+    [alert setMessageText:title];
+    [alert setInformativeText:message];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert runModal];
+}
+
+NSString *GetLaunchAgentsDitectory() {
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Library"] stringByAppendingPathComponent:@"LaunchAgents"];
+}
+
+NSString *GetApplicationLaunchAgentsPlist(NSBundle *application) {
+    NSString *appName = [[application infoDictionary] objectForKey:@"CFBundleName"];
+    NSString *plistName = [[appName stringByAppendingString:@"-Launchd"] stringByAppendingPathExtension:@"plist"];
+    return [GetLaunchAgentsDitectory() stringByAppendingPathComponent:plistName];
+}
+
+BOOL IsLaunchdAgentInstalled(NSBundle *application) {
+    return [[NSFileManager defaultManager] fileExistsAtPath:GetApplicationLaunchAgentsPlist(application)];
+}
+
+void InstallLaunchdAgent(NSBundle *application) {
+    if (!IsLaunchdAgentInstalled(application)) {
+        NSString *plistPath = [application pathForResource:@"Launchd" ofType:@"plist"];
+        NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        [plist setValue:[application bundleIdentifier] forKey:@"Label"];
+        
+        NSMutableArray *arguments = [plist objectForKey:@"ProgramArguments"];
+        [arguments addObject:[application executablePath]];
+        
+        [plist writeToFile:GetApplicationLaunchAgentsPlist(application) atomically:YES];
+    }
 }

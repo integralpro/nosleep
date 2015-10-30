@@ -9,15 +9,9 @@
 #ifndef NoSleepFramework_Utilities_h
 #define NoSleepFramework_Utilities_h
 
-typedef enum {
-    kLICheck    = 0,
-    kLIRegister,
-    kLIUnregister,
-} LoginItemAction;
+BOOL GetLockScreenProperty();
+void SetLockScreenProperty(BOOL value);
 
-BOOL registerLoginItem(LoginItemAction action);
-
-BOOL GetLockScreen();
-void SetLockScreen(BOOL value);
+void ShowAlertPanel(NSString *title, NSString *message, NSString *button);
 
 #endif

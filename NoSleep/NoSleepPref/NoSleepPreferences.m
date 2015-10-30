@@ -12,8 +12,6 @@
 #import <NoSleep/Utilities.h>
 #import <Sparkle/Sparkle.h>
 
-#define NoSleepPrefHelper "NoSleepPrefHelper"
-
 @implementation NoSleepPreferences
 
 - (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
@@ -67,11 +65,11 @@
 }
 
 - (BOOL)toLockScreen {
-    return GetLockScreen();
+    return GetLockScreenProperty();
 }
 
 - (void)setToLockScreen:(BOOL)value {
-    SetLockScreen(value);
+    SetLockScreenProperty(value);
 }
 
 - (BOOL)useDoubleClick {
@@ -88,41 +86,11 @@
     CFPreferencesAppSynchronize(CFSTR(NOSLEEP_ID));
 }
 
-/*
-- (BOOL)validateToLockScreen:(BOOL)ioValue error:(NSError * __autoreleasing *)outError {
-    BOOL ret;
-    
-    //char *tmp = getenv("TMPDIR");
-    //setenv("TMPDIR", "/tmp/", 1);
-    
-    NSString *nsValue = ioValue ? @"1" : @"0";
-    OSStatus runTaskRes = [authService runTaskForPath:[self authorizedHelperPath]
-                                        withArguments:[NSArray arrayWithObjects:@"--set", @NOSLEEP_SETTINGS_toLockScreenID, @"--value", nsValue, nil] output:nil];
-    if(runTaskRes != errAuthorizationSuccess) {
-        if (outError != NULL) {
-            NSString *errorString = @"Your request is not authorized.";
-            NSDictionary *userInfoDict = @{ NSLocalizedDescriptionKey : errorString };
-            NSError *error = [[NSError alloc] initWithDomain:@"Authorization"
-                                                        code:-1
-                                                    userInfo:userInfoDict];
-            *outError = error;
-        }
-        return ret = NO;
-    }
-    ret = YES;
-    
-    //setenv("TMPDIR", tmp, 1);
-    return ret;
-}
-*/
-
 - (id)initWithBundle:(NSBundle *)bundle
 {
     // Initialize the location of our preferences
     if ((self = [super initWithBundle:bundle]) != nil) {
         m_noSleepInterface = nil;
-        
-        //authService = [[AuthorizationService alloc] init];
     }
     
     return self;
@@ -146,19 +114,19 @@
     if(m_noSleepInterface == nil) {
          m_noSleepInterface = [[NoSleepInterfaceWrapper alloc] init];   
     }
-    
+    /*
     if([[NSFileManager defaultManager] fileExistsAtPath:@NOSLEEP_HELPER_PATH]) {
-        [m_checkBoxShowIcon setEnabled:YES];
-        [m_checkBoxShowIcon setState:registerLoginItem(kLICheck)];
+        [m_checkBoxRunAtLogin setEnabled:YES];
+        [m_checkBoxRunAtLogin setState:registerLoginItem(kLICheck)];
         
-        [m_checkBoxShowIcon setToolTip:@""];
+        [m_checkBoxRunAtLogin setToolTip:@""];
     } else {
-        [m_checkBoxShowIcon setEnabled:NO];
-        [m_checkBoxShowIcon setState:NO];
+        [m_checkBoxRunAtLogin setEnabled:NO];
+        [m_checkBoxRunAtLogin setState:NO];
         
-        [m_checkBoxShowIcon setToolTip:@"("@NOSLEEP_HELPER_PATH@" not found)"];
+        [m_checkBoxRunAtLogin setToolTip:@"("@NOSLEEP_HELPER_PATH@" not found)"];
     }
-    
+    */
     if(!m_noSleepInterface) {
         [m_checkBoxEnableAC setEnabled:NO];
         [m_checkBoxEnableAC setState:NO];
@@ -205,17 +173,5 @@
     }
 }
 
-- (void)checkboxShowIconClicked:(id)sender {
-    BOOL showIconState = [m_checkBoxShowIcon state];
-    if(showIconState) {
-        registerLoginItem(kLIRegister);
-    } else {
-        registerLoginItem(kLIUnregister);
-    }
-}
-
-- (NSString *)authorizedHelperPath {
-    return [[self bundle] pathForAuxiliaryExecutable:@NoSleepPrefHelper];
-}
 
 @end

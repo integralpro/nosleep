@@ -7,9 +7,11 @@
 //
 
 #import "NoSleep_ControlAppDelegate.h"
+#import <PreferencePanes/PreferencePanes.h>
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/Utilities.h>
+#import <KextLoader.h>
 
 #include <signal.h>
 
@@ -30,10 +32,24 @@ static void handleSIGTERM(int signum) {
 }
 
 - (IBAction)openPreferences:(id)sender {
-    BOOL ret = [[NSWorkspace sharedWorkspace] openFile:@NOSLEEP_PREFPANE_PATH];
-    if(ret == NO) {
-        [[NSWorkspace sharedWorkspace] openFile:
-         [NSHomeDirectory() stringByAppendingPathComponent: @NOSLEEP_PREFPANE_PATH]];
+    NSString *pathToPrefPaneBundle = [[NSBundle mainBundle]
+                                      pathForResource: @"NoSleep" ofType: @"prefPane"];
+    NSBundle *prefBundle = [NSBundle bundleWithPath: pathToPrefPaneBundle];
+    Class prefPaneClass = [prefBundle principalClass];
+    NSPreferencePane *prefPaneObject = [[prefPaneClass alloc] initWithBundle:prefBundle];
+    
+    NSView *prefView;
+    if ( [prefPaneObject loadMainView] ) {
+        NSWindowController *w = [[[NSWindowController alloc] initWithWindowNibName:@"Preferences"] autorelease];
+        
+        [prefPaneObject willSelect];
+        prefView = [prefPaneObject mainView];
+        
+        
+        
+        [w showWindow:self];
+        
+        [prefPaneObject didSelect];
     }
 }
 
@@ -50,7 +66,7 @@ static void handleSIGTERM(int signum) {
 }
 
 - (void)activateStatusMenu {
-    statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength] retain];
     
     inactiveImage = [NSImage imageNamed:@"ZzInactive.pdf"];
     [inactiveImage setTemplate:YES];
@@ -59,21 +75,27 @@ static void handleSIGTERM(int signum) {
     
     if ([statusItem respondsToSelector:@selector(button)]) {
         [[statusItem button] setImage:inactiveImage];
+        [[statusItem button] setTarget:self];
+        [[statusItem button] setAction:@selector(onClick:)];
+        [statusItem setHighlightMode:NO];
+        [statusItem sendActionOn:NSRightMouseUpMask | NSLeftMouseUpMask];
     } else {
         [statusItem setImage:inactiveImage];
+        //[statusItem setTarget:self];
+        //[statusItem setAction:@selector(onClick:)];
         [statusItem setHighlightMode:YES];
+        [statusItem setMenu:statusItemMenu];
     }
-
-    [statusItem setMenu:statusItemMenu];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     signal(SIGTERM, handleSIGTERM);
     //[updater setUpdateCheckInterval:60*60*24*7];
     
+    [KextLoader loadKext];
+    
     noSleep = [[NoSleepInterfaceWrapper alloc] init];
     if(noSleep == nil) {
-        //NSString *kextUrl = [[NSBundle mainBundle] pathForResource:@"NoSleep" ofType:@"kext"];
         noSleep = [[NoSleepInterfaceWrapper alloc] init];
         if(noSleep == nil) {
             [self applicationShouldBeTerminated:YES];
@@ -96,8 +118,27 @@ static void handleSIGTERM(int signum) {
     [self updateState:nil];
 }
 
+- (IBAction)onClick:(id)sender {
+    NSEvent *event = [NSApp currentEvent];
+    switch ([event type]) {
+        case NSLeftMouseUp:
+            if((getUseDoubleClick() == kCFBooleanTrue) && [event clickCount] % 2 == 1) {
+                break;
+            }
+            [self setEnabled:[self enabled] == NSOnState ? NSOffState : NSOnState];
+            break;
+        case NSRightMouseUp:
+            [statusItem popUpStatusItemMenu:statusItemMenu];
+                        [statusItem setHighlightMode:NO];
+            break;
+        default:
+            break;
+    }
+}
+
 - (void)applicationWillTerminate:(NSNotification *)notification {
     [noSleep release];
+    [KextLoader unloadKext];
 }
 
 - (void)dealloc {
@@ -162,6 +203,10 @@ static void handleSIGTERM(int signum) {
     }
 }
 
+static CFBooleanRef getUseDoubleClick() {
+    return (CFBooleanRef)[[NSUserDefaults standardUserDefaults] valueForKey:@NOSLEEP_SETTINGS_useDoubleClick];
+}
+
 /*
 - (void)updateSettings {
     CFBooleanRef isBWIconEnabled = (CFBooleanRef)[[NSUserDefaults standardUserDefaults] valueForKey:@NOSLEEP_SETTINGS_isBWIconEnabledID];
@@ -176,16 +221,20 @@ static void handleSIGTERM(int signum) {
 //}
 
 - (void)willLockScreen {
-    if(GetLockScreen()) {
+    if(GetLockScreenProperty()) {
         [self lockScreen:nil];
     }
 }
 
 - (IBAction)lockScreen:(id)sender {
-    CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
-    if(portRef) {
-        CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
-        CFRelease(portRef);
+    if (NSAppKitVersionNumber >= NSAppKitVersionNumber10_10) {
+        SACLockScreenImmediate();
+    } else {
+        CFMessagePortRef portRef = CFMessagePortCreateRemote(kCFAllocatorDefault, CFSTR("com.apple.loginwindow.notify"));
+        if(portRef) {
+            CFMessagePortSendRequest(portRef, 0x258, 0, 0, 0, 0, 0);
+            CFRelease(portRef);
+        }
     }
 }
 

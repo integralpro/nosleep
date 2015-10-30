@@ -25,7 +25,6 @@ extern "C" {
     bool NoSleep_InterfaceDestroy(NoSleepInterfaceConnect connect);
     bool NoSleep_GetSleepSuppressionMode(NoSleepInterfaceConnect connect, int mode);
     bool NoSleep_SetSleepSuppressionMode(NoSleepInterfaceConnect connect, bool state, int mode);
-
 #ifdef __cplusplus
 }
 #endif
