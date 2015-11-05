@@ -79,6 +79,7 @@ static BOOL configure() {
             }
 #endif
         }
+        dispatch_semaphore_signal(sema);
     });
 
     xpc_connection_resume(connection);
@@ -106,7 +107,7 @@ static BOOL configure() {
         dispatch_semaphore_signal(sema);
     });
     
-    dispatch_time_t time = dispatch_time(0, 2 * NSEC_PER_SEC);
+    dispatch_time_t time = dispatch_time(0, 10 * NSEC_PER_SEC);
     isError = (dispatch_semaphore_wait(sema, time) != 0);
     dispatch_release(sema);
 

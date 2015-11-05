@@ -16,10 +16,10 @@
 		9249A34A1B3B23E4007215D9 /* NoSleepCtrl in Copy Executabled */ = {isa = PBXBuildFile; fileRef = 92B88BC31686375500A2993F /* NoSleepCtrl */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9249A3501B3B2B49007215D9 /* KextLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9249A34F1B3B2B49007215D9 /* KextLoader.m */; };
 		9249A35D1B3C5B1F007215D9 /* com.protech.KextHelper in Copy KextHelper */ = {isa = PBXBuildFile; fileRef = 9249A3361B3AF714007215D9 /* com.protech.KextHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		9267447B1BD31F4E0097F2C3 /* Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447A1BD31F4E0097F2C3 /* Launchd.plist */; settings = {ASSET_TAGS = (); }; };
-		926744831BD321750097F2C3 /* KextHelper-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447F1BD321750097F2C3 /* KextHelper-Info.plist */; settings = {ASSET_TAGS = (); }; };
-		926744841BD321750097F2C3 /* KextHelper-Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926744801BD321750097F2C3 /* KextHelper-Launchd.plist */; settings = {ASSET_TAGS = (); }; };
-		926744871BD321750097F2C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926744821BD321750097F2C3 /* main.m */; settings = {ASSET_TAGS = (); }; };
+		9267447B1BD31F4E0097F2C3 /* Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447A1BD31F4E0097F2C3 /* Launchd.plist */; };
+		926744831BD321750097F2C3 /* KextHelper-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447F1BD321750097F2C3 /* KextHelper-Info.plist */; };
+		926744841BD321750097F2C3 /* KextHelper-Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926744801BD321750097F2C3 /* KextHelper-Launchd.plist */; };
+		926744871BD321750097F2C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926744821BD321750097F2C3 /* main.m */; };
 		926744881BD322C60097F2C3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
 		926B8E1419F6D4910091EE2A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
 		927B4CF21BC7BA9D008199AD /* login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B4CF11BC7BA9D008199AD /* login.framework */; };
@@ -28,7 +28,6 @@
 		927FE20B19F40B06000CAF7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		92A7D8ED1BE33F43008D8575 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; };
 		92A7D8EE1BE342BD008D8575 /* NoSleep.prefPane in Resources */ = {isa = PBXBuildFile; fileRef = 92B88B6516862BBA00A2993F /* NoSleep.prefPane */; };
-		92A7D8F21BE34473008D8575 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92A7D8F11BE34473008D8575 /* Preferences.xib */; settings = {ASSET_TAGS = (); }; };
 		92B88A7B1685908900A2993F /* NoSleepClientClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A741685908900A2993F /* NoSleepClientClass.cpp */; };
 		92B88A7D1685908900A2993F /* NoSleepExtension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A761685908900A2993F /* NoSleepExtension.cpp */; };
 		92B88A7F1685908900A2993F /* NoSleepExtensionPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B88A781685908900A2993F /* NoSleepExtensionPower.cpp */; };
@@ -65,8 +64,8 @@
 		92D4D9141A16833E00CB5836 /* AppleBattery.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9121A16833E00CB5836 /* AppleBattery.icns */; };
 		92D4D9161A16835000CB5836 /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9151A16835000CB5836 /* AppleACW.icns */; };
 		92DAC27A1BC7B45C0069E445 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; };
-		92E638151BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; settings = {ASSET_TAGS = (); }; };
-		92E638161BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; settings = {ASSET_TAGS = (); }; };
+		92E638151BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; };
+		92E638161BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,7 +191,6 @@
 		927FE20619F3C693000CAF7B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		927FE20919F40AE2000CAF7B /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
 		92A75CE11BC7AE64007DD489 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "3rd-party/Sparkle.framework"; sourceTree = "<group>"; };
-		92A7D8F11BE34473008D8575 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = NoSleepHelper/Preferences.xib; sourceTree = SOURCE_ROOT; };
 		92B88A4F16858F1C00A2993F /* NoSleep.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoSleep.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B88A741685908900A2993F /* NoSleepClientClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoSleepClientClass.cpp; path = NoSleepKext/NoSleepClientClass.cpp; sourceTree = "<group>"; };
 		92B88A751685908900A2993F /* NoSleepClientClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleepClientClass.h; path = NoSleepKext/NoSleepClientClass.h; sourceTree = "<group>"; };
@@ -415,7 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				92B88ACF1685A58D00A2993F /* MainMenu.xib */,
-				92A7D8F11BE34473008D8575 /* Preferences.xib */,
 			);
 			name = en.lproj;
 			path = NoSleepHelper/en.lproj;
@@ -717,7 +714,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92A7D8F21BE34473008D8575 /* Preferences.xib in Resources */,
 				92A7D8EE1BE342BD008D8575 /* NoSleep.prefPane in Resources */,
 				9249A3441B3B2206007215D9 /* NoSleep.kext in Resources */,
 				92B88B531685ADB200A2993F /* Logo.icns in Resources */,

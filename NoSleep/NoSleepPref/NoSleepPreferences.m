@@ -10,7 +10,6 @@
 #import <IOKit/IOMessage.h>
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/Utilities.h>
-#import <Sparkle/Sparkle.h>
 
 @implementation NoSleepPreferences
 

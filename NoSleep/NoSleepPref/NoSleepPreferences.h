@@ -8,10 +8,9 @@
 
 #import <PreferencePanes/PreferencePanes.h>
 #import <NoSleep/NoSleepInterfaceWrapper.h>
+#import <Sparkle/Sparkle.h>
 
-//#import "AuthorizationService.h"
-
-@interface NoSleepPreferences : NSPreferencePane <NoSleepNotificationDelegate> {
+@interface NoSleepPreferences : NSPreferencePane <NoSleepNotificationDelegate, SUUpdaterDelegate> {
 @private
     NoSleepInterfaceWrapper *m_noSleepInterface;
     BOOL stateAC;
@@ -28,11 +27,12 @@
 
 - (IBAction)checkboxEnableACClicked:(id)sender;
 - (IBAction)checkboxEnableBatteryClicked:(id)sender;
-- (IBAction)checkboxRunAtLoginClicked:(id)sender;
+//- (IBAction)checkboxRunAtLoginClicked:(id)sender;
 
 @property (assign) BOOL isBWEnabled;
 @property (assign) BOOL toLockScreen;
 @property (assign) BOOL useDoubleClick;
+@property (assign) BOOL runAtLogin;
 
 - (IBAction)updateNow:(id)sender;
 - (BOOL)autoUpdate;

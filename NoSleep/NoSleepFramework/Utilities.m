@@ -36,11 +36,11 @@ void ShowAlertPanel(NSString *title, NSString *message, NSString *button) {
     [alert runModal];
 }
 
-NSString *GetLaunchAgentsDitectory() {
+static NSString *GetLaunchAgentsDitectory() {
     return [[NSHomeDirectory() stringByAppendingPathComponent:@"Library"] stringByAppendingPathComponent:@"LaunchAgents"];
 }
 
-NSString *GetApplicationLaunchAgentsPlist(NSBundle *application) {
+static NSString *GetApplicationLaunchAgentsPlist(NSBundle *application) {
     NSString *appName = [[application infoDictionary] objectForKey:@"CFBundleName"];
     NSString *plistName = [[appName stringByAppendingString:@"-Launchd"] stringByAppendingPathExtension:@"plist"];
     return [GetLaunchAgentsDitectory() stringByAppendingPathComponent:plistName];
