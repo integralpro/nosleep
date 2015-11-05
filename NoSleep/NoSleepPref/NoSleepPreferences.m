@@ -13,12 +13,16 @@
 
 @implementation NoSleepPreferences
 
+NSBundle *getMainAppBundle() {
+    return [NSBundle mainBundle];
+}
+
 - (void)updater:(SUUpdater *)updater didFinishLoadingAppcast:(SUAppcast *)appcast {
     [self didChangeValueForKey:@"lastUpdateDate"];
 }
 
 - (SUUpdater *)updater {
-    return [SUUpdater updaterForBundle:[NSBundle bundleWithPath:@NOSLEEP_HELPER_PATH]];
+    return [SUUpdater updaterForBundle:getMainAppBundle()];
 }
 
 - (IBAction)updateNow:(id)sender {
@@ -172,5 +176,16 @@
     }
 }
 
+- (BOOL)runAtLogin {
+    return IsLaunchdAgentInstalled(getMainAppBundle());
+}
+
+- (void)setRunAtLogin:(BOOL)value {
+    if (value) {
+        InstallLaunchdAgent(getMainAppBundle());
+    } else {
+        UninstallLaunchdAgent(getMainAppBundle());
+    }
+}
 
 @end

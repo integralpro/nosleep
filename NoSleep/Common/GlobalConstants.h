@@ -27,8 +27,8 @@
 
 #define NOSLEEP_ID "com.protech.NoSleep"
 
-#define NOSLEEP_HELPER_PATH "/Applications/Utilities/NoSleep.app"
-#define NOSLEEP_PREFPANE_PATH "/Library/PreferencePanes/NoSleep.prefPane"
+//#define NOSLEEP_HELPER_PATH "/Applications/Utilities/NoSleep.app"
+//#define NOSLEEP_PREFPANE_PATH "/Library/PreferencePanes/NoSleep.prefPane"
 
 #define kNoSleepModeCurrent  0
 #define kNoSleepModeAC       1

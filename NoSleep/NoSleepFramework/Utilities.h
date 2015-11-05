@@ -12,6 +12,10 @@
 BOOL GetLockScreenProperty();
 void SetLockScreenProperty(BOOL value);
 
+BOOL IsLaunchdAgentInstalled(NSBundle *application);
+void InstallLaunchdAgent(NSBundle *application);
+void UninstallLaunchdAgent(NSBundle *application);
+
 void ShowAlertPanel(NSString *title, NSString *message, NSString *button);
 
 #endif

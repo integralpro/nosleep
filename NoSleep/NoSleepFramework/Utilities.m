@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <Utilities.h>
 
-#import <xpc/xpc.h>
+#define PROGRAM_ARGUMENTS "ProgramArguments"
 
 BOOL GetLockScreenProperty() {
     Boolean valueExist = false;
@@ -41,13 +41,34 @@ static NSString *GetLaunchAgentsDitectory() {
 }
 
 static NSString *GetApplicationLaunchAgentsPlist(NSBundle *application) {
-    NSString *appName = [[application infoDictionary] objectForKey:@"CFBundleName"];
-    NSString *plistName = [[appName stringByAppendingString:@"-Launchd"] stringByAppendingPathExtension:@"plist"];
+    NSString *appName = [[application infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSString *plistName = [appName stringByAppendingPathExtension:@"plist"];
     return [GetLaunchAgentsDitectory() stringByAppendingPathComponent:plistName];
 }
 
 BOOL IsLaunchdAgentInstalled(NSBundle *application) {
-    return [[NSFileManager defaultManager] fileExistsAtPath:GetApplicationLaunchAgentsPlist(application)];
+    BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:GetApplicationLaunchAgentsPlist(application)];
+    if (!exist) {
+        return NO;
+    }
+    
+    NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:GetApplicationLaunchAgentsPlist(application)];
+    NSArray *array = [plist valueForKey:@PROGRAM_ARGUMENTS];
+    if (!array) {
+        return NO;
+    }
+    
+    id obj = [array firstObject];
+    if (!obj) {
+        return NO;
+    }
+    
+    NSString *executablePath = obj;
+    if ([executablePath compare:[application executablePath]] != kCFCompareEqualTo) {
+        return  NO;
+    }
+    
+    return YES;
 }
 
 void InstallLaunchdAgent(NSBundle *application) {
@@ -56,9 +77,15 @@ void InstallLaunchdAgent(NSBundle *application) {
         NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
         [plist setValue:[application bundleIdentifier] forKey:@"Label"];
         
-        NSMutableArray *arguments = [plist objectForKey:@"ProgramArguments"];
-        [arguments addObject:[application executablePath]];
+        NSMutableArray *arguments = [[NSMutableArray alloc] initWithObjects: [application executablePath], nil];
+        [plist setValue:arguments forKey:@PROGRAM_ARGUMENTS];
         
         [plist writeToFile:GetApplicationLaunchAgentsPlist(application) atomically:YES];
+    }
+}
+
+void UninstallLaunchdAgent(NSBundle *application) {
+    if (IsLaunchdAgentInstalled(application)) {
+        [[NSFileManager defaultManager] removeItemAtPath:GetApplicationLaunchAgentsPlist(application) error:nil];
     }
 }

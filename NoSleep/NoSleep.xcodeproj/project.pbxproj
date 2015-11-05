@@ -22,6 +22,11 @@
 		926744871BD321750097F2C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926744821BD321750097F2C3 /* main.m */; };
 		926744881BD322C60097F2C3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
 		926B8E1419F6D4910091EE2A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
+		9279B6BA1BEB491000D40D61 /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9151A16835000CB5836 /* AppleACW.icns */; };
+		9279B6BB1BEB491000D40D61 /* AppleBattery.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9121A16833E00CB5836 /* AppleBattery.icns */; };
+		9279C7591BEB295E00DEAB4A /* Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447A1BD31F4E0097F2C3 /* Launchd.plist */; };
+		9279C75D1BEB29F000DEAB4A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9279C75B1BEB29F000DEAB4A /* PreferencesController.m */; };
+		9279C75E1BEB29F000DEAB4A /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9279C75C1BEB29F000DEAB4A /* PreferencesController.xib */; };
 		927B4CF21BC7BA9D008199AD /* login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B4CF11BC7BA9D008199AD /* login.framework */; };
 		927B4CF41BC7BB58008199AD /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		927FE20719F3C693000CAF7B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
@@ -61,8 +66,6 @@
 		92B88BD0168637C400A2993F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88BCF168637C400A2993F /* main.m */; };
 		92B88BD21686386000A2993F /* NoSleepInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFC1685A6FA00A2993F /* NoSleepInterface.m */; };
 		92B88BD31686386000A2993F /* NoSleepInterfaceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B88AFE1685A6FA00A2993F /* NoSleepInterfaceWrapper.m */; };
-		92D4D9141A16833E00CB5836 /* AppleBattery.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9121A16833E00CB5836 /* AppleBattery.icns */; };
-		92D4D9161A16835000CB5836 /* AppleACW.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92D4D9151A16835000CB5836 /* AppleACW.icns */; };
 		92DAC27A1BC7B45C0069E445 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; };
 		92E638151BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; };
 		92E638161BDF5980008C699A /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E638141BDF5980008C699A /* Version.m */; };
@@ -187,6 +190,9 @@
 		9267447F1BD321750097F2C3 /* KextHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "KextHelper-Info.plist"; path = "NoSleepHelper/KextHelper/KextHelper-Info.plist"; sourceTree = "<group>"; };
 		926744801BD321750097F2C3 /* KextHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "KextHelper-Launchd.plist"; path = "NoSleepHelper/KextHelper/KextHelper-Launchd.plist"; sourceTree = "<group>"; };
 		926744821BD321750097F2C3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NoSleepHelper/KextHelper/main.m; sourceTree = "<group>"; };
+		9279C75A1BEB29F000DEAB4A /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = NoSleepHelper/PreferencesController.h; sourceTree = "<group>"; };
+		9279C75B1BEB29F000DEAB4A /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = NoSleepHelper/PreferencesController.m; sourceTree = "<group>"; };
+		9279C75C1BEB29F000DEAB4A /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesController.xib; path = NoSleepHelper/PreferencesController.xib; sourceTree = "<group>"; };
 		927B4CF11BC7BA9D008199AD /* login.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = login.framework; path = ../../../../../System/Library/PrivateFrameworks/login.framework; sourceTree = "<group>"; };
 		927FE20619F3C693000CAF7B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		927FE20919F40AE2000CAF7B /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
@@ -206,7 +212,7 @@
 		92B88A93168596BA00A2993F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		92B88A94168596BA00A2993F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92B88ACE1685A58D00A2993F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NoSleepHelper/main.m; sourceTree = "<group>"; };
-		92B88ACF1685A58D00A2993F /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = ../MainMenu.xib; sourceTree = "<group>"; };
+		92B88ACF1685A58D00A2993F /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = NoSleepHelper/MainMenu.xib; sourceTree = "<group>"; };
 		92B88AD01685A58D00A2993F /* NoSleep_ControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoSleep_ControlAppDelegate.h; path = NoSleepHelper/NoSleep_ControlAppDelegate.h; sourceTree = "<group>"; };
 		92B88AD11685A58D00A2993F /* NoSleep_ControlAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoSleep_ControlAppDelegate.m; path = NoSleepHelper/NoSleep_ControlAppDelegate.m; sourceTree = "<group>"; };
 		92B88AD21685A58D00A2993F /* NoSleepHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "NoSleepHelper-Info.plist"; path = "NoSleepHelper/NoSleepHelper-Info.plist"; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 		92B88A871685950E00A2993F /* NoSleepHelper */ = {
 			isa = PBXGroup;
 			children = (
+				92B88ACF1685A58D00A2993F /* MainMenu.xib */,
 				92E638131BDF5980008C699A /* Version.h */,
 				92E638141BDF5980008C699A /* Version.m */,
 				9249A34E1B3B2B49007215D9 /* KextLoader.h */,
@@ -383,6 +390,9 @@
 				92B88AD31685A58D00A2993F /* NoSleepHelper-Prefix.pch */,
 				92B88AD21685A58D00A2993F /* NoSleepHelper-Info.plist */,
 				92B88AD41685A58D00A2993F /* Resources */,
+				9279C75A1BEB29F000DEAB4A /* PreferencesController.h */,
+				9279C75B1BEB29F000DEAB4A /* PreferencesController.m */,
+				9279C75C1BEB29F000DEAB4A /* PreferencesController.xib */,
 			);
 			name = NoSleepHelper;
 			sourceTree = "<group>";
@@ -412,7 +422,6 @@
 		92B88ACB1685A58D00A2993F /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				92B88ACF1685A58D00A2993F /* MainMenu.xib */,
 			);
 			name = en.lproj;
 			path = NoSleepHelper/en.lproj;
@@ -663,6 +672,7 @@
 		92B88A4216858EF000A2993F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					9249A3351B3AF714007215D9 = {
@@ -714,12 +724,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9279C75E1BEB29F000DEAB4A /* PreferencesController.xib in Resources */,
 				92A7D8EE1BE342BD008D8575 /* NoSleep.prefPane in Resources */,
 				9249A3441B3B2206007215D9 /* NoSleep.kext in Resources */,
 				92B88B531685ADB200A2993F /* Logo.icns in Resources */,
 				92B88B511685AD9200A2993F /* MainMenu.xib in Resources */,
 				92B88AE51685A58D00A2993F /* ZzActive.pdf in Resources */,
 				92B88AE61685A58D00A2993F /* ZzInactive.pdf in Resources */,
+				9279C7591BEB295E00DEAB4A /* Launchd.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,8 +747,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92B88BB9168631B800A2993F /* NoSleepPref.xib in Resources */,
-				92D4D9141A16833E00CB5836 /* AppleBattery.icns in Resources */,
-				92D4D9161A16835000CB5836 /* AppleACW.icns in Resources */,
+				9279B6BA1BEB491000D40D61 /* AppleACW.icns in Resources */,
+				9279B6BB1BEB491000D40D61 /* AppleBattery.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9279C75D1BEB29F000DEAB4A /* PreferencesController.m in Sources */,
 				9249A3451B3B224A007215D9 /* MainMenu.xib in Sources */,
 				92B88ADE1685A58D00A2993F /* main.m in Sources */,
 				92E638151BDF5980008C699A /* Version.m in Sources */,
@@ -1073,6 +1086,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1112,6 +1126,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;

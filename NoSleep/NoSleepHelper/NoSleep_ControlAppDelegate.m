@@ -12,6 +12,7 @@
 #import <NoSleep/GlobalConstants.h>
 #import <NoSleep/Utilities.h>
 #import <KextLoader.h>
+#import "PreferencesController.h"
 
 #include <signal.h>
 
@@ -32,25 +33,12 @@ static void handleSIGTERM(int signum) {
 }
 
 - (IBAction)openPreferences:(id)sender {
-    NSString *pathToPrefPaneBundle = [[NSBundle mainBundle]
-                                      pathForResource: @"NoSleep" ofType: @"prefPane"];
-    NSBundle *prefBundle = [NSBundle bundleWithPath: pathToPrefPaneBundle];
-    Class prefPaneClass = [prefBundle principalClass];
-    NSPreferencePane *prefPaneObject = [[prefPaneClass alloc] initWithBundle:prefBundle];
-    
-    NSView *prefView;
-    if ( [prefPaneObject loadMainView] ) {
-        NSWindowController *w = [[[NSWindowController alloc] initWithWindowNibName:@"Preferences"] autorelease];
-        
-        [prefPaneObject willSelect];
-        prefView = [prefPaneObject mainView];
-        
-        
-        
-        [w showWindow:self];
-        
-        [prefPaneObject didSelect];
+    if (![self preferences]) {
+        [self setPreferences:[PreferencesController create]];
     }
+    
+    [[self preferences] showWindow:self];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 - (void)showUnloadedExtensionDialog {

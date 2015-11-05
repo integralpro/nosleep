@@ -12,6 +12,8 @@
 
 #import <Sparkle/Sparkle.h>
 
+@class PreferencesController;
+
 @interface NoSleep_ControlAppDelegate : NSObject <NSApplicationDelegate, NoSleepNotificationDelegate> {
 @private
     IBOutlet NSWindow *window;
@@ -33,6 +35,8 @@
 @property (assign) IBOutlet SUUpdater *updater;
 
 @property (assign) NSCellStateValue enabled;
+
+@property (retain) PreferencesController *preferences;
 
 - (IBAction)openPreferences:(id)sender;
 
