@@ -19,7 +19,7 @@
 #if DEBUG
 #define DEBUG_LOG(...) NSLog(__VA_ARGS__)
 #else
-#define DEBUG_LOG()
+#define DEBUG_LOG(...)
 #endif
 
 #define ROOT_UID ((uid_t)0)
@@ -35,6 +35,7 @@ typedef enum {
     ACTION_LOAD,
     ACTION_UNLOAD,
     ACTION_VERSION,
+    ACTION_UNINSTALL,
 } ACTION_TYPE;
 
 typedef struct {
@@ -47,7 +48,22 @@ static ACTION_COMMAND commands[] = {
     {ACTION_LOAD, "load"},
     {ACTION_UNLOAD, "unload"},
     {ACTION_VERSION, "version"},
+    {ACTION_UNINSTALL, "uninstall"},
 };
+
+static const char *getProcessPath() {
+    static char *processPath = NULL;
+    
+    uint32_t bufferSize = 0;
+    _NSGetExecutablePath(NULL, &bufferSize);
+    
+    if (processPath == NULL) {
+        processPath = malloc(bufferSize);
+        _NSGetExecutablePath(processPath, &bufferSize);
+    }
+    
+    return processPath;
+}
 
 static NSString *getKextPath(NSString *bundlePath) {
     if (bundlePath == NULL) {
@@ -59,6 +75,13 @@ static NSString *getKextPath(NSString *bundlePath) {
                        stringByAppendingPathComponent:@KEXT_NAME]
                       stringByAppendingPathExtension:@"kext"];
     return path;
+}
+
+static bool uninstall() {
+    const char *path = getProcessPath();
+    int ret = unlink(path);
+    free((void *)path);
+    return ret == 0;
 }
 
 static bool amIRoot() {
@@ -203,13 +226,14 @@ static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t e
             case ACTION_UNLOAD:
                 ret = kextUnload();
                 break;
-            case ACTION_CONFIGURE:
-                //ret = configure();
-                break;
             case ACTION_VERSION:
                 xpc_dictionary_set_string(reply, "BuildString", BuildString);
                 ret = YES;
                 break;
+            case ACTION_UNINSTALL:
+                ret = uninstall();
+                break;
+            case ACTION_CONFIGURE:
             case ACTION_UNEXPECTED:
             default:
                 ret = NO;

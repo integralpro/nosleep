@@ -40,6 +40,7 @@
 
 static BOOL configure() {
     NSError *error = nil;
+    [KextLoader sendKextHelperCommand:@"uninstall"];
     if (![KextLoader blessHelperWithLabel:@KextHelper_ID error:&error]) {
         NSLog(@"Failed to install KextHelper. Error code: %ld", [error code]);
         return NO;

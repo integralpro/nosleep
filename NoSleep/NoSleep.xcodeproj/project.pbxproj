@@ -16,9 +16,6 @@
 		9249A34A1B3B23E4007215D9 /* NoSleepCtrl in Copy Executabled */ = {isa = PBXBuildFile; fileRef = 92B88BC31686375500A2993F /* NoSleepCtrl */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9249A3501B3B2B49007215D9 /* KextLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9249A34F1B3B2B49007215D9 /* KextLoader.m */; };
 		9249A35D1B3C5B1F007215D9 /* com.protech.KextHelper in Copy KextHelper */ = {isa = PBXBuildFile; fileRef = 9249A3361B3AF714007215D9 /* com.protech.KextHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		9267447B1BD31F4E0097F2C3 /* Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447A1BD31F4E0097F2C3 /* Launchd.plist */; };
-		926744831BD321750097F2C3 /* KextHelper-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9267447F1BD321750097F2C3 /* KextHelper-Info.plist */; };
-		926744841BD321750097F2C3 /* KextHelper-Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926744801BD321750097F2C3 /* KextHelper-Launchd.plist */; };
 		926744871BD321750097F2C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926744821BD321750097F2C3 /* main.m */; };
 		926744881BD322C60097F2C3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88BC51686375500A2993F /* CoreFoundation.framework */; };
 		926B8E1419F6D4910091EE2A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
@@ -714,9 +711,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				926744831BD321750097F2C3 /* KextHelper-Info.plist in Resources */,
-				926744841BD321750097F2C3 /* KextHelper-Launchd.plist in Resources */,
-				9267447B1BD31F4E0097F2C3 /* Launchd.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
