@@ -1,21 +1,33 @@
 #!/bin/sh
 
-echo "Uninstalling 1.3.0"
+echo "Uninstalling 1.3.x"
 sudo true
 
 KEXT_ID=com.protech.NoSleep
 KEXT_PATH=/System/Library/Extensions/NoSleep.kext
 PERF_PATH=/Library/PreferencePanes/NoSleep.prefPane
-HELPER_PATH=/Applications/Utilities/NoSleepHelper.app
+HELPER_PATH=/Applications/Utilities/NoSleep.app
+LAUNCH_DAEMON_PATH=/Library/LaunchAgents/$KEXT_ID.plist
 
-ps aux|grep NoSleepHelper.app|awk '{print $2}'|xargs kill -9 &> /dev/null
+USER_SUDO_CMD=""
+
+if [ "$SUDO_USER" != "" ]; then
+    USER_SUDO_CMD="sudo -u $SUDO_USER"
+else if [ "$USER" != "" ]; then
+    USER_SUDO_CMD="sudo -u $USER"
+fi
+fi
 
 if [ -e "$HELPER_PATH" ]; then
-    echo "Removing NoSleepHelper..."
-    open "$HELPER_PATH" --args --unregister-loginitem
-    sleep 5
-	ps aux|grep NoSleepHelper.app|awk '{print $2}'|xargs kill -9 &> /dev/null
+    echo "Removing NoSleep.app..."
+    ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null
     sudo rm -rf "$HELPER_PATH"
+fi
+
+if [ -e "$LAUNCH_DAEMON_PATH" ]; then
+    echo "Removing launch daemon plist..."
+    $USER_SUDO_CMD launchctl unload $LAUNCH_DAEMON_PATH &> /dev/null
+    sudo rm -rf "$LAUNCH_DAEMON_PATH"
 fi
 
 if kextstat | grep "$KEXT_ID" > /dev/null; then
@@ -34,6 +46,5 @@ if [ -e "$PERF_PATH" ]; then
 fi
 
 sudo pkgutil --forget "com.protech.pkg.NoSleep" &> /dev/null
-sudo pkgutil --forget "com.protech.pkg.NoSleepCtrl" &> /dev/null
 
 echo "Done"

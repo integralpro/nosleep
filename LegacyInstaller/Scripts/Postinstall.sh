@@ -6,9 +6,10 @@ fi
 
 sudo kextload "$KEXT_PATH"
 
-$USER_SUDO_CMD launchctl load $LAUNCH_DAEMON_PATH
-
 defaults write /Library/Preferences/loginwindow AutoLaunchedApplicationDictionary -array-add '{Path="$HELPER_PATH";}'
-open $HELPER_PATH
+
+if kextstat | grep "$KEXT_ID" > /dev/null; then
+    open $HELPER_PATH
+fi
 
 echo "Done"

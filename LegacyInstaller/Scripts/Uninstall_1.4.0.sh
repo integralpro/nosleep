@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Uninstalling 1.3.x"
+echo "Uninstalling 1.4.0"
 sudo true
 
 if [ "$COMMON_DEFINED" = "" ]; then
@@ -11,12 +11,6 @@ if [ -e "$HELPER_PATH" ]; then
     echo "Removing NoSleep.app..."
     ps aux|grep NoSleep.app|awk '{print $2}'|xargs kill &> /dev/null
     sudo rm -rf "$HELPER_PATH"
-fi
-
-if [ -e "$LAUNCH_DAEMON_PATH" ]; then
-    echo "Removing launch daemon plist..."
-    $USER_SUDO_CMD launchctl unload $LAUNCH_DAEMON_PATH &> /dev/null
-    sudo rm -rf "$LAUNCH_DAEMON_PATH"
 fi
 
 if kextstat | grep "$KEXT_ID" > /dev/null; then
