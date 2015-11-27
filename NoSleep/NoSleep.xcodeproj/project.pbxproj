@@ -241,6 +241,7 @@
 		92B88BC31686375500A2993F /* NoSleepCtrl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NoSleepCtrl; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B88BC51686375500A2993F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		92B88BCF168637C400A2993F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NoSleepCtrl/main.m; sourceTree = SOURCE_ROOT; };
+		92CBCE7D1BF097A4000A13C7 /* NoSleepKext copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NoSleepKext copy-Info.plist"; path = "/Users/pavel_pro/Documents/macosx-nosleep-extension/NoSleep/NoSleepKext copy-Info.plist"; sourceTree = "<absolute>"; };
 		92D4D9121A16833E00CB5836 /* AppleBattery.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleBattery.icns; sourceTree = "<group>"; };
 		92D4D9151A16835000CB5836 /* AppleACW.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleACW.icns; sourceTree = "<group>"; };
 		92E638131BDF5980008C699A /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Version.h; path = NoSleepHelper/Version.h; sourceTree = "<group>"; };
@@ -332,6 +333,7 @@
 				92B88A8E168596BA00A2993F /* Frameworks */,
 				92B88A5016858F1C00A2993F /* Products */,
 				9249A35F1B3C5F65007215D9 /* SMJobBlessUtil.py */,
+				92CBCE7D1BF097A4000A13C7 /* NoSleepKext copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -981,9 +983,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
 				COPYRIGHT = "Copyright © 2012-2015 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
 				ENABLE_TESTABILITY = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "__PRODUCT_VERSION__=${PRODUCT_VERSION}";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULE_NAME = com.protech.NoSleep;
+				MODULE_VERSION = "${PRODUCT_VERSION}";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_VERSION = 1.5.0;
@@ -1001,8 +1006,11 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
 				COPYRIGHT = "Copyright © 2012-2015 Pavel Prokofiev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
 				GCC_PREPROCESSOR_DEFINITIONS = "__PRODUCT_VERSION__=${PRODUCT_VERSION}";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULE_NAME = com.protech.NoSleep;
+				MODULE_VERSION = "${PRODUCT_VERSION}";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_VERSION = 1.5.0;
 				SDKROOT = macosx;
@@ -1020,7 +1028,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = "$(PRODUCT_VERSION)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1037,8 +1044,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepKext/NoSleepKext-Info.plist";
-				MODULE_NAME = com.protech.NoSleep;
-				MODULE_VERSION = "$(PRODUCT_VERSION)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NoSleep;
@@ -1054,7 +1059,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = "$(PRODUCT_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1065,8 +1069,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepKext/NoSleepKext-Info.plist";
-				MODULE_NAME = com.protech.NoSleep;
-				MODULE_VERSION = "$(PRODUCT_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = kext;

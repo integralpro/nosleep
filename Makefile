@@ -1,7 +1,9 @@
 CONFIG=Release
 
-BUILDDIR=DerivedData/$(CONFIG)
-INSTPLUGBUILDDIR=DerivedData/$(CONFIG)
+DELIVERY=Delivery
+DERIVED_DATA=DerivedData
+DELIVERY_AREA=$(DERIVED_DATA)/Delivery
+BUILDDIR=$(DERIVED_DATA)/$(CONFIG)
 
 SUDO=sudo
 KEXTSTAT=/usr/sbin/kextstat
@@ -9,55 +11,38 @@ KEXTUNLOAD=/sbin/kextunload
 KEXTUTIL=/usr/bin/kextutil
 
 .PHONY: all
-all: delivery
+all: $(DELIVERY)/NoSleep.dmg
 
-.PHONY: package
-package: binaries
-	xcodebuild -parallelizeTargets -project Installer/Plugins.xcodeproj -alltargets -configuration $(CONFIG)
-	packagesbuild Installer/NoSleepPkg.pkgproj
-
-.PHONY: binaries
-binaries:
+$(BUILDDIR)/NoSleep.app:
 	xcodebuild -parallelizeTargets -project NoSleep/NoSleep.xcodeproj -alltargets -configuration $(CONFIG)
+
+$(BUILDDIR)/Donate.app:
+	xcodebuild -parallelizeTargets -project PayPalButton/PayPalButton.xcodeproj -alltargets -configuration $(CONFIG)	
 
 .PHONY: clean
 clean:
-	/bin/rm -rf DerivedData Delivery
+	/bin/rm -rf $(DERIVED_DATA) $(DELIVERY)
 
-.PHONY: delivery
-delivery:
-	$(MAKE) clean
-	$(MAKE) package
-	mkdir Delivery
-	cat Installer/Scripts/Common.sh > Delivery/Uninstall.command
-	cat Installer/Scripts/Uninstall_1.3.1.sh >> Delivery/Uninstall.command
-	echo >> Delivery/Uninstall.command
-	cat Installer/Scripts/Uninstall_Cli_1.3.0.sh >> Delivery/Uninstall.command
-	chmod +x Delivery/Uninstall.command
-	cp -r DerivedData/Installer/NoSleep.pkg Delivery/
+$(DELIVERY_AREA): $(BUILDDIR)/NoSleep.app $(BUILDDIR)/Donate.app
+	if [[ ! -e $@ ]]; then mkdir -p $@; fi
+	cp LegacyInstaller/Uninstall.command $@/Uninstall.command
+	cp -r $^ $@
+	ln -s /Applications/Utilities $@/Utilities
 
-.PHONY: dmg
-dmg: delivery
-	if [ -e DerivedData/DMG ]; then rm -rf DerivedData/DMG; fi
-	mkdir -p DerivedData/DMG
+$(DELIVERY):
+	if [[ ! -e $@ ]]; then mkdir -p $@; fi
+
+$(DELIVERY)/NoSleep.dmg: $(DELIVERY_AREA) $(DELIVERY)
+	if [ -e $(DERIVED_DATA)/DMG ]; then rm -rf $(DERIVED_DATA)/DMG; fi
+	mkdir -p $(DERIVED_DATA)/DMG
 	./Utilities/create-dmg \
-		--window-size 480 300 \
+		--window-size 480 340 \
 		--icon-size 96 \
 		--volname "NoSleep Extension" \
-		--icon "NoSleep.pkg" 160 130 \
-		--icon "Uninstall.command" 320 130 \
-		DerivedData/DMG/NoSleep.dmg \
-		Delivery
-	cp DerivedData/DMG/NoSleep.dmg Delivery
-
-.PHONY: dk, dkc
-dkc:
-	$(SUDO) $(KEXTUNLOAD) -b com.protech.NoSleep
-	$(SUDO) rm -rf $(BUILDDIR)/NoSleep.kext
-dk:
-	#$(MAKE) clean
-	#CONFIG=Debug $(MAKE) all
-	#if [ "$(KEXTSTAT)|grep NoSleep" ]; then $(SUDO) $(KEXTUNLOAD) -b com.protech.NoSleep; fi
-	$(SUDO) chown -R root:wheel $(BUILDDIR)/NoSleep.kext
-	$(SUDO) $(KEXTUTIL) $(BUILDDIR)/NoSleep.kext
-
+		--icon "Uninstall.command" 100 80 \
+		--icon "NoSleep.app" 240 80 \
+		--icon "Utilities" 240 220 \
+		--icon "Donate.app" 380 80 \
+		$(DERIVED_DATA)/DMG/NoSleep.dmg \
+		$(DELIVERY_AREA)
+	cp $(DERIVED_DATA)/DMG/NoSleep.dmg ./$(DELIVERY)/

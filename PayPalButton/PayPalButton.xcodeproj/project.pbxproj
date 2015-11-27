@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9286D0671C07A1D900EF61EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286D0661C07A1D900EF61EE /* AppDelegate.m */; };
+		9286D06A1C07A1D900EF61EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286D0691C07A1D900EF61EE /* main.m */; };
+		9286D06C1C07A1D900EF61EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9286D06B1C07A1D900EF61EE /* Assets.xcassets */; };
+		9286D06F1C07A1D900EF61EE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9286D06D1C07A1D900EF61EE /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9286D0621C07A1D900EF61EE /* Donate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Donate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9286D0651C07A1D900EF61EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9286D0661C07A1D900EF61EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9286D0691C07A1D900EF61EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9286D06B1C07A1D900EF61EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9286D06E1C07A1D900EF61EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9286D0701C07A1D900EF61EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9286D05F1C07A1D900EF61EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9286D0591C07A1D900EF61EE = {
+			isa = PBXGroup;
+			children = (
+				9286D0641C07A1D900EF61EE /* PayPalButton */,
+				9286D0631C07A1D900EF61EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9286D0631C07A1D900EF61EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9286D0621C07A1D900EF61EE /* Donate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9286D0641C07A1D900EF61EE /* PayPalButton */ = {
+			isa = PBXGroup;
+			children = (
+				9286D0651C07A1D900EF61EE /* AppDelegate.h */,
+				9286D0661C07A1D900EF61EE /* AppDelegate.m */,
+				9286D06B1C07A1D900EF61EE /* Assets.xcassets */,
+				9286D06D1C07A1D900EF61EE /* MainMenu.xib */,
+				9286D0701C07A1D900EF61EE /* Info.plist */,
+				9286D0681C07A1D900EF61EE /* Supporting Files */,
+			);
+			path = PayPalButton;
+			sourceTree = "<group>";
+		};
+		9286D0681C07A1D900EF61EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9286D0691C07A1D900EF61EE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9286D0611C07A1D900EF61EE /* Donate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9286D0891C07A1DA00EF61EE /* Build configuration list for PBXNativeTarget "Donate" */;
+			buildPhases = (
+				9286D05E1C07A1D900EF61EE /* Sources */,
+				9286D05F1C07A1D900EF61EE /* Frameworks */,
+				9286D0601C07A1D900EF61EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Donate;
+			productName = PayPalButton;
+			productReference = 9286D0621C07A1D900EF61EE /* Donate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9286D05A1C07A1D900EF61EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Pavel Prokofiev";
+				TargetAttributes = {
+					9286D0611C07A1D900EF61EE = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = RR43DU5BN9;
+					};
+				};
+			};
+			buildConfigurationList = 9286D05D1C07A1D900EF61EE /* Build configuration list for PBXProject "PayPalButton" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9286D0591C07A1D900EF61EE;
+			productRefGroup = 9286D0631C07A1D900EF61EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9286D0611C07A1D900EF61EE /* Donate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9286D0601C07A1D900EF61EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9286D06C1C07A1D900EF61EE /* Assets.xcassets in Resources */,
+				9286D06F1C07A1D900EF61EE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9286D05E1C07A1D900EF61EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9286D06A1C07A1D900EF61EE /* main.m in Sources */,
+				9286D0671C07A1D900EF61EE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9286D06D1C07A1D900EF61EE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9286D06E1C07A1D900EF61EE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9286D0871C07A1DA00EF61EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../DerivedData;
+			};
+			name = Debug;
+		};
+		9286D0881C07A1DA00EF61EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SYMROOT = ../DerivedData;
+			};
+			name = Release;
+		};
+		9286D08A1C07A1DA00EF61EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PayPalButton/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.pgp01.PayPalButton;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9286D08B1C07A1DA00EF61EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PayPalButton/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.pgp01.PayPalButton;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9286D05D1C07A1D900EF61EE /* Build configuration list for PBXProject "PayPalButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9286D0871C07A1DA00EF61EE /* Debug */,
+				9286D0881C07A1DA00EF61EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9286D0891C07A1DA00EF61EE /* Build configuration list for PBXNativeTarget "Donate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9286D08A1C07A1DA00EF61EE /* Debug */,
+				9286D08B1C07A1DA00EF61EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9286D05A1C07A1D900EF61EE /* Project object */;
+}
