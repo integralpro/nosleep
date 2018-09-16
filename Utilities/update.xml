@@ -42,5 +42,14 @@
 	        length="1265086"
 	        type="application/octet-stream" />
 	</item>
+	<item>
+	    <title>NoSleep - Version 1.5.0</title>
+	    <sparkle:releaseNotesLink>https://integralpro.github.io/nosleep/updates/ChangeLog.html</sparkle:releaseNotesLink>
+	    <pubDate>Sun, 16 Sep 2018 01:42:00 -0700</pubDate>
+	    <enclosure url="https://github.com/integralpro/nosleep/releases/download/1.5/NoSleep-1.5.0.dmg"
+	        sparkle:version="1.5.0"
+	        length="3370611"
+	        type="application/octet-stream" />
+	</item>
 </channel>
 </rss>
