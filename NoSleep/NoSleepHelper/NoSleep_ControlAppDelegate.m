@@ -66,7 +66,7 @@ static void handleSIGTERM(int signum) {
         [[statusItem button] setTarget:self];
         [[statusItem button] setAction:@selector(onClick:)];
         [statusItem setHighlightMode:NO];
-        [statusItem sendActionOn:NSRightMouseUpMask | NSLeftMouseUpMask];
+        [statusItem sendActionOn:NSEventMaskRightMouseUp | NSEventMaskLeftMouseUp];
     } else {
         [statusItem setImage:inactiveImage];
         //[statusItem setTarget:self];
@@ -109,13 +109,13 @@ static void handleSIGTERM(int signum) {
 - (IBAction)onClick:(id)sender {
     NSEvent *event = [NSApp currentEvent];
     switch ([event type]) {
-        case NSLeftMouseUp:
+        case NSEventTypeLeftMouseUp:
             if((getUseDoubleClick() == kCFBooleanTrue) && [event clickCount] % 2 == 1) {
                 break;
             }
             [self setEnabled:[self enabled] == NSOnState ? NSOffState : NSOnState];
             break;
-        case NSRightMouseUp:
+        case NSEventTypeRightMouseUp:
             [statusItem popUpStatusItemMenu:statusItemMenu];
                         [statusItem setHighlightMode:NO];
             break;

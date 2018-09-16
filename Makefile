@@ -26,7 +26,8 @@ clean:
 $(DELIVERY_AREA): $(BUILDDIR)/NoSleep.app $(BUILDDIR)/Donate.app
 	if [[ ! -e $@ ]]; then mkdir -p $@; fi
 	cp LegacyInstaller/Uninstall.command $@/Uninstall.command
-	cp -r $^ $@
+	codesign -v --sign "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)" $@/Uninstall.command
+	cp -R $^ $@
 	ln -s /Applications/Utilities $@/Utilities
 
 $(DELIVERY):
@@ -46,3 +47,4 @@ $(DELIVERY)/NoSleep.dmg: $(DELIVERY_AREA) $(DELIVERY)
 		$(DERIVED_DATA)/DMG/NoSleep.dmg \
 		$(DELIVERY_AREA)
 	cp $(DERIVED_DATA)/DMG/NoSleep.dmg ./$(DELIVERY)/
+	codesign --force --sign "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)" $@
