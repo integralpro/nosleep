@@ -4,7 +4,7 @@ echo "Uninstalling 1.2.1 and previous"
 sudo true
 
 KEXT_ID=com.protech.nosleep
-KEXT_PATH=/System/Library/Extensions/nosleep.kext
+KEXT_PATH=/Library/Extensions/nosleep.kext
 PERF_PATH=/Library/PreferencePanes/nosleep-preferences.prefPane
 OLD_PERF_PATH=/System/Library/PreferencePanes/nosleep-preferences.prefPane
 AGENT_PATH=/Library/LaunchAgents/com.protech.nosleep.launch.plist
