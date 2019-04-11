@@ -32,7 +32,7 @@ void ShowAlertPanel(NSString *title, NSString *message, NSString *button) {
     [alert addButtonWithTitle:button];
     [alert setMessageText:title];
     [alert setInformativeText:message];
-    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
     [alert runModal];
 }
 

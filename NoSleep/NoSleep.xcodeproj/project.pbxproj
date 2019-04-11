@@ -12,7 +12,6 @@
 		921A632D1688F29300BCB825 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		923C21571BC7B35300061A6F /* NoSleep.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92B88B191685AA0B00A2993F /* NoSleep.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9249A3441B3B2206007215D9 /* NoSleep.kext in Resources */ = {isa = PBXBuildFile; fileRef = 92B88A4F16858F1C00A2993F /* NoSleep.kext */; };
-		9249A3451B3B224A007215D9 /* MainMenu.xib in Sources */ = {isa = PBXBuildFile; fileRef = 92B88ACF1685A58D00A2993F /* MainMenu.xib */; };
 		9249A34A1B3B23E4007215D9 /* NoSleepCtrl in Copy Executabled */ = {isa = PBXBuildFile; fileRef = 92B88BC31686375500A2993F /* NoSleepCtrl */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9249A3501B3B2B49007215D9 /* KextLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9249A34F1B3B2B49007215D9 /* KextLoader.m */; };
 		9249A35D1B3C5B1F007215D9 /* com.protech.KextHelper in Copy KextHelper */ = {isa = PBXBuildFile; fileRef = 9249A3361B3AF714007215D9 /* com.protech.KextHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -25,7 +24,7 @@
 		9279C75D1BEB29F000DEAB4A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9279C75B1BEB29F000DEAB4A /* PreferencesController.m */; };
 		9279C75E1BEB29F000DEAB4A /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9279C75C1BEB29F000DEAB4A /* PreferencesController.xib */; };
 		927B4CF21BC7BA9D008199AD /* login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B4CF11BC7BA9D008199AD /* login.framework */; };
-		927B4CF41BC7BB58008199AD /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		927B4CF41BC7BB58008199AD /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		927FE20719F3C693000CAF7B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
 		927FE20B19F40B06000CAF7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		92A7D8ED1BE33F43008D8575 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; };
@@ -592,6 +591,7 @@
 				92B88A89168596BA00A2993F /* Frameworks */,
 				92B88A8A168596BA00A2993F /* Resources */,
 				92B88B351685ABA500A2993F /* Copy Frameworks */,
+				92E109A8225F217000D67184 /* ShellScript */,
 				9249A3401B3B10CF007215D9 /* Copy Executabled */,
 				9249A35C1B3C5B0D007215D9 /* Copy KextHelper */,
 			);
@@ -672,7 +672,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					9249A3351B3AF714007215D9 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -695,6 +695,7 @@
 					};
 					92E638171BE0BE37008C699A = {
 						CreatedOnToolsVersion = 7.0.1;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -780,6 +781,29 @@
 		};
 /* End PBXRezBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		92E109A8225F217000D67184 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(DERIVED_FILE_DIR)/$(PRODUCT_NAME)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9249A3321B3AF714007215D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -805,7 +829,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9279C75D1BEB29F000DEAB4A /* PreferencesController.m in Sources */,
-				9249A3451B3B224A007215D9 /* MainMenu.xib in Sources */,
 				92B88ADE1685A58D00A2993F /* main.m in Sources */,
 				92E638151BDF5980008C699A /* Version.m in Sources */,
 				9249A3501B3B2B49007215D9 /* KextLoader.m in Sources */,
@@ -918,11 +941,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -949,7 +969,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.protech.KextHelper;
 				PRODUCT_NAME = "$(BUNDLE_IDENTIFIER).$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -970,11 +989,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -995,13 +1011,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.protech.KextHelper;
 				PRODUCT_NAME = "$(BUNDLE_IDENTIFIER).$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		92B88A4716858EF000A2993F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_IDENTIFIER = com.protech;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1021,9 +1037,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				COPYRIGHT = "Copyright © 2012-2018 Pavel Prokofiev. All rights reserved.";
+				CODE_SIGN_STYLE = Manual;
+				COPYRIGHT = "Copyright © 2012-2019 Pavel Prokofyev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1034,13 +1052,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_VERSION = 1.5.0;
-				SDKROOT = macosx;
+				PRODUCT_VERSION = 1.5.1;
+				SDKROOT = macosx10.12;
 				SYMROOT = ../DerivedData;
 				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
 				VALID_ARCHS = x86_64;
@@ -1050,6 +1068,7 @@
 		92B88A4816858EF000A2993F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_IDENTIFIER = com.protech;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1069,9 +1088,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				COPYRIGHT = "Copyright © 2012-2018 Pavel Prokofiev. All rights reserved.";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				COPYRIGHT = "Copyright © 2012-2019 Pavel Prokofyev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "__PRODUCT_VERSION__=${PRODUCT_VERSION}";
@@ -1081,12 +1103,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_VERSION = 1.5.0;
-				SDKROOT = macosx;
+				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
+				PRODUCT_VERSION = 1.5.1;
+				SDKROOT = macosx10.12;
 				SYMROOT = ../DerivedData;
 				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
 				VALID_ARCHS = x86_64;
@@ -1101,10 +1123,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1124,7 +1143,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -1137,11 +1155,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1153,7 +1168,6 @@
 				INFOPLIST_FILE = "NoSleepKext/NoSleepKext-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -1167,10 +1181,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1197,7 +1208,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).NoSleep";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1211,11 +1221,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1234,7 +1241,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).NoSleep";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1247,10 +1253,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -1274,7 +1277,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).$(PRODUCT_NAME:rfc1034identifier)Framework";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1287,11 +1289,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -1307,7 +1306,6 @@
 				INSTALL_PATH = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).$(PRODUCT_NAME:rfc1034identifier)Framework";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1320,10 +1318,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/3rd-party",
 					"$(PROJECT_DIR)",
@@ -1349,7 +1344,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}Pref";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -1362,11 +1356,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/3rd-party",
 					"$(PROJECT_DIR)",
@@ -1384,7 +1375,6 @@
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}Pref";
 				PRODUCT_NAME = NoSleep;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Release;
@@ -1397,9 +1387,6 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1415,7 +1402,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1427,10 +1413,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
-				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1438,7 +1421,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

@@ -9,7 +9,7 @@
 #ifndef NoSleepFramework_Utilities_h
 #define NoSleepFramework_Utilities_h
 
-BOOL GetLockScreenProperty();
+BOOL GetLockScreenProperty(void);
 void SetLockScreenProperty(BOOL value);
 
 BOOL IsLaunchdAgentInstalled(NSBundle *application);

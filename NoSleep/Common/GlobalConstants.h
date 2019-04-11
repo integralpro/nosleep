@@ -44,4 +44,4 @@
 //KextHelper
 #define KextHelper_ID "com.protech.KextHelper"
 
-extern void SACLockScreenImmediate();
+extern void SACLockScreenImmediate(void);
