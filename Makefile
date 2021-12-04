@@ -9,7 +9,7 @@ KEXTSTAT=/usr/sbin/kextstat
 KEXTUNLOAD=/sbin/kextunload
 KEXTUTIL=/usr/bin/kextutil
 
-TEAM="RR43DU5BN9"
+TEAM="Developer ID Application"
 NOTARIZE_LOGIN="integral.pro@gmail.com"
 NOTARIZE_PASSWORD="@keychain:Notary"
 

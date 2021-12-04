@@ -24,7 +24,7 @@
 		9279C75D1BEB29F000DEAB4A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9279C75B1BEB29F000DEAB4A /* PreferencesController.m */; };
 		9279C75E1BEB29F000DEAB4A /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9279C75C1BEB29F000DEAB4A /* PreferencesController.xib */; };
 		927B4CF21BC7BA9D008199AD /* login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B4CF11BC7BA9D008199AD /* login.framework */; };
-		927B4CF41BC7BB58008199AD /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		927B4CF41BC7BB58008199AD /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		927FE20719F3C693000CAF7B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927FE20619F3C693000CAF7B /* IOKit.framework */; };
 		927FE20B19F40B06000CAF7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921A631E1688D45900BCB825 /* Security.framework */; };
 		92A7D8ED1BE33F43008D8575 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A75CE11BC7AE64007DD489 /* Sparkle.framework */; };
@@ -672,7 +672,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					9249A3351B3AF714007215D9 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -704,6 +704,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 92B88A4016858EF000A2993F;
@@ -1038,7 +1039,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
 				CODE_SIGN_STYLE = Manual;
-				COPYRIGHT = "Copyright © 2012-2019 Pavel Prokofyev. All rights reserved.";
+				COPYRIGHT = "Copyright © 2012-2021 Pavel Prokofyev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1057,11 +1058,11 @@
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_VERSION = 1.5.1;
-				SDKROOT = macosx10.12;
+				PRODUCT_VERSION = 1.5.2;
+				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
 				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "arm64e x86_64 arm64";
 			};
 			name = Debug;
 		};
@@ -1090,7 +1091,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Pavel Prokofiev (RR43DU5BN9)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
-				COPYRIGHT = "Copyright © 2012-2019 Pavel Prokofyev. All rights reserved.";
+				COPYRIGHT = "Copyright © 2012-2021 Pavel Prokofyev. All rights reserved.";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "${PRODUCT_VERSION}";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1107,11 +1108,11 @@
 				MODULE_NAME = com.protech.NoSleep;
 				MODULE_VERSION = "${PRODUCT_VERSION}";
 				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
-				PRODUCT_VERSION = 1.5.1;
-				SDKROOT = macosx10.12;
+				PRODUCT_VERSION = 1.5.2;
+				SDKROOT = macosx;
 				SYMROOT = ../DerivedData;
 				URL = "https://integralpro.github.io/nosleep/updates/update.xml";
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "arm64e x86_64 arm64";
 			};
 			name = Release;
 		};
@@ -1140,7 +1141,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepKext/NoSleepKext-Info.plist";
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = kext;
@@ -1205,7 +1205,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepHelper/NoSleepHelper-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).NoSleep";
 				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = app;
@@ -1274,7 +1273,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepFramework/NoSleepFramework-Info.plist";
 				INSTALL_PATH = "@loader_path/../Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).$(PRODUCT_NAME:rfc1034identifier)Framework";
 				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = framework;
@@ -1341,7 +1339,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "NoSleepPref/NoSleepPref-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER).${PRODUCT_NAME:rfc1034identifier}Pref";
 				PRODUCT_NAME = NoSleep;
 				WRAPPER_EXTENSION = prefPane;
@@ -1400,7 +1397,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
