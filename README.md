@@ -1,10 +1,9 @@
+DEPRECATED: This software we used to modify sleep behavior of macOS on laptops with lid closed. As of today it's no longer maintained, and same bahavior could be achived by using `pmset` or `caffeinate` utilities shipped with the OS. Please use this project only as an example of simple kext implementation.
+
 NoSleep
 =======
 
 The MacOS X kernel extension, preventing sleep when you close the lid.
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=integral%2epro%40gmail%2ecom&lc=US&item_name=NoSleep%20extension%20for%20MacOS%20X&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif"/></a>
-<p>Thank you all, who donated to the project!</p>
 
 Dependencies
 ============
